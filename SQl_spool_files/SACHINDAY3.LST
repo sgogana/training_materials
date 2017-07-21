@@ -1,0 +1,1424 @@
+SQL> CREATE INDEX EMPNAME_IDX
+  2  ON EMP(ENAME);
+
+Index created.
+
+SQL> SELECT * FROM EMPLOYEE11;
+SELECT * FROM EMPLOYEE11
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT * FROM EMPLOYEE1;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> CREATE SYNONYM EMP11 FOR EMPLOYEE1;
+CREATE SYNONYM EMP11 FOR EMPLOYEE1
+               *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE SYNONYM EMP111 FOR EMPLOYEE1;
+
+Synonym created.
+
+SQL> SELECT * FROM EMP111;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> SELECT * FROM  EMPLOYEE1;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE SEQUENCE S1
+  2  START WITH 1
+  3  MINVALUE 1
+  4  MAXVALUE 5
+  5  CYCLE
+  6* NO CACHE
+SQL> VALVAL/
+SP2-0042: unknown command "VALVAL/" - rest of line ignored.
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE SEQUENCE S1
+  2  START WITH 1
+  3  MINVALUE 1
+  4  MAXVALUE 5
+  5  CYCLE
+  6* NO CACHE
+SQL> 
+SQL> /
+NO CACHE
+*
+ERROR at line 6:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE SEQUENCE S1
+  2  START WITH 1
+  3  MINVALUE 1
+  4  MAXVALUE 5
+  5  CYCLE
+  6* NOCACHE
+SQL> /
+
+Sequence created.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE SEQUENCE S1
+  2  START WITH 1
+  3  MINVALUE 1
+  4  MAXVALUE 5
+  5  CYCLE
+  6* NOCACHE
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE SEQUENCE S1
+  2  START WITH 1
+  3  MINVALUE 1
+  4  MAXVALUE 5
+  5  CYCLE
+  6* NOCACHE
+SQL> /
+CREATE SEQUENCE S1
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> SELECT S1.CURRVAL FROM DUAL;
+SELECT S1.CURRVAL FROM DUAL
+       *
+ERROR at line 1:
+ORA-08002: sequence S1.CURRVAL is not yet defined in this session 
+
+
+SQL> SELECT S1.NEXTVAL FROM DUAL;
+
+   NEXTVAL                                                                                          
+----------                                                                                          
+         1                                                                                          
+
+SQL> SELECT S1.NEXTVAL FROM DUAL;
+
+   NEXTVAL                                                                                          
+----------                                                                                          
+         2                                                                                          
+
+SQL> SELECT S1.NEXTVAL FROM DUAL;
+
+   NEXTVAL                                                                                          
+----------                                                                                          
+         3                                                                                          
+
+SQL> SELECT S1.CURRVAL FROM DUAL;
+
+   CURRVAL                                                                                          
+----------                                                                                          
+         3                                                                                          
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> INSERT INTO DEPT(DEPTNO,DNAME)
+  2  VALUES(S1.NEXTVAL,'TRAINING');
+
+1 row created.
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+         4 TRAINING                                                                                 
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> INSERT INTO EMP(EMPNO,ENAME)
+  2  VALUES(S1.NEXTVAL,'SACHIN');
+
+1 row created.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+         5 SACHIN                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+15 rows selected.
+
+SQL> SELECT S1.NEXTVAL FROM DUAL;
+
+   NEXTVAL                                                                                          
+----------                                                                                          
+         1                                                                                          
+
+SQL> DROP SEQUENCE S1;
+
+Sequence dropped.
+
+SQL> CREATE OR REPLACE VIEW EMP_VW
+  2  AS SELECT * FROM EMP
+  3  WHERE DEPTNO = 10;
+
+View created.
+
+SQL> SELECT * FROM EMP_VW;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+SQL> INSERT INTO EMP_VW(EMPNO,JOB)
+  2  VALUES(1000,'TRAINER');
+
+1 row created.
+
+SQL> SELECT * FROM EMP_VW;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+         5 SACHIN                                                                                   
+      1000            TRAINER                                                                       
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+16 rows selected.
+
+SQL> UPDATE EMP
+  2  SET DEPTNO = 10
+  3  WHERE EMPNO = 1000;
+
+1 row updated.
+
+SQL> SELECT * FROM EMP_VW;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      1000            TRAINER                                                      10               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+SQL> CREATE VIEW EMPDEPT_VW
+  2  AS SELECT E.EMPNO,E.ENAME,E.JOB,E.SAL,D.DEPTNO,D.DNAME
+  3  FROM EMP E
+  4  ,DEPT D;
+
+View created.
+
+SQL> SELECT * FROM EMPDEPT_VW;
+
+     EMPNO ENAME      JOB              SAL     DEPTNO DNAME                                         
+---------- ---------- --------- ---------- ---------- --------------                                
+         5 SACHIN                                   4 TRAINING                                      
+      1000            TRAINER                       4 TRAINING                                      
+      7839 KING       PRESIDENT       5000          4 TRAINING                                      
+      7698 BLAKE      MANAGER         2850          4 TRAINING                                      
+      7782 CLARK      MANAGER         2450          4 TRAINING                                      
+      7566 JONES      MANAGER         2975          4 TRAINING                                      
+      7788 SCOTT      ANALYST         3000          4 TRAINING                                      
+      7902 FORD       ANALYST         3000          4 TRAINING                                      
+      7369 SMITH      CLERK            800          4 TRAINING                                      
+      7499 ALLEN      SALESMAN        1600          4 TRAINING                                      
+      7521 WARD       SALESMAN        1250          4 TRAINING                                      
+      7654 MARTIN     SALESMAN        1250          4 TRAINING                                      
+      7844 TURNER     SALESMAN        1500          4 TRAINING                                      
+      7876 ADAMS      CLERK           1100          4 TRAINING                                      
+      7900 JAMES      CLERK            950          4 TRAINING                                      
+      7934 MILLER     CLERK           1300          4 TRAINING                                      
+         5 SACHIN                                  10 ACCOUNTING                                    
+      1000            TRAINER                      10 ACCOUNTING                                    
+      7839 KING       PRESIDENT       5000         10 ACCOUNTING                                    
+      7698 BLAKE      MANAGER         2850         10 ACCOUNTING                                    
+      7782 CLARK      MANAGER         2450         10 ACCOUNTING                                    
+      7566 JONES      MANAGER         2975         10 ACCOUNTING                                    
+      7788 SCOTT      ANALYST         3000         10 ACCOUNTING                                    
+      7902 FORD       ANALYST         3000         10 ACCOUNTING                                    
+      7369 SMITH      CLERK            800         10 ACCOUNTING                                    
+      7499 ALLEN      SALESMAN        1600         10 ACCOUNTING                                    
+      7521 WARD       SALESMAN        1250         10 ACCOUNTING                                    
+      7654 MARTIN     SALESMAN        1250         10 ACCOUNTING                                    
+      7844 TURNER     SALESMAN        1500         10 ACCOUNTING                                    
+      7876 ADAMS      CLERK           1100         10 ACCOUNTING                                    
+      7900 JAMES      CLERK            950         10 ACCOUNTING                                    
+      7934 MILLER     CLERK           1300         10 ACCOUNTING                                    
+         5 SACHIN                                  20 RESEARCH                                      
+      1000            TRAINER                      20 RESEARCH                                      
+      7839 KING       PRESIDENT       5000         20 RESEARCH                                      
+      7698 BLAKE      MANAGER         2850         20 RESEARCH                                      
+      7782 CLARK      MANAGER         2450         20 RESEARCH                                      
+      7566 JONES      MANAGER         2975         20 RESEARCH                                      
+      7788 SCOTT      ANALYST         3000         20 RESEARCH                                      
+      7902 FORD       ANALYST         3000         20 RESEARCH                                      
+      7369 SMITH      CLERK            800         20 RESEARCH                                      
+      7499 ALLEN      SALESMAN        1600         20 RESEARCH                                      
+      7521 WARD       SALESMAN        1250         20 RESEARCH                                      
+      7654 MARTIN     SALESMAN        1250         20 RESEARCH                                      
+      7844 TURNER     SALESMAN        1500         20 RESEARCH                                      
+      7876 ADAMS      CLERK           1100         20 RESEARCH                                      
+      7900 JAMES      CLERK            950         20 RESEARCH                                      
+      7934 MILLER     CLERK           1300         20 RESEARCH                                      
+         5 SACHIN                                  30 SALES                                         
+      1000            TRAINER                      30 SALES                                         
+      7839 KING       PRESIDENT       5000         30 SALES                                         
+      7698 BLAKE      MANAGER         2850         30 SALES                                         
+      7782 CLARK      MANAGER         2450         30 SALES                                         
+      7566 JONES      MANAGER         2975         30 SALES                                         
+      7788 SCOTT      ANALYST         3000         30 SALES                                         
+      7902 FORD       ANALYST         3000         30 SALES                                         
+      7369 SMITH      CLERK            800         30 SALES                                         
+      7499 ALLEN      SALESMAN        1600         30 SALES                                         
+      7521 WARD       SALESMAN        1250         30 SALES                                         
+      7654 MARTIN     SALESMAN        1250         30 SALES                                         
+      7844 TURNER     SALESMAN        1500         30 SALES                                         
+      7876 ADAMS      CLERK           1100         30 SALES                                         
+      7900 JAMES      CLERK            950         30 SALES                                         
+      7934 MILLER     CLERK           1300         30 SALES                                         
+         5 SACHIN                                  40 OPERATIONS                                    
+      1000            TRAINER                      40 OPERATIONS                                    
+      7839 KING       PRESIDENT       5000         40 OPERATIONS                                    
+      7698 BLAKE      MANAGER         2850         40 OPERATIONS                                    
+      7782 CLARK      MANAGER         2450         40 OPERATIONS                                    
+      7566 JONES      MANAGER         2975         40 OPERATIONS                                    
+      7788 SCOTT      ANALYST         3000         40 OPERATIONS                                    
+      7902 FORD       ANALYST         3000         40 OPERATIONS                                    
+      7369 SMITH      CLERK            800         40 OPERATIONS                                    
+      7499 ALLEN      SALESMAN        1600         40 OPERATIONS                                    
+      7521 WARD       SALESMAN        1250         40 OPERATIONS                                    
+      7654 MARTIN     SALESMAN        1250         40 OPERATIONS                                    
+      7844 TURNER     SALESMAN        1500         40 OPERATIONS                                    
+      7876 ADAMS      CLERK           1100         40 OPERATIONS                                    
+      7900 JAMES      CLERK            950         40 OPERATIONS                                    
+      7934 MILLER     CLERK           1300         40 OPERATIONS                                    
+
+80 rows selected.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+         5 SACHIN                                                                                   
+      1000            TRAINER                                                      10               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+16 rows selected.
+
+SQL> INSERT INTO EMP(EMPNO)
+  2  VALUES(5000);
+
+1 row created.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+         5 SACHIN                                                                                   
+      1000            TRAINER                                                      10               
+      5000                                                                                          
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+17 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CREATE TABLE R1
+  2  (EMPNO NUMBER(3));
+
+Table created.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+         5 SACHIN                                                                                   
+      1000            TRAINER                                                      10               
+      5000                                                                                          
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+17 rows selected.
+
+SQL> SAVEPOINT S1;
+
+Savepoint created.
+
+SQL> DELETE FROM EMP
+  2  WHERE EMPNO = 5;
+
+1 row deleted.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      1000            TRAINER                                                      10               
+      5000                                                                                          
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+16 rows selected.
+
+SQL> SAVEPOINT S2;
+
+Savepoint created.
+
+SQL> DELETE FROM EMP
+  2  WHERE EMPNO = 1000;
+
+1 row deleted.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      5000                                                                                          
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+15 rows selected.
+
+SQL> ROLLBACK TO S2;
+
+Rollback complete.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      1000            TRAINER                                                      10               
+      5000                                                                                          
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+16 rows selected.
+
+SQL> ROLLBACK
+  2  ;
+
+Rollback complete.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+         5 SACHIN                                                                                   
+      1000            TRAINER                                                      10               
+      5000                                                                                          
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+17 rows selected.
+
+SQL> SELECT * FROM STAFF_MASTERS;
+
+STAFF_CODE STAFF_NAME                                         DESIGN_CODE  DEPT_CODE STAFF_DOB      
+---------- -------------------------------------------------- ----------- ---------- ---------      
+HIREDATE    MGR_CODE  STAFF_SAL                                                                     
+--------- ---------- ----------                                                                     
+STAFF_ADDRESS                                                                                       
+----------------------------------------------------------------------------------------------------
+    100001 Arvind                                                     102         30 15-JAN-80      
+15-JAN-03     100006      17000                                                                     
+Bangalore                                                                                           
+                                                                                                    
+    100002 Shyam                                                      102         20 18-FEB-80      
+17-FEB-02     100007      20000                                                                     
+Chennai                                                                                             
+                                                                                                    
+    100003 Mohan                                                      102         10 23-MAR-80      
+19-JAN-02     100006      24250                                                                     
+Mumbai                                                                                              
+                                                                                                    
+    100004 Anil                                                       102         20 22-APR-77      
+11-MAR-01     100006      20000                                                                     
+Hyderabad                                                                                           
+                                                                                                    
+    100005 John                                                       106         10 22-MAY-76      
+21-JAN-01     100007      32500                                                                     
+Bangalore                                                                                           
+                                                                                                    
+    100006 Allen                                                      103         30 22-JAN-80      
+23-APR-01     100005      42000                                                                     
+Chennai                                                                                             
+                                                                                                    
+    100007 Smith                                                      103         20 19-JUL-73      
+12-MAR-02     100005      62000                                                                     
+Mumbai                                                                                              
+                                                                                                    
+    100008 Raviraj                                                    102         40 17-JUN-80      
+11-JAN-03     100006      18000                                                                     
+Bangalore                                                                                           
+                                                                                                    
+    100009 Rahul                                                      102         20 16-JAN-78      
+11-DEC-03     100006      22000                                                                     
+Hyderabad                                                                                           
+                                                                                                    
+    100010 Ram                                                        103         30 17-JAN-79      
+17-JAN-02     100007      32000                                                                     
+Bangalore                                                                                           
+                                                                                                    
+
+10 rows selected.
+
+SQL> DESC STAFF_MASTERS;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ STAFF_CODE                                            NOT NULL NUMBER(8)
+ STAFF_NAME                                            NOT NULL VARCHAR2(50)
+ DESIGN_CODE                                                    NUMBER(3)
+ DEPT_CODE                                                      NUMBER(2)
+ STAFF_DOB                                                      DATE
+ HIREDATE                                                       DATE
+ MGR_CODE                                                       NUMBER(8)
+ STAFF_SAL                                                      NUMBER(12,2)
+ STAFF_ADDRESS                                                  VARCHAR2(240)
+
+SQL> SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DY') AS DAY
+  4  FROM STAFF_MASTERS
+  5  ORDER BY DAY;
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---                                    
+Allen                                              23-APR-01 MON                                    
+Raviraj                                            11-JAN-03 SAT                                    
+Mohan                                              19-JAN-02 SAT                                    
+Anil                                               11-MAR-01 SUN                                    
+Shyam                                              17-FEB-02 SUN                                    
+John                                               21-JAN-01 SUN                                    
+Rahul                                              11-DEC-03 THU                                    
+Ram                                                17-JAN-02 THU                                    
+Smith                                              12-MAR-02 TUE                                    
+Arvind                                             15-JAN-03 WED                                    
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'D') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY DAY
+SQL> /
+
+STAFF_NAME                                         HIREDATE  D                                      
+-------------------------------------------------- --------- -                                      
+John                                               21-JAN-01 1                                      
+Anil                                               11-MAR-01 1                                      
+Shyam                                              17-FEB-02 1                                      
+Allen                                              23-APR-01 2                                      
+Smith                                              12-MAR-02 3                                      
+Arvind                                             15-JAN-03 4                                      
+Rahul                                              11-DEC-03 5                                      
+Ram                                                17-JAN-02 5                                      
+Mohan                                              19-JAN-02 7                                      
+Raviraj                                            11-JAN-03 7                                      
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY DAY
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+Allen                                              23-APR-01 MONDAY                                 
+Raviraj                                            11-JAN-03 SATURDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Anil                                               11-MAR-01 SUNDAY                                 
+Shyam                                              17-FEB-02 SUNDAY                                 
+John                                               21-JAN-01 SUNDAY                                 
+Rahul                                              11-DEC-03 THURSDAY                               
+Ram                                                17-JAN-02 THURSDAY                               
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY DAY DESC
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Smith                                              12-MAR-02 TUESDAY                                
+Ram                                                17-JAN-02 THURSDAY                               
+Rahul                                              11-DEC-03 THURSDAY                               
+Anil                                               11-MAR-01 SUNDAY                                 
+Shyam                                              17-FEB-02 SUNDAY                                 
+John                                               21-JAN-01 SUNDAY                                 
+Raviraj                                            11-JAN-03 SATURDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Allen                                              23-APR-01 MONDAY                                 
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY DAY
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+Allen                                              23-APR-01 MONDAY                                 
+Raviraj                                            11-JAN-03 SATURDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Anil                                               11-MAR-01 SUNDAY                                 
+Shyam                                              17-FEB-02 SUNDAY                                 
+John                                               21-JAN-01 SUNDAY                                 
+Rahul                                              11-DEC-03 THURSDAY                               
+Ram                                                17-JAN-02 THURSDAY                               
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+
+10 rows selected.
+
+SQL> CLEAR SCREEN;
+
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+Allen                                              23-APR-01 MONDAY                                 
+Raviraj                                            11-JAN-03 SATURDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Anil                                               11-MAR-01 SUNDAY                                 
+Shyam                                              17-FEB-02 SUNDAY                                 
+John                                               21-JAN-01 SUNDAY                                 
+Rahul                                              11-DEC-03 THURSDAY                               
+Ram                                                17-JAN-02 THURSDAY                               
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY TO_CHAR(HIREDATE,'D')
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY TO_CHAR(HIREDATE,'D')
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Shyam                                              17-FEB-02 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Raviraj                                            11-JAN-03 SATURDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY TO_CHAR(HIREDATE,'D+1')
+SQL> /
+ORDER BY TO_CHAR(HIREDATE,'D+1')
+                          *
+ERROR at line 5:
+ORA-01821: date format not recognized 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5  ORDER BY TO_CHAR(HIREDATE,'D')
+  6* WHERE TO_CHAR(HIREDATE,'D') > 1
+SQL> /
+WHERE TO_CHAR(HIREDATE,'D') > 1
+*
+ERROR at line 6:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5  WHERE TO_CHAR(HIREDATE,'D') > 1
+  6* ORDER BY TO_CHAR(HIREDATE,'D')
+  7  /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+Allen                                              23-APR-01 MONDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Ram                                                17-JAN-02 THURSDAY                               
+Rahul                                              11-DEC-03 THURSDAY                               
+Raviraj                                            11-JAN-03 SATURDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+
+7 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (HIREDATE - NEXT_DAY(HIREDATE,'MONDAY'))
+  6  /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+Allen                                              23-APR-01 MONDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+Ram                                                17-JAN-02 THURSDAY                               
+Raviraj                                            11-JAN-03 SATURDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Anil                                               11-MAR-01 SUNDAY                                 
+Shyam                                              17-FEB-02 SUNDAY                                 
+John                                               21-JAN-01 SUNDAY                                 
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE,'MONDAY'))
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Shyam                                              17-FEB-02 SUNDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Raviraj                                            11-JAN-03 SATURDAY                               
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (HIREDATE - NEXT_DAY(HIREDATE,'MONDAY'))
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+Allen                                              23-APR-01 MONDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+Ram                                                17-JAN-02 THURSDAY                               
+Raviraj                                            11-JAN-03 SATURDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Anil                                               11-MAR-01 SUNDAY                                 
+Shyam                                              17-FEB-02 SUNDAY                                 
+John                                               21-JAN-01 SUNDAY                                 
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE,'MONDAY') +
+SQL> /
+ORDER BY (NEXT_DAY(HIREDATE,'MONDAY') +
+                                      *
+ERROR at line 5:
+ORA-00936: missing expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE,'MONDAY') -5
+SQL> /
+ORDER BY (NEXT_DAY(HIREDATE,'MONDAY') -5
+                                       *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY ((NEXT_DAY(HIREDATE,'MONDAY') -5)
+SQL> /
+ORDER BY ((NEXT_DAY(HIREDATE,'MONDAY') -5)
+                                         *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE - 5,'MONDAY')
+SQL> /
+ORDER BY (NEXT_DAY(HIREDATE - 5,'MONDAY')
+                                        *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE - 5,'MONDAY'))
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Shyam                                              17-FEB-02 SUNDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Raviraj                                            11-JAN-03 SATURDAY                               
+Rahul                                              11-DEC-03 THURSDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE - 1,'MONDAY'))
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Shyam                                              17-FEB-02 SUNDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Raviraj                                            11-JAN-03 SATURDAY                               
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE + 1,'MONDAY'))
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Shyam                                              17-FEB-02 SUNDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Raviraj                                            11-JAN-03 SATURDAY                               
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE -5),'MONDAY')
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (NEXT_DAY(HIREDATE -5),'MONDAY')
+  6  /
+ORDER BY (NEXT_DAY(HIREDATE -5),'MONDAY')
+          *
+ERROR at line 5:
+ORA-00909: invalid number of arguments 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY NEXT_DAY(HIREDATE,'MONDAY')
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Shyam                                              17-FEB-02 SUNDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Raviraj                                            11-JAN-03 SATURDAY                               
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,NEXT_DAY((TO_CHAR(HIREDATE,'DAY'),'MONDAY') AS DAY
+  4* FROM STAFF_MASTERS
+  5  /
+,NEXT_DAY((TO_CHAR(HIREDATE,'DAY'),'MONDAY') AS DAY
+                                  *
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,NEXT_DAY(TO_CHAR(HIREDATE,'DAY'),'MONDAY') AS DAY
+  4* FROM STAFF_MASTERS
+SQL> /
+,NEXT_DAY(TO_CHAR(HIREDATE,'DAY'),'MONDAY') AS DAY
+          *
+ERROR at line 3:
+ORA-01858: a non-numeric character was found where a numeric was expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,NEXT_DAY(TO_DATE(TO_CHAR(HIREDATE,'DAY'),'MONDAY')) AS DAY
+  4* FROM STAFF_MASTERS
+SQL> /
+,NEXT_DAY(TO_DATE(TO_CHAR(HIREDATE,'DAY'),'MONDAY')) AS DAY
+ *
+ERROR at line 3:
+ORA-00909: invalid number of arguments 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,NEXT_DAY(TO_DATE(TO_CHAR(HIREDATE,'DAY'),'MONDAY')) AS DAY
+  4* FROM STAFF_MASTERS
+SQL> CLEAR SCREEN'
+
+SP2-0158: unknown CLEAR option "'"
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY NEXT_DAY(HIREDATE,'MONDAY')
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Shyam                                              17-FEB-02 SUNDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Raviraj                                            11-JAN-03 SATURDAY                               
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,NEXT_DAY(TO_CHAR(HIREDATE,'DAY'),'MONDAY) AS DAY
+  4* FROM STAFF_MASTERS
+  5  //
+  6  /
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,NEXT_DAY(TO_CHAR(HIREDATE,'DAY'),'MONDAY) AS DAY
+  4* FROM STAFF_MASTERS
+  5  /
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,NEXT_DAY(TO_CHAR(HIREDATE,'DAY'),'MONDAY') AS DAY
+  4* FROM STAFF_MASTERS
+SQL> /
+,NEXT_DAY(TO_CHAR(HIREDATE,'DAY'),'MONDAY') AS DAY
+          *
+ERROR at line 3:
+ORA-01858: a non-numeric character was found where a numeric was expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY NEXT_DAY(HIREDATE,'MONDAY')
+  6  /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Shyam                                              17-FEB-02 SUNDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Raviraj                                            11-JAN-03 SATURDAY                               
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (HIREDATE,'D') = 1
+SQL> /
+ORDER BY (HIREDATE,'D') = 1
+                  *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY ((HIREDATE,'D') = 1)
+SQL> /
+ORDER BY ((HIREDATE,'D') = 1)
+                   *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (TO_CHAR(HIREDATE,'D') = 1)
+SQL> /
+ORDER BY (TO_CHAR(HIREDATE,'D') = 1)
+                                *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* WHERE TO_CHAR(HIREDATE,'D') =1 
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+Shyam                                              17-FEB-02 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+John                                               21-JAN-01 SUNDAY                                 
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY TO_CHAR(HIREDATE,'D') > 1 
+SQL> /
+ORDER BY TO_CHAR(HIREDATE,'D') > 1 
+                               *
+ERROR at line 5:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY (TO_CHAR(HIREDATE,'D') > 1 )
+SQL> /
+ORDER BY (TO_CHAR(HIREDATE,'D') > 1 )
+                                *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY TO_CHAR(HIREDATE,'D') 
+SQL> /
+
+STAFF_NAME                                         HIREDATE  DAY                                    
+-------------------------------------------------- --------- ---------                              
+John                                               21-JAN-01 SUNDAY                                 
+Anil                                               11-MAR-01 SUNDAY                                 
+Shyam                                              17-FEB-02 SUNDAY                                 
+Allen                                              23-APR-01 MONDAY                                 
+Smith                                              12-MAR-02 TUESDAY                                
+Arvind                                             15-JAN-03 WEDNESDAY                              
+Rahul                                              11-DEC-03 THURSDAY                               
+Ram                                                17-JAN-02 THURSDAY                               
+Mohan                                              19-JAN-02 SATURDAY                               
+Raviraj                                            11-JAN-03 SATURDAY                               
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT STAFF_NAME
+  2  ,HIREDATE
+  3  ,TO_CHAR(HIREDATE,'DAY') AS DAY
+  4  FROM STAFF_MASTERS
+  5* ORDER BY TO_CHAR(HIREDATE,'D') 
+SQL> clear screen;
+
+SQL> SPOOL SACHINPLSQL

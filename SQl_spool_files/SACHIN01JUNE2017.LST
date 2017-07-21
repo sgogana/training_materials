@@ -1,0 +1,780 @@
+SQL> CLEAR SCREEN;
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* DROP TABLE D1 CASCADE CONSTRAINTS
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_NAME VARCHAR2(15);
+  3  	V_ID	NUMBER(8);
+  4  BEGIN
+  5  	V_NAME := 'SACHIN';
+  6  	V_ID := 086048
+  7  	DBMS_OUTPUT.PUT_LINE('WELCOME' || V_NAME || 'TO CAPGEMINI. THE ID ASSIGNED TO YOU IS : || V_ID);
+  8* END;
+  9  /
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_NAME VARCHAR2(15);
+  3  	V_ID	NUMBER(8);
+  4  BEGIN
+  5  	V_NAME := 'SACHIN';
+  6  	V_ID := 086048
+  7  	DBMS_OUTPUT.PUT_LINE('WELCOME' || V_NAME || 'TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :' || V_ID);
+  8* END;
+SQL> /
+	DBMS_OUTPUT.PUT_LINE('WELCOME' || V_NAME || 'TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :' || V_ID);
+	*
+ERROR at line 7:
+ORA-06550: line 7, column 2: 
+PLS-00103: Encountered the symbol "DBMS_OUTPUT" when expecting one of the following: 
+* & = - + ; < / > at in is mod remainder not rem 
+<an exponent (**)> <> or != or ~= >= <= <> and or like like2 
+like4 likec between || multiset member submultiset 
+The symbol "*" was substituted for "DBMS_OUTPUT" to continue. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_NAME VARCHAR2(15);
+  3  	V_ID	NUMBER(8);
+  4  BEGIN
+  5  	V_NAME := 'SACHIN';
+  6  	V_ID := 086048;
+  7  	DBMS_OUTPUT.PUT_LINE('WELCOME' || V_NAME || 'TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :' || V_ID);
+  8* END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> /
+WELCOMESACHINTO CAPGEMINI. THE ID ASSIGNED TO YOU IS :86048                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_NAME VARCHAR2(15);
+  3  	V_ID	NUMBER(8);
+  4  BEGIN
+  5  	V_NAME := 'SACHIN';
+  6  	V_ID := 086048;
+  7  	DBMS_OUTPUT.PUT_LINE('WELCOME ' || V_NAME || ' TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :' || V_ID);
+  8* END;
+SQL> /
+WELCOME SACHIN TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :86048                                       
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_NAME VARCHAR2(15);
+  3  	V_ID	NUMBER(8);
+  4  BEGIN
+  5  	V_NAME := 'SACHIN';
+  6  	V_ID := 086048;
+  7  	DBMS_OUTPUT.PUT_LINE('WELCOME ' || V_NAME || ' TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :' || V_ID);
+  8* END;
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_NAME EMP.ENAME%TYPE;
+  3  	V_ID   EMP.EMPNO%TYPE;
+  4  BEGIN
+  5          SELECT ENAME,EMPNO
+  6          INTO V_NAME,V_ID
+  7  	FROM EMP
+  8  	WHERE EMPNO = &EMPNO;
+  9  	DBMS_OUTPUT.PUT_LINE('WELCOME ' || V_NAME || ' TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :' || V_ID);
+ 10* END;
+ 11  /
+Enter value for empno: 7788
+old   8: 	WHERE EMPNO = &EMPNO;
+new   8: 	WHERE EMPNO = 7788;
+WELCOME SCOTT TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :7788                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	N_RECORD EMP%ROWTYPE;
+  3  BEGIN
+  4          SELECT *
+  5          INTO N_RECORD
+  6  	FROM EMP
+  7  	WHERE EMPNO = &EMPNO;
+  8  	DBMS_OUTPUT.PUT_LINE('WELCOME ' || N_RECORD.ENAME || ' TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :' || N_RECORD.EMPNO);
+  9* END;
+SQL> /
+Enter value for empno: 7788
+old   7: 	WHERE EMPNO = &EMPNO;
+new   7: 	WHERE EMPNO = 7788;
+WELCOME SCOTT TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :7788                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for empno: 7369
+old   7: 	WHERE EMPNO = &EMPNO;
+new   7: 	WHERE EMPNO = 7369;
+WELCOME SMITH TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :7369                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	N_RECORD EMP%ROWTYPE;
+  3  BEGIN
+  4          SELECT *
+  5          INTO N_RECORD
+  6  	FROM EMP
+  7  	WHERE EMPNO = &EMPNO;
+  8  	DBMS_OUTPUT.PUT_LINE('WELCOME ' || N_RECORD.ENAME || ' TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :' || N_RECORD.EMPNO || ' YOU WILL BE GIVEN A SALARY OF :' || N_RECORD.SAL);
+  9* END;
+SQL> /
+Enter value for empno: 7839
+old   7: 	WHERE EMPNO = &EMPNO;
+new   7: 	WHERE EMPNO = 7839;
+WELCOME KING TO CAPGEMINI. THE ID ASSIGNED TO YOU IS :7839 YOU WILL BE GIVEN A SALARY OF :5000      
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	TYPE recname is RECORD
+  3  	(customer_id number,
+  4  	 customer_name varchar2(20));
+  5  	var_rec recname;
+  6  BEGIN
+  7  	var_rec.customer_id:=20;
+  8  	var_rec.customer_name:='Smith';
+  9  	dbms_output.put_line(var_rec.customer_id||'  '||var_rec.customer_name);
+ 10* END;
+SQL> /
+20  Smith                                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	TYPE recname is RECORD
+  3  	(customer_id number,
+  4  	 customer_name varchar2(20));
+  5  	var_rec recname;
+  6  BEGIN
+  7  	var_rec.customer_id:=20;
+  8  	var_rec.customer_name:='Smith';
+  9  	dbms_output.put_line(var_rec.customer_id||'  '||var_rec.customer_name);
+ 10* END;
+SQL> SELECT * FROM STAFF_MASTER;
+
+STAFF_CODE STAFF_NAME            STAFF_SAL                                                          
+---------- -------------------- ----------                                                          
+        10 SACHIN                     2000                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM STAFF_MASTER
+SQL> SELECT * FROM EMPCOPY;
+SELECT * FROM EMPCOPY
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT * FROM EMP1;
+SELECT * FROM EMP1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> CREATE TABLE EMP1 AS SELECT * FROM EMP;
+
+Table created.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      TYPE staff_table is table of 
+  3      EMP1.Ename%type
+  4       INDEX BY BINARY_INTEGER;
+  5  staff_tab staff_table;
+  6  BEGIN
+  7       staff_tab(1) := 'Smith'; --update Smith's salary
+  8       UPDATE EMP1
+  9       SET sal = 1.1 * sal 
+ 10       WHERE Ename = staff_tab(1);
+ 11* END;
+ 12  /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM EMP1;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> DECLARE
+  2      TYPE staff_table is table of
+  3      EMP1.Ename%type
+  4       INDEX BY BINARY_INTEGER;
+  5  staff_tab staff_table;
+  6  BEGIN
+  7       staff_tab(1) := 'Smith'; --update Smith's salary
+  8       UPDATE EMP1
+  9       SET sal = 1.1 * sal
+ 10       WHERE Ename = staff_tab(1);
+ 11  END;
+ 12  /
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      TYPE staff_table is table of
+  3      EMP1.Ename%type
+  4       INDEX BY BINARY_INTEGER;
+  5  staff_tab staff_table;
+  6  BEGIN
+  7       staff_tab(1) := 'SMITH'; --update Smith's salary
+  8       UPDATE EMP1
+  9       SET sal = 1.1 * sal
+ 10       WHERE Ename = staff_tab(1);
+ 11* END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM EMP1;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        880                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<Outer>>
+  2  DECLARE
+  3  v_AvailableFlag BOOLEAN;
+  4  v_SSN NUMBER(9) := 100;
+  5  BEGIN
+  6  	DECLARE
+  7  	v_SSN CHAR(11) := 'SCOPE'
+  8  	v_StartDate Date;
+  9  	BEGIN
+ 10  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK' || V_SSN)
+ 11  	END;
+ 12  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' || V_SSN)
+ 13* END;
+ 14  /
+	v_StartDate Date;
+	*
+ERROR at line 8:
+ORA-06550: line 8, column 2: 
+PLS-00103: Encountered the symbol "V_STARTDATE" when expecting one of the following: 
+* & = - + ; < / > at in is mod remainder not rem 
+<an exponent (**)> <> or != or ~= >= <= <> and or like like2 
+like4 likec between || multiset member submultiset 
+The symbol ";" was substituted for "V_STARTDATE" to continue. 
+ORA-06550: line 11, column 2: 
+PLS-00103: Encountered the symbol "END" when expecting one of the following: 
+:= . ( % ; 
+The symbol ";" was substituted for "END" to continue. 
+ORA-06550: line 13, column 1: 
+PLS-00103: Encountered the symbol "END" when expecting one of the following: 
+:= . ( % ; 
+The symbol ";" was substituted for "END" to continue. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<Outer>>
+  2  DECLARE
+  3  v_AvailableFlag BOOLEAN;
+  4  v_SSN NUMBER(9) := 100;
+  5  BEGIN
+  6  	DECLARE
+  7  	v_SSN CHAR(11) := 'SCOPE';
+  8  	BEGIN
+  9  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK' || V_SSN)
+ 10  	END;
+ 11  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' || V_SSN)
+ 12* END;
+ 13  /
+	END;
+	*
+ERROR at line 10:
+ORA-06550: line 10, column 2: 
+PLS-00103: Encountered the symbol "END" when expecting one of the following: 
+:= . ( % ; 
+The symbol ";" was substituted for "END" to continue. 
+ORA-06550: line 12, column 1: 
+PLS-00103: Encountered the symbol "END" when expecting one of the following: 
+:= . ( % ; 
+The symbol ";" was substituted for "END" to continue. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<Outer>>
+  2  DECLARE
+  3  v_AvailableFlag BOOLEAN;
+  4  v_SSN NUMBER(9) := 100;
+  5  BEGIN
+  6  	DECLARE
+  7  	v_SSN CHAR(11) := 'SCOPE';
+  8  	BEGIN
+  9  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK' || V_SSN);
+ 10  	END;
+ 11  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' || V_SSN)
+ 12* END;
+SQL> /
+END;
+*
+ERROR at line 12:
+ORA-06550: line 12, column 1: 
+PLS-00103: Encountered the symbol "END" when expecting one of the following: 
+:= . ( % ; 
+The symbol ";" was substituted for "END" to continue. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<Outer>>
+  2  DECLARE
+  3  v_AvailableFlag BOOLEAN;
+  4  v_SSN NUMBER(9) := 100;
+  5  BEGIN
+  6  	DECLARE
+  7  	v_SSN CHAR(11) := 'SCOPE';
+  8  	BEGIN
+  9  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK' || V_SSN);
+ 10  	END;
+ 11  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' || V_SSN);
+ 12* END;
+SQL> /
+INNER BLOCKSCOPE                                                                                    
+OUTER BLOCK100                                                                                      
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<Outer>>
+  2  DECLARE
+  3  v_AvailableFlag BOOLEAN;
+  4  v_SSN NUMBER(9) := 100;
+  5  BEGIN
+  6  	DECLARE
+  7  	v_SSN CHAR(11) := 'SCOPE';
+  8  	BEGIN
+  9  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK ' || V_SSN);
+ 10  	END;
+ 11  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK ' || V_SSN);
+ 12* END;
+SQL> /
+INNER BLOCK SCOPE                                                                                   
+OUTER BLOCK 100                                                                                     
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<Outer>>
+  2  DECLARE
+  3  v_AvailableFlag BOOLEAN;
+  4  v_SSN NUMBER(9) := 100;
+  5  BEGIN
+  6  	DECLARE
+  7  	v_SSN CHAR(11) := 'SCOPE';
+  8  	BEGIN
+  9  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK ' || V_SSN);
+ 10  	END;
+ 11  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK ' || V_SSN);
+ 12* END;
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(3);
+  3  BEGIN
+  4  	DBMS_OUTPUT.PUT_LINE('ENTER NUMBER : ');
+  5  	NUM1 := &NUM1;
+  6  	IF(NUM1%2 = 0) THEN
+  7  	DBMS_OUTPUT.PUT_LINE('THE NUMBER ENTERED IS EVEN');
+  8  	ELSE
+  9  	DBMS_OUTPUT.PUT_LINE('THE NUMBER ENTERED IS ODD');
+ 10  	END IF;
+ 11* END;
+ 12  /
+Enter value for num1: 20
+old   5: 	NUM1 := &NUM1;
+new   5: 	NUM1 := 20;
+	IF(NUM1%2 = 0) THEN
+	        *
+ERROR at line 6:
+ORA-06550: line 6, column 10: 
+PLS-00103: Encountered the symbol "2" when expecting one of the following: 
+type <an identifier> <a double-quoted delimited-identifier> 
+
+
+SQL> EDE
+SP2-0042: unknown command "EDE" - rest of line ignored.
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(3);
+  3  BEGIN
+  4  	DBMS_OUTPUT.PUT_LINE('ENTER NUMBER : ');
+  5  	NUM1 := &NUM1;
+  6  	IF(MOD(NUM1,2)  = 0) THEN
+  7  	DBMS_OUTPUT.PUT_LINE('THE NUMBER ENTERED IS EVEN');
+  8  	ELSE
+  9  	DBMS_OUTPUT.PUT_LINE('THE NUMBER ENTERED IS ODD');
+ 10  	END IF;
+ 11* END;
+SQL> /
+Enter value for num1: 20
+old   5: 	NUM1 := &NUM1;
+new   5: 	NUM1 := 20;
+ENTER NUMBER :                                                                                      
+THE NUMBER ENTERED IS EVEN                                                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(3);
+  3  BEGIN
+  4  	DBMS_OUTPUT.PUT_LINE('ENTER NUMBER : ');
+  5  	NUM1 := &NUM1;
+  6  	IF(MOD(NUM1,2)  = 0) THEN
+  7  	DBMS_OUTPUT.PUT_LINE('THE NUMBER ENTERED IS EVEN');
+  8  	ELSE
+  9  	DBMS_OUTPUT.PUT_LINE('THE NUMBER ENTERED IS ODD');
+ 10  	END IF;
+ 11* END;
+SQL> 
+SQL> /
+Enter value for num1: 21
+old   5: 	NUM1 := &NUM1;
+new   5: 	NUM1 := 21;
+ENTER NUMBER :                                                                                      
+THE NUMBER ENTERED IS ODD                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(3);
+  3  BEGIN
+  4  	DBMS_OUTPUT.PUT_LINE('ENTER NUMBER : ');
+  5  	NUM1 := &NUM1;
+  6  	IF(MOD(NUM1,2)  = 0) THEN
+  7  	DBMS_OUTPUT.PUT_LINE('THE NUMBER ENTERED IS EVEN');
+  8  	ELSE
+  9  	DBMS_OUTPUT.PUT_LINE('THE NUMBER ENTERED IS ODD');
+ 10  	END IF;
+ 11* END;
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	COUNTER NUMBER(3) : = 1;
+  3  BEGIN
+  4  	NUM1 := 1
+  5  	LOOP
+  6  	DBMS_OUTPUT.PUT_LINE(NUM1);
+  7  	NUM1 = NUM1 + 1;
+  8  	COUNTER = COUNTER + 1;
+  9  	EXIT WHEN COUNTER = 10;
+ 10  	END LOOP;
+ 11* END;
+ 12  /
+	COUNTER NUMBER(3) : = 1;
+	                  *
+ERROR at line 2:
+ORA-06550: line 2, column 20: 
+PLS-00103: Encountered the symbol " " when expecting one of the following: 
+:= ; not null default character 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	COUNTER NUMBER(3) : = 1;
+  3  BEGIN
+  4  	NUM1 := 1;
+  5  	LOOP
+  6  	DBMS_OUTPUT.PUT_LINE(NUM1);
+  7  	NUM1 = NUM1 + 1;
+  8  	COUNTER = COUNTER + 1;
+  9  	EXIT WHEN COUNTER = 10;
+ 10  	END LOOP;
+ 11* END;
+SQL> /
+	COUNTER NUMBER(3) : = 1;
+	                  *
+ERROR at line 2:
+ORA-06550: line 2, column 20: 
+PLS-00103: Encountered the symbol " " when expecting one of the following: 
+:= ; not null default character 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(4);
+  3  	COUNTER NUMBER(3) : = 1;
+  4  BEGIN
+  5  	NUM1 := 1;
+  6  	LOOP
+  7  	DBMS_OUTPUT.PUT_LINE(NUM1);
+  8  	NUM1 = NUM1 + 1;
+  9  	COUNTER = COUNTER + 1;
+ 10  	EXIT WHEN COUNTER = 10;
+ 11  	END LOOP;
+ 12* END;
+SQL> /
+	COUNTER NUMBER(3) : = 1;
+	                  *
+ERROR at line 3:
+ORA-06550: line 3, column 20: 
+PLS-00103: Encountered the symbol " " when expecting one of the following: 
+:= ; not null default character 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(4);
+  3  	COUNTER NUMBER(3) := 1;
+  4  BEGIN
+  5  	NUM1 := 1;
+  6  	LOOP
+  7  	DBMS_OUTPUT.PUT_LINE(NUM1);
+  8  	NUM1 = NUM1 + 1;
+  9  	COUNTER = COUNTER + 1;
+ 10  	EXIT WHEN COUNTER = 10;
+ 11  	END LOOP;
+ 12* END;
+SQL> /
+	NUM1 = NUM1 + 1;
+	     *
+ERROR at line 8:
+ORA-06550: line 8, column 7: 
+PLS-00103: Encountered the symbol "=" when expecting one of the following: 
+:= . ( @ % ; 
+The symbol ":= was inserted before "=" to continue. 
+ORA-06550: line 9, column 10: 
+PLS-00103: Encountered the symbol "=" when expecting one of the following: 
+:= . ( @ % ; 
+The symbol ":= was inserted before "=" to continue. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(4);
+  3  	COUNTER NUMBER(3) := 1;
+  4  BEGIN
+  5  	NUM1 := 1;
+  6  	LOOP
+  7  	DBMS_OUTPUT.PUT_LINE(NUM1);
+  8  	NUM1 := NUM1 + 1;
+  9  	COUNTER := COUNTER + 1;
+ 10  	EXIT WHEN COUNTER = 10;
+ 11  	END LOOP;
+ 12* END;
+SQL> /
+1                                                                                                   
+2                                                                                                   
+3                                                                                                   
+4                                                                                                   
+5                                                                                                   
+6                                                                                                   
+7                                                                                                   
+8                                                                                                   
+9                                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(4);
+  3  	COUNTER NUMBER(3) : = 1;
+  4  BEGIN
+  5  	NUM1 := 1;
+  6  	LOOP
+  7  	DBMS_OUTPUT.PUT_LINE(NUM1);
+  8  	NUM1 := NUM1 + 1;
+  9  	COUNTER := COUNTER + 1;
+ 10  	EXIT WHEN COUNTER = 10;
+ 11  	END LOOP;
+ 12* END;
+SQL> /
+	COUNTER NUMBER(3) : = 1;
+	                  *
+ERROR at line 3:
+ORA-06550: line 3, column 20: 
+PLS-00103: Encountered the symbol " " when expecting one of the following: 
+:= ; not null default character 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	NUM1 NUMBER(4);
+  3  	COUNTER NUMBER(3) := 1;
+  4  BEGIN
+  5  	NUM1 := 1;
+  6  	LOOP
+  7  	DBMS_OUTPUT.PUT_LINE(NUM1);
+  8  	NUM1 := NUM1 + 1;
+  9  	COUNTER := COUNTER + 1;
+ 10  	EXIT WHEN COUNTER = 10;
+ 11  	END LOOP;
+ 12* END;
+SQL> /
+1                                                                                                   
+2                                                                                                   
+3                                                                                                   
+4                                                                                                   
+5                                                                                                   
+6                                                                                                   
+7                                                                                                   
+8                                                                                                   
+9                                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	--NUM1 NUMBER(4);
+  3  BEGIN
+  4  	FOR I IN 1 .. 10
+  5  	LOOP
+  6  	DBMS_OUTPUT.PUT_LINE(I);
+  7  	END LOOP;
+  8* END;
+  9  /
+1                                                                                                   
+2                                                                                                   
+3                                                                                                   
+4                                                                                                   
+5                                                                                                   
+6                                                                                                   
+7                                                                                                   
+8                                                                                                   
+9                                                                                                   
+10                                                                                                  
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	/*NUM1 NUMBER(4);*/
+  3  BEGIN
+  4  	FOR I IN REVERSE 1 .. 10
+  5  	LOOP
+  6  	DBMS_OUTPUT.PUT_LINE(I);
+  7  	END LOOP;
+  8* END;
+SQL> /
+10                                                                                                  
+9                                                                                                   
+8                                                                                                   
+7                                                                                                   
+6                                                                                                   
+5                                                                                                   
+4                                                                                                   
+3                                                                                                   
+2                                                                                                   
+1                                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> SPOOL OFF;

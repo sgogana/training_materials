@@ -1,0 +1,3042 @@
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT emp.empno, (15*emp.sal) + (.5* emp.comm) + (.35* emp.sal) AS CALC_VALUE FROM emp
+  2  /
+
+     EMPNO CALC_VALUE                                                                               
+---------- ----------                                                                               
+      7839                                                                                          
+      7698                                                                                          
+      7782                                                                                          
+      7566                                                                                          
+      7788                                                                                          
+      7902                                                                                          
+      7369                                                                                          
+      7499      24710                                                                               
+      7521    19437.5                                                                               
+      7654    19887.5                                                                               
+      7844      23025                                                                               
+      7876                                                                                          
+      7900                                                                                          
+      7934                                                                                          
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT emp.empno, 15*emp.sal + .5* emp.comm + .35* emp.sal AS CALC_VALUE FROM emp
+  2  /
+
+     EMPNO CALC_VALUE                                                                               
+---------- ----------                                                                               
+      7839                                                                                          
+      7698                                                                                          
+      7782                                                                                          
+      7566                                                                                          
+      7788                                                                                          
+      7902                                                                                          
+      7369                                                                                          
+      7499      24710                                                                               
+      7521    19437.5                                                                               
+      7654    19887.5                                                                               
+      7844      23025                                                                               
+      7876                                                                                          
+      7900                                                                                          
+      7934                                                                                          
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT book_name 
+  2   FROM Book_master
+  3* WHERE book_name LIKE '%JAVA%' OR '%C%'
+SQL> /
+WHERE book_name LIKE '%JAVA%' OR '%C%'
+                                     *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT book_name 
+  2   FROM Book_master
+  3* WHERE book_name LIKE '%JAVA%' OR '%C%'
+  4  /
+WHERE book_name LIKE '%JAVA%' OR '%C%'
+                                     *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT book_name 
+  2   FROM Book_master
+  3* WHERE book_name LIKE '%JAVA%' OR book_name LIKE '%C%'
+SQL> /
+ FROM Book_master
+      *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT book_name 
+  2   FROM Book_masters
+  3* WHERE book_name LIKE '%JAVA%' OR book_name LIKE '%C%'
+SQL> /
+
+BOOK_NAME                                                                                           
+--------------------------------------------------                                                  
+Let Us C++                                                                                          
+Mastersing VC++                                                                                     
+JAVA Complete Reference                                                                             
+J2EE Complete Reference                                                                             
+Let Us C                                                                                            
+Computer Networks                                                                                   
+
+6 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT deptno,ename,sal FROM emp 
+  2* ORDER By deptno, sal desc
+SQL> /
+
+    DEPTNO ENAME             SAL                                                                    
+---------- ---------- ----------                                                                    
+        10 KING             5000                                                                    
+        10 CLARK            2450                                                                    
+        10 MILLER           1300                                                                    
+        20 SCOTT            3000                                                                    
+        20 FORD             3000                                                                    
+        20 JONES            2975                                                                    
+        20 ADAMS            1100                                                                    
+        20 SMITH             800                                                                    
+        30 BLAKE            2850                                                                    
+        30 ALLEN            1600                                                                    
+        30 TURNER           1500                                                                    
+        30 WARD             1250                                                                    
+        30 MARTIN           1250                                                                    
+        30 JAMES             950                                                                    
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT deptno,ename,sal FROM emp 
+  2* ORDER By deptno desc, sal 
+SQL> /
+
+    DEPTNO ENAME             SAL                                                                    
+---------- ---------- ----------                                                                    
+        30 JAMES             950                                                                    
+        30 MARTIN           1250                                                                    
+        30 WARD             1250                                                                    
+        30 TURNER           1500                                                                    
+        30 ALLEN            1600                                                                    
+        30 BLAKE            2850                                                                    
+        20 SMITH             800                                                                    
+        20 ADAMS            1100                                                                    
+        20 JONES            2975                                                                    
+        20 FORD             3000                                                                    
+        20 SCOTT            3000                                                                    
+        10 MILLER           1300                                                                    
+        10 CLARK            2450                                                                    
+        10 KING             5000                                                                    
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT deptno,ename,sal FROM emp 
+  2* ORDER By deptno desc, sal desc
+SQL> /
+
+    DEPTNO ENAME             SAL                                                                    
+---------- ---------- ----------                                                                    
+        30 BLAKE            2850                                                                    
+        30 ALLEN            1600                                                                    
+        30 TURNER           1500                                                                    
+        30 WARD             1250                                                                    
+        30 MARTIN           1250                                                                    
+        30 JAMES             950                                                                    
+        20 FORD             3000                                                                    
+        20 SCOTT            3000                                                                    
+        20 JONES            2975                                                                    
+        20 ADAMS            1100                                                                    
+        20 SMITH             800                                                                    
+        10 KING             5000                                                                    
+        10 CLARK            2450                                                                    
+        10 MILLER           1300                                                                    
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1   SELECT  dept_code , count(staff_code)
+  2                  FROM  staff_master 
+  3                  GROUP BY dept_code 
+  4*                 HAVING dept_code <> 10
+SQL> /
+                FROM  staff_master 
+                      *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1   SELECT  dept_code , count(staff_code)
+  2                  FROM  staff_masters 
+  3                  GROUP BY dept_code 
+  4*                 HAVING dept_code <> 10
+SQL> /
+
+ DEPT_CODE COUNT(STAFF_CODE)                                                                        
+---------- -----------------                                                                        
+        30                 3                                                                        
+        20                 4                                                                        
+        40                 1                                                                        
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT ABS(-15) "Absolute" 
+  2* 	FROM dual 
+SQL> /
+
+  Absolute                                                                                          
+----------                                                                                          
+        15                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT POWER(3,2) "Raised" 
+  2* 	FROM dual
+SQL> /
+
+    Raised                                                                                          
+----------                                                                                          
+         9                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT ROUND(17.175,1) "Number" 
+  2* 	FROM dual
+SQL> /
+
+    Number                                                                                          
+----------                                                                                          
+      17.2                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT ROUND(17.175,2) "Number" 
+  2* 	FROM dual
+SQL> /
+
+    Number                                                                                          
+----------                                                                                          
+     17.18                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT ROUND(17.170,2) "Number" 
+  2* 	FROM dual
+SQL> /
+
+    Number                                                                                          
+----------                                                                                          
+     17.17                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT ROUND(17.175,0) "Number" 
+  2* 	FROM dual
+SQL> /
+
+    Number                                                                                          
+----------                                                                                          
+        17                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT ROUND(17.175) "Number" 
+  2* 	FROM dual
+SQL> /
+
+    Number                                                                                          
+----------                                                                                          
+        17                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT trunc(17.175) "Number" 
+  2* 	FROM dual
+SQL> /
+
+    Number                                                                                          
+----------                                                                                          
+        17                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT trunc(17.175,1) "Number" 
+  2* 	FROM dual
+SQL> /
+
+    Number                                                                                          
+----------                                                                                          
+      17.1                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT trunc(17.175,2) "Number" 
+  2* 	FROM dual
+SQL> /
+
+    Number                                                                                          
+----------                                                                                          
+     17.17                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT CONCAT('Hello ','World')	"Concat"
+  2* 	FROM Dual
+SQL> /
+
+Concat                                                                                              
+-----------                                                                                         
+Hello World                                                                                         
+
+SQL> SELECT CONCAT(ENAME, SAL) FROM EMP;
+
+CONCAT(ENAME,SAL)                                                                                   
+--------------------------------------------------                                                  
+KING5000                                                                                            
+BLAKE2850                                                                                           
+CLARK2450                                                                                           
+JONES2975                                                                                           
+SCOTT3000                                                                                           
+FORD3000                                                                                            
+SMITH800                                                                                            
+ALLEN1600                                                                                           
+WARD1250                                                                                            
+MARTIN1250                                                                                          
+TURNER1500                                                                                          
+ADAMS1100                                                                                           
+JAMES950                                                                                            
+MILLER1300                                                                                          
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SUBSTR('HelloWorld',1,5) "SubString" 
+  2* 	FROM Dual
+SQL> /
+
+SubSt                                                                                               
+-----                                                                                               
+Hello                                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SUBSTR('HelloWorld',3,5) "SubString" 
+  2* 	FROM Dual
+SQL> /
+
+SubSt                                                                                               
+-----                                                                                               
+lloWo                                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SUBSTR('HelloWorld',6,5) "SubString" 
+  2* 	FROM Dual
+SQL> /
+
+SubSt                                                                                               
+-----                                                                                               
+World                                                                                               
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT sysdate
+  2* 	 FROM dual
+SQL> /
+
+SYSDATE                                                                                             
+---------                                                                                           
+10-MAY-17                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT ADD_MONTHS(sysdate,10) 
+  2* 	FROM dual
+SQL> /
+
+ADD_MONTH                                                                                           
+---------                                                                                           
+10-MAR-18                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT MONTHS_BETWEEN(sysdate,'01-sep-95') 
+  2* 	FROM dual
+SQL> /
+
+MONTHS_BETWEEN(SYSDATE,'01-SEP-95')                                                                 
+-----------------------------------                                                                 
+                         260.305735                                                                 
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT MONTHS_BETWEEN('01-jan-2017,'31-dec-2017') 
+  2* 	FROM dual
+SQL> /
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT MONTHS_BETWEEN('01-jan-2017','31-dec-2017') 
+  2* 	FROM dual
+SQL> /
+
+MONTHS_BETWEEN('01-JAN-2017','31-DEC-2017')                                                         
+-------------------------------------------                                                         
+                                 -11.967742                                                         
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT LAST_DAY(SYSDATE) 
+  2* 	FROM dual 
+SQL> /
+
+LAST_DAY(                                                                                           
+---------                                                                                           
+31-MAY-17                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT NEXT_DAY(SYSDATE) 
+  2* 	FROM dual 
+SQL> /
+SELECT NEXT_DAY(SYSDATE) 
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT NEXT_DAY(SYSDATE,'Sunday') 
+  2* 	FROM dual 
+SQL> /
+
+NEXT_DAY(                                                                                           
+---------                                                                                           
+14-MAY-17                                                                                           
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT sessiontimezone,current_date,
+  2  current_timestamp 
+  3* 	FROM dual 
+SQL> /
+
+SESSIONTIMEZONE                                                             CURRENT_D               
+--------------------------------------------------------------------------- ---------               
+CURRENT_TIMESTAMP                                                                                   
+---------------------------------------------------------------------------                         
++05:30                                                                      10-MAY-17               
+10-MAY-17 11.31.39.886000 AM +05:30                                                                 
+                                                                                                    
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT EXTRACT (year from sysdate) 
+  2* 	FROM dual 
+SQL> /
+
+EXTRACT(YEARFROMSYSDATE)                                                                            
+------------------------                                                                            
+                    2017                                                                            
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT EXTRACT (MONTH from sysdate) 
+  2* 	FROM dual 
+SQL> /
+
+EXTRACT(MONTHFROMSYSDATE)                                                                           
+-------------------------                                                                           
+                        5                                                                           
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT EXTRACT(month FROM DATE '2011-04-01') 
+  2* 	FROM dual
+SQL> /
+
+EXTRACT(MONTHFROMDATE'2011-04-01')                                                                  
+----------------------------------                                                                  
+                                 4                                                                  
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT EXTRACT (month from book_issue_date) 
+  2* 	FROM book_transactions
+SQL> /
+
+no rows selected
+
+SQL> select * from book_transactions;
+
+no rows selected
+
+SQL> desc book_transactions;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ BOOK_CODE                                                      NUMBER(10)
+ STUDENT_CODE                                                   NUMBER(6)
+ STAFF_CODE                                                     NUMBER(8)
+ BOOK_ISSUE_DATE                                       NOT NULL DATE
+ BOOK_EXPECTED_RETURN_DATE                             NOT NULL DATE
+ BOOK_ACTUAL_RETURN_DATE                                        DATE
+
+SQL> 	SELECT (SYSDATE + '01-01-2010') AS ADDITION FROM DUAL;
+	SELECT (SYSDATE + '01-01-2010') AS ADDITION FROM DUAL
+	                  *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* 	SELECT (SYSDATE + '01-01-2010') AS ADDITION FROM DUAL
+SQL> ED
+Wrote file afiedt.buf
+
+  1* 	SELECT (SYSDATE - HIREDATE) AS "DAYS WORKED" FROM EMP
+  2  /
+
+DAYS WORKED                                                                                         
+-----------                                                                                         
+ 12958.4839                                                                                         
+ 13158.4839                                                                                         
+ 13119.4839                                                                                         
+ 13187.4839                                                                                         
+ 10979.4839                                                                                         
+ 12942.4839                                                                                         
+ 13293.4839                                                                                         
+ 13228.4839                                                                                         
+ 13226.4839                                                                                         
+ 13008.4839                                                                                         
+ 13028.4839                                                                                         
+ 10945.4839                                                                                         
+ 12942.4839                                                                                         
+ 12891.4839                                                                                         
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT TO_CHAR(SYSDATE,'DD month, YYYY') FROM dual 
+SQL> /
+
+TO_CHAR(SYSDATE,'D                                                                                  
+------------------                                                                                  
+10 may      , 2017                                                                                  
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT TO_CHAR(SYSDATE,'DDTH month, YYYY') FROM dual 
+SQL> /
+
+TO_CHAR(SYSDATE,'DDT                                                                                
+--------------------                                                                                
+10TH may      , 2017                                                                                
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT TO_CHAR(hiredate,'DDth month, YYYY') FROM EMP 
+  2  /
+
+TO_CHAR(HIREDATE,'DD                                                                                
+--------------------                                                                                
+17TH november , 1981                                                                                
+01ST may      , 1981                                                                                
+09TH june     , 1981                                                                                
+02ND april    , 1981                                                                                
+19TH april    , 1987                                                                                
+03RD december , 1981                                                                                
+17TH december , 1980                                                                                
+20TH february , 1981                                                                                
+22ND february , 1981                                                                                
+28TH september, 1981                                                                                
+08TH september, 1981                                                                                
+23RD may      , 1987                                                                                
+03RD december , 1981                                                                                
+23RD january  , 1982                                                                                
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  select to_char(17000,'$99,999.00')  
+  2* 	FROM dual
+SQL> /
+
+TO_CHAR(170                                                                                         
+-----------                                                                                         
+ $17,000.00                                                                                         
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  select to_char(SAL,'$99,999.00')  
+  2* 	FROM EMP
+SQL> /
+
+TO_CHAR(SAL                                                                                         
+-----------                                                                                         
+  $5,000.00                                                                                         
+  $2,850.00                                                                                         
+  $2,450.00                                                                                         
+  $2,975.00                                                                                         
+  $3,000.00                                                                                         
+  $3,000.00                                                                                         
+    $800.00                                                                                         
+  $1,600.00                                                                                         
+  $1,250.00                                                                                         
+  $1,250.00                                                                                         
+  $1,500.00                                                                                         
+  $1,100.00                                                                                         
+    $950.00                                                                                         
+  $1,300.00                                                                                         
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT staff_code, hiredate 
+  2  	FROM staff_master
+  3  	WHERE  
+  4* 	hiredate = TO_DATE ('September 08,1981','Month DD, YYYY')
+SQL> /
+	FROM staff_master
+	     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT staff_code, hiredate 
+  2  	FROM staff_masters
+  3  	WHERE  
+  4* 	hiredate = TO_DATE ('September 08,1981','Month DD, YYYY')
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  	FROM EMP
+  3  	WHERE  
+  4* 	hiredate = TO_DATE ('September 08,1981','Month DD, YYYY')
+  5  /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT TO_TIMESTAMP(sysdate,'DD-MM-YY') 
+  2* 	from dual
+SQL> /
+
+TO_TIMESTAMP(SYSDATE,'DD-MM-YY')                                                                    
+---------------------------------------------------------------------------                         
+10-MAY-17 12.00.00 AM                                                                               
+
+SQL> SELECT SAL
+  2  ,COMM
+  3  ,SAL + NVL(COMM,0) AS TOTAL
+  4  FROM EMP;
+
+       SAL       COMM      TOTAL                                                                    
+---------- ---------- ----------                                                                    
+      5000                  5000                                                                    
+      2850                  2850                                                                    
+      2450                  2450                                                                    
+      2975                  2975                                                                    
+      3000                  3000                                                                    
+      3000                  3000                                                                    
+       800                   800                                                                    
+      1600        300       1900                                                                    
+      1250        500       1750                                                                    
+      1250       1400       2650                                                                    
+      1500          0       1500                                                                    
+      1100                  1100                                                                    
+       950                   950                                                                    
+      1300                  1300                                                                    
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SAL
+  2  ,COMM
+  3  ,NVL(COMM,0) AS NVLFUN
+  4* FROM EMP
+SQL> /
+
+       SAL       COMM     NVLFUN                                                                    
+---------- ---------- ----------                                                                    
+      5000                     0                                                                    
+      2850                     0                                                                    
+      2450                     0                                                                    
+      2975                     0                                                                    
+      3000                     0                                                                    
+      3000                     0                                                                    
+       800                     0                                                                    
+      1600        300        300                                                                    
+      1250        500        500                                                                    
+      1250       1400       1400                                                                    
+      1500          0          0                                                                    
+      1100                     0                                                                    
+       950                     0                                                                    
+      1300                     0                                                                    
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SAL
+  2  ,COMM
+  3  ,NVL2(COMM,0,500) AS NVLFUN
+  4* FROM EMP
+SQL> /
+
+       SAL       COMM     NVLFUN                                                                    
+---------- ---------- ----------                                                                    
+      5000                   500                                                                    
+      2850                   500                                                                    
+      2450                   500                                                                    
+      2975                   500                                                                    
+      3000                   500                                                                    
+      3000                   500                                                                    
+       800                   500                                                                    
+      1600        300          0                                                                    
+      1250        500          0                                                                    
+      1250       1400          0                                                                    
+      1500          0          0                                                                    
+      1100                   500                                                                    
+       950                   500                                                                    
+      1300                   500                                                                    
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SAL
+  2  ,COMM
+  3  ,NVL2(COMM,500,0) AS NVLFUN
+  4* FROM EMP
+SQL> /
+
+       SAL       COMM     NVLFUN                                                                    
+---------- ---------- ----------                                                                    
+      5000                     0                                                                    
+      2850                     0                                                                    
+      2450                     0                                                                    
+      2975                     0                                                                    
+      3000                     0                                                                    
+      3000                     0                                                                    
+       800                     0                                                                    
+      1600        300        500                                                                    
+      1250        500        500                                                                    
+      1250       1400        500                                                                    
+      1500          0        500                                                                    
+      1100                     0                                                                    
+       950                     0                                                                    
+      1300                     0                                                                    
+
+14 rows selected.
+
+SQL> SELECT NULLIF(SAL,COMM)
+  2  FROM EMP;
+
+NULLIF(SAL,COMM)                                                                                    
+----------------                                                                                    
+            5000                                                                                    
+            2850                                                                                    
+            2450                                                                                    
+            2975                                                                                    
+            3000                                                                                    
+            3000                                                                                    
+             800                                                                                    
+            1600                                                                                    
+            1250                                                                                    
+            1250                                                                                    
+            1500                                                                                    
+            1100                                                                                    
+             950                                                                                    
+            1300                                                                                    
+
+14 rows selected.
+
+SQL> SELECT NULLIF(100,100) FROM DUAL;
+
+NULLIF(100,100)                                                                                     
+---------------                                                                                     
+                                                                                                    
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT NULLIF(200,100) FROM DUAL
+SQL> /
+
+NULLIF(200,100)                                                                                     
+---------------                                                                                     
+            200                                                                                     
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT NULLIF(200,300) FROM DUAL
+SQL> /
+
+NULLIF(200,300)                                                                                     
+---------------                                                                                     
+            200                                                                                     
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT deptno
+  2  ,dname
+  3  ,CASE deptno 
+  4  	WHEN 10 then 'Ten' 
+  5          ELSE 'Other' 
+  6   END 
+  7* FROM DEPT
+  8  /
+
+    DEPTNO DNAME          CASED                                                                     
+---------- -------------- -----                                                                     
+        10 ACCOUNTING     Ten                                                                       
+        20 RESEARCH       Other                                                                     
+        30 SALES          Other                                                                     
+        40 OPERATIONS     Other                                                                     
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT deptno
+  2  ,dname
+  3  ,CASE deptno 
+  4  	WHEN 10 then 'Ten' 
+  5          ELSE 'Other' 
+  6   END 
+  7* FROM DEPT
+SQL> 
+SQL> /
+
+    DEPTNO DNAME          CASED                                                                     
+---------- -------------- -----                                                                     
+        10 ACCOUNTING     Ten                                                                       
+        20 RESEARCH       Other                                                                     
+        30 SALES          Other                                                                     
+        40 OPERATIONS     Other                                                                     
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT deptno
+  2  ,dname
+  3  ,CASE deptno 
+  4  	WHEN 10 then 'Ten' 
+  5          ELSIF 20 THEN 'TWENTY'
+  6  	ELSIF 30 THEN 'THIRTY'
+  7  	ELSE 'OTHER'	 
+  8   END 
+  9* FROM DEPT
+SQL> /
+        ELSIF 20 THEN 'TWENTY'
+        *
+ERROR at line 5:
+ORA-00905: missing keyword 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT deptno
+  2  ,dname
+  3  ,CASE deptno 
+  4  	WHEN 10 then 'Ten' 
+  5          WHEN 20 THEN 'TWENTY'
+  6  	WHEN 30 THEN 'THIRTY'
+  7  	ELSE 'OTHER'	 
+  8   END 
+  9* FROM DEPT
+SQL> /
+
+    DEPTNO DNAME          CASEDE                                                                    
+---------- -------------- ------                                                                    
+        10 ACCOUNTING     Ten                                                                       
+        20 RESEARCH       TWENTY                                                                    
+        30 SALES          THIRTY                                                                    
+        40 OPERATIONS     OTHER                                                                     
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT deptno
+  2  ,dname
+  3  ,CASE deptno 
+  4  	WHEN 10 then 'Ten' 
+  5          WHEN 20 THEN 'TWENTY'
+  6  	WHEN 30 THEN 'THIRTY'
+  7  	ELSE 'OTHER'	 
+  8   END 
+  9* FROM DEPT
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT deptno
+  2  ,dname
+  3  ,DECODE (deptno, 10, 'TEN'
+  4                 , 20, 'TWENTY' 
+  5                     , 'OTHER'
+  6* FROM DEPT
+  7  /
+FROM DEPT
+*
+ERROR at line 6:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT deptno
+  2  ,dname
+  3  ,DECODE (deptno, 10, 'TEN'
+  4                 , 20, 'TWENTY' 
+  5                     , 'OTHER'
+  6          )
+  7* FROM DEPT
+SQL> /
+
+    DEPTNO DNAME          DECODE                                                                    
+---------- -------------- ------                                                                    
+        10 ACCOUNTING     TEN                                                                       
+        20 RESEARCH       TWENTY                                                                    
+        30 SALES          OTHER                                                                     
+        40 OPERATIONS     OTHER                                                                     
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT deptno
+  2  ,dname
+  3  ,DECODE (deptno, 10, 'TEN'
+  4                 , 20, 'TWENTY' 
+  5                     , 'OTHER'
+  6          )
+  7* FROM DEPT
+SQL> CREATE TABLE JOIN1
+  2  (DIGIT NUMBER (3)
+  3  ALPHABET CHAR(1));
+ALPHABET CHAR(1))
+*
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE JOIN1
+  2  (DIGIT NUMBER (3)
+  3* ,ALPHABET CHAR(1))
+SQL> /
+
+Table created.
+
+SQL> CREATE TABLE JOIN2
+  2  (DIGIT NUMBER(3));
+
+Table created.
+
+SQL> INSERT INTO JOIN1
+  2  VALUES(&D,'&C');
+Enter value for d: 0
+Enter value for c: A
+old   2: VALUES(&D,'&C')
+new   2: VALUES(0,'A')
+
+1 row created.
+
+SQL> /
+Enter value for d: 1
+Enter value for c: B
+old   2: VALUES(&D,'&C')
+new   2: VALUES(1,'B')
+
+1 row created.
+
+SQL> /
+Enter value for d: 3
+Enter value for c: C
+old   2: VALUES(&D,'&C')
+new   2: VALUES(3,'C')
+
+1 row created.
+
+SQL> /
+Enter value for d: 4
+Enter value for c: D
+old   2: VALUES(&D,'&C')
+new   2: VALUES(4,'D')
+
+1 row created.
+
+SQL> /
+Enter value for d: 5
+Enter value for c: D
+old   2: VALUES(&D,'&C')
+new   2: VALUES(5,'D')
+
+1 row created.
+
+SQL> SELECT * FROM JOIN1;
+
+     DIGIT A                                                                                        
+---------- -                                                                                        
+         0 A                                                                                        
+         1 B                                                                                        
+         3 C                                                                                        
+         4 D                                                                                        
+         5 D                                                                                        
+
+SQL> DELETE FROM JOIN1 WHERE DIGIT = 4;
+
+1 row deleted.
+
+SQL> SELECT * FROM JOIN1;
+
+     DIGIT A                                                                                        
+---------- -                                                                                        
+         0 A                                                                                        
+         1 B                                                                                        
+         3 C                                                                                        
+         5 D                                                                                        
+
+SQL> DESC JOIN2;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ DIGIT                                                          NUMBER(3)
+
+SQL> INSERT INTO JOIN2
+  2  VALUES(&D);
+Enter value for d: 0
+old   2: VALUES(&D)
+new   2: VALUES(0)
+
+1 row created.
+
+SQL> /
+Enter value for d: 2
+old   2: VALUES(&D)
+new   2: VALUES(2)
+
+1 row created.
+
+SQL> /
+Enter value for d: 4
+old   2: VALUES(&D)
+new   2: VALUES(4)
+
+1 row created.
+
+SQL> /
+Enter value for d: 6
+old   2: VALUES(&D)
+new   2: VALUES(6)
+
+1 row created.
+
+SQL> SELECT * FROM JOIN2
+  2  ;
+
+     DIGIT                                                                                          
+----------                                                                                          
+         0                                                                                          
+         2                                                                                          
+         4                                                                                          
+         6                                                                                          
+
+SQL> SELECT * FROM JOIN1;
+
+     DIGIT A                                                                                        
+---------- -                                                                                        
+         0 A                                                                                        
+         1 B                                                                                        
+         3 C                                                                                        
+         5 D                                                                                        
+
+SQL> SELECT *
+  2  FROM JOIN1,JOIN2;
+
+     DIGIT A      DIGIT                                                                             
+---------- - ----------                                                                             
+         0 A          0                                                                             
+         0 A          2                                                                             
+         0 A          4                                                                             
+         0 A          6                                                                             
+         1 B          0                                                                             
+         1 B          2                                                                             
+         1 B          4                                                                             
+         1 B          6                                                                             
+         3 C          0                                                                             
+         3 C          2                                                                             
+         3 C          4                                                                             
+         3 C          6                                                                             
+         5 D          0                                                                             
+         5 D          2                                                                             
+         5 D          4                                                                             
+         5 D          6                                                                             
+
+16 rows selected.
+
+SQL> SELECT * FROM JOIN1;
+
+     DIGIT A                                                                                        
+---------- -                                                                                        
+         0 A                                                                                        
+         1 B                                                                                        
+         3 C                                                                                        
+         5 D                                                                                        
+
+SQL> SELECT * FROM JOIN2;
+
+     DIGIT                                                                                          
+----------                                                                                          
+         0                                                                                          
+         2                                                                                          
+         4                                                                                          
+         6                                                                                          
+
+SQL> SELECT J1.DIGIT
+  2  ,J1.ALPHABET
+  3  ,J2.DIGIT
+  4  FROM JOIN1
+  5  ,JOIN2
+  6  WHERE ;
+WHERE 
+     *
+ERROR at line 6:
+ORA-00936: missing expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J1.ALPHABET
+  3  ,J2.DIGIT
+  4  FROM JOIN1 J1
+  5  ,JOIN2 J2
+  6* WHERE J1.DIGIT = J2.DIGIT
+SQL> /
+
+     DIGIT A      DIGIT                                                                             
+---------- - ----------                                                                             
+         0 A          0                                                                             
+
+SQL> SELECT * FROM JOIN1;
+
+     DIGIT A                                                                                        
+---------- -                                                                                        
+         0 A                                                                                        
+         1 B                                                                                        
+         3 C                                                                                        
+         5 D                                                                                        
+
+SQL> SELECT * FROM JOIN2;
+
+     DIGIT                                                                                          
+----------                                                                                          
+         0                                                                                          
+         2                                                                                          
+         4                                                                                          
+         6                                                                                          
+
+SQL> SELECT J1.DIGIT
+  2  ,J1.ALPHABET
+  3  ,J2.DIGIT
+  4  FROM JOIN1 J1
+  5  ,JOIN2 J2
+  6  WHERE J1.ALPHABET BETWEEN 'A' AND 'C';
+
+     DIGIT A      DIGIT                                                                             
+---------- - ----------                                                                             
+         0 A          0                                                                             
+         0 A          2                                                                             
+         0 A          4                                                                             
+         0 A          6                                                                             
+         1 B          0                                                                             
+         1 B          2                                                                             
+         1 B          4                                                                             
+         1 B          6                                                                             
+         3 C          0                                                                             
+         3 C          2                                                                             
+         3 C          4                                                                             
+         3 C          6                                                                             
+
+12 rows selected.
+
+SQL> SELECT * FROM JOIN1
+  2  ;
+
+     DIGIT A                                                                                        
+---------- -                                                                                        
+         0 A                                                                                        
+         1 B                                                                                        
+         3 C                                                                                        
+         5 D                                                                                        
+
+SQL> SELECT * FROM JOIN2;
+
+     DIGIT                                                                                          
+----------                                                                                          
+         0                                                                                          
+         2                                                                                          
+         4                                                                                          
+         6                                                                                          
+
+SQL> SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  ,JOIN2 J2
+  5  WHERE J1.DIGIT(+) = J2.DIGIT;
+
+     DIGIT      DIGIT                                                                               
+---------- ----------                                                                               
+         0          0                                                                               
+                    6                                                                               
+                    4                                                                               
+                    2                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  ,JOIN2 J2
+  5* WHERE J1.DIGIT = J2.DIGIT(+)
+SQL> /
+
+     DIGIT      DIGIT                                                                               
+---------- ----------                                                                               
+         0          0                                                                               
+         5                                                                                          
+         3                                                                                          
+         1                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  FULL JOIN
+  5* JOIN2 J2
+  6  /
+JOIN2 J2
+       *
+ERROR at line 5:
+ORA-00905: missing keyword 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  FULL JOIN
+  5  JOIN2 J2
+  6* ON(J1.DIGIT = J2.DIGIT)
+SQL> /
+
+     DIGIT      DIGIT                                                                               
+---------- ----------                                                                               
+         0          0                                                                               
+                    2                                                                               
+                    4                                                                               
+                    6                                                                               
+         5                                                                                          
+         3                                                                                          
+         1                                                                                          
+
+7 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  FULL OUTER JOIN
+  5  JOIN2 J2
+  6* ON(J1.DIGIT = J2.DIGIT)
+SQL> /
+
+     DIGIT      DIGIT                                                                               
+---------- ----------                                                                               
+         0          0                                                                               
+                    2                                                                               
+                    4                                                                               
+                    6                                                                               
+         5                                                                                          
+         3                                                                                          
+         1                                                                                          
+
+7 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  LEFT OUTER JOIN
+  5  JOIN2 J2
+  6* ON(J1.DIGIT = J2.DIGIT)
+SQL> /
+
+     DIGIT      DIGIT                                                                               
+---------- ----------                                                                               
+         0          0                                                                               
+         5                                                                                          
+         3                                                                                          
+         1                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  RIGHT OUTER JOIN
+  5  JOIN2 J2
+  6* ON(J1.DIGIT = J2.DIGIT)
+SQL> /
+
+     DIGIT      DIGIT                                                                               
+---------- ----------                                                                               
+         0          0                                                                               
+                    6                                                                               
+                    4                                                                               
+                    2                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  RIGHT OUTER JOIN
+  5  JOIN2 J2
+  6* ON(J1.DIGIT = J2.DIGIT)
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  ,J2.DIGIT
+  3  FROM JOIN1 J1
+  4  NATURAL JOIN
+  5* JOIN2 J2
+  6  /
+,J2.DIGIT
+ *
+ERROR at line 2:
+ORA-25155: column used in NATURAL join cannot have qualifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT J1.DIGIT
+  2  FROM JOIN1 J1
+  3  NATURAL JOIN
+  4* JOIN2 J2
+SQL> /
+SELECT J1.DIGIT
+       *
+ERROR at line 1:
+ORA-25155: column used in NATURAL join cannot have qualifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  FROM JOIN1 J1
+  3  NATURAL JOIN
+  4* JOIN2 J2
+SQL> /
+
+     DIGIT A                                                                                        
+---------- -                                                                                        
+         0 A                                                                                        
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> SELECT DEPTNO
+  2  FROM DEPT
+  3  WHERE DNAME = 'ACCOUNTING';
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        10                                                                                          
+
+SQL> SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE DEPTNO = 10;
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+KING             5000                                                                               
+CLARK            2450                                                                               
+MILLER           1300                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE DEPTNO = 
+  5  		(SELECT DEPTNO
+  6  		 FROM DEPT
+  7* 	 	 WHERE DNAME = 'ACCOUNTING')	
+SQL> /
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+KING             5000                                                                               
+CLARK            2450                                                                               
+MILLER           1300                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE DEPTNO = 
+  5  		(SELECT DEPTNO
+  6  		 FROM DEPT
+  7* 	 	 WHERE DNAME = 'ACCOUNTING')	
+SQL> CREATE TABLE EMP1
+  2  AS SELECT * FROM EMP;
+
+Table created.
+
+SQL> SELECT * FROM EMP1;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> DESC EMP1;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                          NUMBER(4)
+ ENAME                                                          VARCHAR2(10)
+ JOB                                                            VARCHAR2(9)
+ MGR                                                            NUMBER(4)
+ HIREDATE                                                       DATE
+ SAL                                                            NUMBER(7,2)
+ COMM                                                           NUMBER(7,2)
+ DEPTNO                                                         NUMBER(2)
+
+SQL> CREATE VIEW EMP_VIEW
+  2  AS SELECT EMPNO,ENAME,SAL
+  3  FROM EMP;
+
+View created.
+
+SQL> SELECT * FROM EMP_VIEW;
+
+     EMPNO ENAME             SAL                                                                    
+---------- ---------- ----------                                                                    
+      7839 KING             5000                                                                    
+      7698 BLAKE            2850                                                                    
+      7782 CLARK            2450                                                                    
+      7566 JONES            2975                                                                    
+      7788 SCOTT            3000                                                                    
+      7902 FORD             3000                                                                    
+      7369 SMITH             800                                                                    
+      7499 ALLEN            1600                                                                    
+      7521 WARD             1250                                                                    
+      7654 MARTIN           1250                                                                    
+      7844 TURNER           1500                                                                    
+      7876 ADAMS            1100                                                                    
+      7900 JAMES             950                                                                    
+      7934 MILLER           1300                                                                    
+
+14 rows selected.
+
+SQL> SELECT MIN(SAL)
+  2  FROM EMP;
+
+  MIN(SAL)                                                                                          
+----------                                                                                          
+       800                                                                                          
+
+SQL> SELECT ENAME,MIN(SAL)
+  2  FROM EMP;
+SELECT ENAME,MIN(SAL)
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME,MIN(SAL)
+  2  FROM EMP
+  3* GROUP BY ENAME
+  4  /
+
+ENAME        MIN(SAL)                                                                               
+---------- ----------                                                                               
+JONES            2975                                                                               
+ALLEN            1600                                                                               
+FORD             3000                                                                               
+CLARK            2450                                                                               
+MILLER           1300                                                                               
+SMITH             800                                                                               
+WARD             1250                                                                               
+SCOTT            3000                                                                               
+MARTIN           1250                                                                               
+TURNER           1500                                                                               
+ADAMS            1100                                                                               
+KING             5000                                                                               
+BLAKE            2850                                                                               
+JAMES             950                                                                               
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL = (SELECT MIN(SAL)
+  5  	     FROM EMP
+  6  	     GROUP BY ENAME
+  7* 	    )
+  8  /
+WHERE SAL = (SELECT MIN(SAL)
+             *
+ERROR at line 4:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL = (SELECT MIN(SAL)
+  5  	     FROM EMP
+  6* 	    )
+  7  /
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+SMITH             800                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL = (SELECT MIN(SAL)
+  5  	     FROM EMP
+  6* 	    )
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL > (SELECT AVG(SAL)
+  5  	     FROM EMP
+  6  	     GROUP BY DEPTNO
+  7  	     HAVING DEPTNO = 10
+  8* 	    )
+SQL> /
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+KING             5000                                                                               
+JONES            2975                                                                               
+SCOTT            3000                                                                               
+FORD             3000                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL > (SELECT AVG(SAL)
+  5  	     FROM EMP
+  6  	     GROUP BY DEPTNO
+  7* 	    )
+  8  /
+WHERE SAL > (SELECT AVG(SAL)
+             *
+ERROR at line 4:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL > (SELECT AVG(SAL)
+  5  	     FROM EMP
+  6  	     GROUP BY DEPTNO
+  7* 	    )
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL > ANY (SELECT AVG(SAL)
+  5  	     FROM EMP
+  6  	     GROUP BY DEPTNO
+  7* 	    )
+SQL> /
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+KING             5000                                                                               
+BLAKE            2850                                                                               
+CLARK            2450                                                                               
+JONES            2975                                                                               
+SCOTT            3000                                                                               
+FORD             3000                                                                               
+ALLEN            1600                                                                               
+
+7 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL > ALL (SELECT AVG(SAL)
+  5  	     FROM EMP
+  6  	     GROUP BY DEPTNO
+  7* 	    )
+SQL> /
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+KING             5000                                                                               
+JONES            2975                                                                               
+SCOTT            3000                                                                               
+FORD             3000                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT ENAME
+  2  ,SAL
+  3  FROM EMP
+  4  WHERE SAL > ALL (SELECT AVG(SAL)
+  5  	     FROM EMP
+  6  	     GROUP BY DEPTNO
+  7* 	    )
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT AVG(SAL)
+  2  	     FROM EMP
+  3* 	     GROUP BY DEPTNO
+SQL> /
+
+  AVG(SAL)                                                                                          
+----------                                                                                          
+1566.66667                                                                                          
+      2175                                                                                          
+2916.66667                                                                                          
+
+SQL> 
+SQL> desc dba_users;
+ERROR:
+ORA-04043: object "SYS"."DBA_USERS" does not exist 
+
+
+SQL> desc dba_objects;
+ERROR:
+ORA-04043: object "SYS"."DBA_OBJECTS" does not exist 
+
+
+SQL> DESC DBA_USER_ALL_OBJECTS;
+ERROR:
+ORA-04043: object DBA_USER_ALL_OBJECTS does not exist 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE EMPLOYEE
+  2  (EMPNO NUMBER(8) CONSTRAINT EMPNO_PK PRIMARY KEY
+  3  ,ENAME VARCHAR2(20) NOT NULL
+  4  ,LOCATION VARCHAR2(15) DEFAULT 'MUMBAI'
+  5  ,EMAIL VARCHAR2(20) UNIQUE
+  6  ,SAL NUMBER(8) CHECK(SAL>1000)
+  7  ,DEPTNO NUMBER(3) CONSTRAINT DEPTNO_FK REFERENCES DEPT(DEPTNO)
+  8* )
+SQL> /
+CREATE TABLE EMPLOYEE
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE EMPLOYEE1
+  2  (EMPNO NUMBER(8) CONSTRAINT EMPNO_PK PRIMARY KEY
+  3  ,ENAME VARCHAR2(20) NOT NULL
+  4  ,LOCATION VARCHAR2(15) DEFAULT 'MUMBAI'
+  5  ,EMAIL VARCHAR2(20) UNIQUE
+  6  ,SAL NUMBER(8) CHECK(SAL>1000)
+  7  ,DEPTNO NUMBER(3) CONSTRAINT DEPTNO_FK REFERENCES DEPT(DEPTNO)
+  8* )
+SQL> /
+CREATE TABLE EMPLOYEE1
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE EMPLOYEE11
+  2  (EMPNO NUMBER(8) CONSTRAINT EMPNO_PK PRIMARY KEY
+  3  ,ENAME VARCHAR2(20) NOT NULL
+  4  ,LOCATION VARCHAR2(15) DEFAULT 'MUMBAI'
+  5  ,EMAIL VARCHAR2(20) UNIQUE
+  6  ,SAL NUMBER(8) CHECK(SAL>1000)
+  7  ,DEPTNO NUMBER(3) CONSTRAINT DEPTNO_FK REFERENCES DEPT(DEPTNO)
+  8* )
+SQL> /
+
+Table created.
+
+SQL> DESC EMPLOYEE11;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                 NOT NULL NUMBER(8)
+ ENAME                                                 NOT NULL VARCHAR2(20)
+ LOCATION                                                       VARCHAR2(15)
+ EMAIL                                                          VARCHAR2(20)
+ SAL                                                            NUMBER(8)
+ DEPTNO                                                         NUMBER(3)
+
+SQL> DESC USER_CONSTRAINTS;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ OWNER                                                          VARCHAR2(128)
+ CONSTRAINT_NAME                                                VARCHAR2(128)
+ CONSTRAINT_TYPE                                                VARCHAR2(1)
+ TABLE_NAME                                                     VARCHAR2(128)
+ SEARCH_CONDITION                                               LONG
+ SEARCH_CONDITION_VC                                            VARCHAR2(4000)
+ R_OWNER                                                        VARCHAR2(128)
+ R_CONSTRAINT_NAME                                              VARCHAR2(128)
+ DELETE_RULE                                                    VARCHAR2(9)
+ STATUS                                                         VARCHAR2(8)
+ DEFERRABLE                                                     VARCHAR2(14)
+ DEFERRED                                                       VARCHAR2(9)
+ VALIDATED                                                      VARCHAR2(13)
+ GENERATED                                                      VARCHAR2(14)
+ BAD                                                            VARCHAR2(3)
+ RELY                                                           VARCHAR2(4)
+ LAST_CHANGE                                                    DATE
+ INDEX_OWNER                                                    VARCHAR2(128)
+ INDEX_NAME                                                     VARCHAR2(128)
+ INVALID                                                        VARCHAR2(7)
+ VIEW_RELATED                                                   VARCHAR2(14)
+ ORIGIN_CON_ID                                                  NUMBER
+
+SQL> SELECT CONSTRAINT_NAME
+  2  ,CONSTRAINT_TYPE
+  3  FROM USER_CONSTRAINTS
+  4  WHERE TABLE_NAME = 'EMPLOYEE11';
+
+CONSTRAINT_NAME                                                                                     
+----------------------------------------------------------------------------------------------------
+C                                                                                                   
+-                                                                                                   
+EMPNO_PK                                                                                            
+P                                                                                                   
+                                                                                                    
+SYS_C0010345                                                                                        
+U                                                                                                   
+                                                                                                    
+SYS_C0010342                                                                                        
+C                                                                                                   
+                                                                                                    
+SYS_C0010343                                                                                        
+C                                                                                                   
+                                                                                                    
+DEPTNO_FK                                                                                           
+R                                                                                                   
+                                                                                                    
+
+SQL> DESC USER_CONS_COLUMNS;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ OWNER                                                 NOT NULL VARCHAR2(128)
+ CONSTRAINT_NAME                                       NOT NULL VARCHAR2(128)
+ TABLE_NAME                                            NOT NULL VARCHAR2(128)
+ COLUMN_NAME                                                    VARCHAR2(4000)
+ POSITION                                                       NUMBER
+
+SQL> SELECT CONSTRAINT_NAME
+  2  ,COLUMN_NAME
+  3  FROM USER_CONS_COLUMNS
+  4  WHERE TABLE_NAME = 'EMPLOYEE11';
+
+CONSTRAINT_NAME                                                                                     
+----------------------------------------------------------------------------------------------------
+COLUMN_NAME                                                                                         
+----------------------------------------------------------------------------------------------------
+DEPTNO_FK                                                                                           
+DEPTNO                                                                                              
+                                                                                                    
+SYS_C0010345                                                                                        
+EMAIL                                                                                               
+                                                                                                    
+EMPNO_PK                                                                                            
+EMPNO                                                                                               
+                                                                                                    
+SYS_C0010343                                                                                        
+SAL                                                                                                 
+                                                                                                    
+SYS_C0010342                                                                                        
+ENAME                                                                                               
+                                                                                                    
+
+SQL> ALTER TABLE EMPLOYEE11
+  2  ADD ADDRESS VARCHAR2920);
+ADD ADDRESS VARCHAR2920)
+                       *
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE EMPLOYEE11
+  2* ADD ADDRESS VARCHAR2(20)
+SQL> /
+
+Table altered.
+
+SQL> DESC EMPLOYEE11;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                 NOT NULL NUMBER(8)
+ ENAME                                                 NOT NULL VARCHAR2(20)
+ LOCATION                                                       VARCHAR2(15)
+ EMAIL                                                          VARCHAR2(20)
+ SAL                                                            NUMBER(8)
+ DEPTNO                                                         NUMBER(3)
+ ADDRESS                                                        VARCHAR2(20)
+
+SQL> ALTER TABLE EMPLOYEE11
+  2  ADD CONSTRAINT ADDRESS_NN NOT NULL(ADDRESS);
+ADD CONSTRAINT ADDRESS_NN NOT NULL(ADDRESS)
+                          *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE EMPLOYEE11
+  2* ADD CONSTRAINT ADDRESS_UN UNIQUE(ADDRESS)
+SQL> /
+
+Table altered.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE EMPLOYEE11
+  2* MODIFY CONSTRAINT ADDRESS_NN NOT NULL(ADDRESS)
+SQL> /
+MODIFY CONSTRAINT ADDRESS_NN NOT NULL(ADDRESS)
+                             *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE EMPLOYEE11
+  2* MODIFY CONSTRAINT ADDRESS_NN NOT NULL(ADDRESS)
+SQL> DESC EMPLOYEE11;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                 NOT NULL NUMBER(8)
+ ENAME                                                 NOT NULL VARCHAR2(20)
+ LOCATION                                                       VARCHAR2(15)
+ EMAIL                                                          VARCHAR2(20)
+ SAL                                                            NUMBER(8)
+ DEPTNO                                                         NUMBER(3)
+ ADDRESS                                                        VARCHAR2(20)
+
+SQL> ALTER TABLE EMPLOYEE11
+  2  MODIFY EMPNO NUMBER(5);
+
+Table altered.
+
+SQL> DESC EMPLOYEE11;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                 NOT NULL NUMBER(5)
+ ENAME                                                 NOT NULL VARCHAR2(20)
+ LOCATION                                                       VARCHAR2(15)
+ EMAIL                                                          VARCHAR2(20)
+ SAL                                                            NUMBER(8)
+ DEPTNO                                                         NUMBER(3)
+ ADDRESS                                                        VARCHAR2(20)
+
+SQL> ALTER TABLE EMPLOYEE11
+  2  DISABLE CONSTRAINT DEPTNO_FK;
+
+Table altered.
+
+SQL> ALTER TABLE EMPLOYEE11
+  2  DROP CONSTRAINT DEPTNO_FK;
+
+Table altered.
+
+SQL> ALTER TABLE EMPLOYEE11
+  2  DROP COLUMN LOCATION;
+
+Table altered.
+
+SQL> DESC EMPLOYEE11;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                 NOT NULL NUMBER(5)
+ ENAME                                                 NOT NULL VARCHAR2(20)
+ EMAIL                                                          VARCHAR2(20)
+ SAL                                                            NUMBER(8)
+ DEPTNO                                                         NUMBER(3)
+ ADDRESS                                                        VARCHAR2(20)
+
+SQL> RENAME EMPLOYEE11 TO EMP11;
+
+Table renamed.
+
+SQL> DESC EMPLOYEE11;
+ERROR:
+ORA-04043: object EMPLOYEE11 does not exist 
+
+
+SQL> DESC EMP11;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                 NOT NULL NUMBER(5)
+ ENAME                                                 NOT NULL VARCHAR2(20)
+ EMAIL                                                          VARCHAR2(20)
+ SAL                                                            NUMBER(8)
+ DEPTNO                                                         NUMBER(3)
+ ADDRESS                                                        VARCHAR2(20)
+
+SQL> SELECT * FROM EMP11;
+
+no rows selected
+
+SQL> SELECT * FROM EMPLOYEE;
+
+no rows selected
+
+SQL> SELECT * FROM EMPLOYEE1;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> TRUNCATE TABLE EMPLOYEE1;
+TRUNCATE TABLE EMPLOYEE1
+               *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SEELCT * FROM EMPLOYEE1;
+SP2-0734: unknown command beginning "SEELCT * F..." - rest of line ignored.
+SQL> SELECT * FROM EMPLOYEE1;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> TRUNCATE TABLE EMPLOYEE1;
+TRUNCATE TABLE EMPLOYEE1
+               *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> TRUNCATE EMPLOYEE1;
+TRUNCATE EMPLOYEE1
+                 *
+ERROR at line 1:
+ORA-03290: Invalid truncate command - missing CLUSTER or TABLE keyword 
+
+
+SQL> CREATE TABLE E1 AS SELECT * FROM EMP;
+
+Table created.
+
+SQL> SELECT * FROM E1;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> TRUNCATE TABLE E1;
+
+Table truncated.
+
+SQL> SELECT * FROM E1;
+
+no rows selected
+
+SQL> DESC E1;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                          NUMBER(4)
+ ENAME                                                          VARCHAR2(10)
+ JOB                                                            VARCHAR2(9)
+ MGR                                                            NUMBER(4)
+ HIREDATE                                                       DATE
+ SAL                                                            NUMBER(7,2)
+ COMM                                                           NUMBER(7,2)
+ DEPTNO                                                         NUMBER(2)
+
+SQL> CREATE TABLE EMPDROP AS SELECT * FROM EMP;
+
+Table created.
+
+SQL> SELECT * FROM EMPDROP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> DROP TABLE EMPDROP;
+
+Table dropped.
+
+SQL> SELECT * FROM EMPDROP;
+SELECT * FROM EMPDROP
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> DESC EMPDROP;
+ERROR:
+ORA-04043: object EMPDROP does not exist 
+
+
+SQL> CREATE TABLE EMPDELETE AS SELECT * FROM EMP;
+
+Table created.
+
+SQL> SELECT * FROM EMPDELETE;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> DELETE FROM EMPDELETE
+  2  WHERE DEPTNO = 10;
+
+3 rows deleted.
+
+SQL> SELECT * FROM EMPDELETE
+  2  ;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+
+11 rows selected.
+
+SQL> DELETE FROM EMPDELETE;
+
+11 rows deleted.
+
+SQL> SELECT * FROM EMPDELETE;
+
+no rows selected
+
+SQL> DESC EMPDELETE;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMPNO                                                          NUMBER(4)
+ ENAME                                                          VARCHAR2(10)
+ JOB                                                            VARCHAR2(9)
+ MGR                                                            NUMBER(4)
+ HIREDATE                                                       DATE
+ SAL                                                            NUMBER(7,2)
+ COMM                                                           NUMBER(7,2)
+ DEPTNO                                                         NUMBER(2)
+
+SQL> DESC USER_OBJECTS;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ OBJECT_NAME                                                    VARCHAR2(128)
+ SUBOBJECT_NAME                                                 VARCHAR2(128)
+ OBJECT_ID                                                      NUMBER
+ DATA_OBJECT_ID                                                 NUMBER
+ OBJECT_TYPE                                                    VARCHAR2(23)
+ CREATED                                                        DATE
+ LAST_DDL_TIME                                                  DATE
+ TIMESTAMP                                                      VARCHAR2(19)
+ STATUS                                                         VARCHAR2(7)
+ TEMPORARY                                                      VARCHAR2(1)
+ GENERATED                                                      VARCHAR2(1)
+ SECONDARY                                                      VARCHAR2(1)
+ NAMESPACE                                                      NUMBER
+ EDITION_NAME                                                   VARCHAR2(128)
+ SHARING                                                        VARCHAR2(13)
+ EDITIONABLE                                                    VARCHAR2(1)
+ ORACLE_MAINTAINED                                              VARCHAR2(1)
+
+SQL> SELECT OBJECT_NAME
+  2  ,OBJECT_TYPE
+  3  FROM USER_OBJECTS
+  4  ;
+
+OBJECT_NAME                                                                                         
+----------------------------------------------------------------------------------------------------
+OBJECT_TYPE                                                                                         
+-----------------------                                                                             
+B_FILE                                                                                              
+PROCEDURE                                                                                           
+                                                                                                    
+APPLICATION_PROGRAMS                                                                                
+TABLE                                                                                               
+                                                                                                    
+A                                                                                                   
+TABLE                                                                                               
+                                                                                                    
+B                                                                                                   
+TABLE                                                                                               
+                                                                                                    
+CUSTOMER                                                                                            
+TABLE                                                                                               
+                                                                                                    
+PK_ID                                                                                               
+INDEX                                                                                               
+                                                                                                    
+CUSTOMERS                                                                                           
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010120                                                                                        
+INDEX                                                                                               
+                                                                                                    
+HELLOWORLD                                                                                          
+PROCEDURE                                                                                           
+                                                                                                    
+TOTALCUSTOMERS                                                                                      
+FUNCTION                                                                                            
+                                                                                                    
+DUMMY_EMP                                                                                           
+TABLE                                                                                               
+                                                                                                    
+TOTALCUSTOM                                                                                         
+FUNCTION                                                                                            
+                                                                                                    
+FINDMAX                                                                                             
+FUNCTION                                                                                            
+                                                                                                    
+FINDMIN                                                                                             
+PROCEDURE                                                                                           
+                                                                                                    
+STAFF_COPY                                                                                          
+TABLE                                                                                               
+                                                                                                    
+STAFF_COPY1                                                                                         
+TABLE                                                                                               
+                                                                                                    
+BONUS                                                                                               
+TABLE                                                                                               
+                                                                                                    
+PROC1                                                                                               
+PROCEDURE                                                                                           
+                                                                                                    
+A1                                                                                                  
+PROCEDURE                                                                                           
+                                                                                                    
+TAB                                                                                                 
+TABLE                                                                                               
+                                                                                                    
+TAB1                                                                                                
+TABLE                                                                                               
+                                                                                                    
+TEST_TAB                                                                                            
+TABLE                                                                                               
+                                                                                                    
+P_PRC                                                                                               
+PROCEDURE                                                                                           
+                                                                                                    
+AUTHOR                                                                                              
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010312                                                                                        
+INDEX                                                                                               
+                                                                                                    
+PUBLISHER                                                                                           
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010313                                                                                        
+INDEX                                                                                               
+                                                                                                    
+CATEGORY                                                                                            
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010314                                                                                        
+INDEX                                                                                               
+                                                                                                    
+CATALOG                                                                                             
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010315                                                                                        
+INDEX                                                                                               
+                                                                                                    
+ORDEREDBY                                                                                           
+TABLE                                                                                               
+
+OBJECT_NAME                                                                                         
+----------------------------------------------------------------------------------------------------
+OBJECT_TYPE                                                                                         
+-----------------------                                                                             
+                                                                                                    
+SYS_C0010319                                                                                        
+INDEX                                                                                               
+                                                                                                    
+ORDERDETAILS                                                                                        
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010320                                                                                        
+INDEX                                                                                               
+                                                                                                    
+BOOK_PRICE                                                                                          
+PROCEDURE                                                                                           
+                                                                                                    
+BOOKPRICE                                                                                           
+FUNCTION                                                                                            
+                                                                                                    
+PRICE_INCREASE                                                                                      
+PROCEDURE                                                                                           
+                                                                                                    
+UPDATE_PRICE                                                                                        
+FUNCTION                                                                                            
+                                                                                                    
+INCREASE                                                                                            
+PROCEDURE                                                                                           
+                                                                                                    
+GET_BKPRICE                                                                                         
+FUNCTION                                                                                            
+                                                                                                    
+BOOK_ID                                                                                             
+PROCEDURE                                                                                           
+                                                                                                    
+N_PRICE                                                                                             
+FUNCTION                                                                                            
+                                                                                                    
+BK_ID                                                                                               
+PROCEDURE                                                                                           
+                                                                                                    
+BKPRICE                                                                                             
+PROCEDURE                                                                                           
+                                                                                                    
+INCR                                                                                                
+PROCEDURE                                                                                           
+                                                                                                    
+SALGRADEPROC                                                                                        
+PROCEDURE                                                                                           
+                                                                                                    
+SEQ                                                                                                 
+SEQUENCE                                                                                            
+                                                                                                    
+LOG1                                                                                                
+TABLE                                                                                               
+                                                                                                    
+LEAVE1                                                                                              
+TABLE                                                                                               
+                                                                                                    
+SYS_IL0000098268C00005$$                                                                            
+INDEX                                                                                               
+                                                                                                    
+SYS_LOB0000098268C00005$$                                                                           
+LOB                                                                                                 
+                                                                                                    
+SYS_IL0000098268C00004$$                                                                            
+INDEX                                                                                               
+                                                                                                    
+SYS_LOB0000098268C00004$$                                                                           
+LOB                                                                                                 
+                                                                                                    
+ACCOUNT_LOG                                                                                         
+TABLE                                                                                               
+                                                                                                    
+GREETINGS                                                                                           
+PROCEDURE                                                                                           
+                                                                                                    
+SQUARENUM                                                                                           
+PROCEDURE                                                                                           
+                                                                                                    
+TOTALEMPLOYEES                                                                                      
+FUNCTION                                                                                            
+                                                                                                    
+PACK1                                                                                               
+PACKAGE                                                                                             
+                                                                                                    
+CUST_SAL                                                                                            
+PACKAGE                                                                                             
+                                                                                                    
+CUST_SAL                                                                                            
+PACKAGE BODY                                                                                        
+                                                                                                    
+C_PACKAGE                                                                                           
+PACKAGE                                                                                             
+                                                                                                    
+C_PACKAGE                                                                                           
+PACKAGE BODY                                                                                        
+                                                                                                    
+DISPLAY_SALARY_CHANGES                                                                              
+
+OBJECT_NAME                                                                                         
+----------------------------------------------------------------------------------------------------
+OBJECT_TYPE                                                                                         
+-----------------------                                                                             
+TRIGGER                                                                                             
+                                                                                                    
+NULLTEST                                                                                            
+TABLE                                                                                               
+                                                                                                    
+NULLIND1                                                                                            
+INDEX                                                                                               
+                                                                                                    
+NOTNULLIND2                                                                                         
+INDEX                                                                                               
+                                                                                                    
+ERROR_LOG                                                                                           
+TABLE                                                                                               
+                                                                                                    
+EMP_AUDIT                                                                                           
+TABLE                                                                                               
+                                                                                                    
+RAISE_SALARY                                                                                        
+PROCEDURE                                                                                           
+                                                                                                    
+GET_DETAILS                                                                                         
+PROCEDURE                                                                                           
+                                                                                                    
+PACK1                                                                                               
+PACKAGE BODY                                                                                        
+                                                                                                    
+AUDITSTAFF                                                                                          
+TABLE                                                                                               
+                                                                                                    
+STAFF_DATA                                                                                          
+PACKAGE                                                                                             
+                                                                                                    
+STAFF_DATA                                                                                          
+PACKAGE BODY                                                                                        
+                                                                                                    
+STAFFDATA                                                                                           
+PACKAGE                                                                                             
+                                                                                                    
+STAFFDATA                                                                                           
+PACKAGE BODY                                                                                        
+                                                                                                    
+LOG_USAGE                                                                                           
+PROCEDURE                                                                                           
+                                                                                                    
+CHG_EMP                                                                                             
+PROCEDURE                                                                                           
+                                                                                                    
+EMP_DEPT_MV                                                                                         
+TABLE                                                                                               
+                                                                                                    
+I_SNAP$_EMP_DEPT_MV                                                                                 
+INDEX                                                                                               
+                                                                                                    
+EMP_DEPT_MV                                                                                         
+MATERIALIZED VIEW                                                                                   
+                                                                                                    
+TEMP_TABLE                                                                                          
+TABLE                                                                                               
+                                                                                                    
+PERFORMANCE                                                                                         
+TABLE                                                                                               
+                                                                                                    
+ERRORS                                                                                              
+TABLE                                                                                               
+                                                                                                    
+MY_TABLE                                                                                            
+TABLE                                                                                               
+                                                                                                    
+P2_NAME                                                                                             
+PROCEDURE                                                                                           
+                                                                                                    
+SALGRADE                                                                                            
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010327                                                                                        
+INDEX                                                                                               
+                                                                                                    
+EMPLOYEES                                                                                           
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010328                                                                                        
+INDEX                                                                                               
+                                                                                                    
+GET_NEXT_LINE                                                                                       
+FUNCTION                                                                                            
+                                                                                                    
+EMPCODE_SEQ                                                                                         
+SEQUENCE                                                                                            
+                                                                                                    
+S_GRADE                                                                                             
+PROCEDURE                                                                                           
+                                                                                                    
+SYS_IL0000097275C00005$$                                                                            
+INDEX                                                                                               
+                                                                                                    
+
+OBJECT_NAME                                                                                         
+----------------------------------------------------------------------------------------------------
+OBJECT_TYPE                                                                                         
+-----------------------                                                                             
+SYS_LOB0000097270C00005$$                                                                           
+LOB                                                                                                 
+                                                                                                    
+SYS_LOB0000097270C00004$$                                                                           
+LOB                                                                                                 
+                                                                                                    
+LEAVE                                                                                               
+TABLE                                                                                               
+                                                                                                    
+SYS_LOB0000097275C00005$$                                                                           
+LOB                                                                                                 
+                                                                                                    
+SYS_IL0000097275C00004$$                                                                            
+INDEX                                                                                               
+                                                                                                    
+SYS_LOB0000097275C00004$$                                                                           
+LOB                                                                                                 
+                                                                                                    
+EMP3                                                                                                
+TABLE                                                                                               
+                                                                                                    
+STAFF_SAL_INDEX                                                                                     
+INDEX                                                                                               
+                                                                                                    
+SYN_EMP                                                                                             
+SYNONYM                                                                                             
+                                                                                                    
+SYS_C0010301                                                                                        
+INDEX                                                                                               
+                                                                                                    
+EMP12                                                                                               
+TABLE                                                                                               
+                                                                                                    
+EMP14                                                                                               
+TABLE                                                                                               
+                                                                                                    
+PK_EMPNO                                                                                            
+INDEX                                                                                               
+                                                                                                    
+E2                                                                                                  
+TABLE                                                                                               
+                                                                                                    
+EMP_VW1                                                                                             
+VIEW                                                                                                
+                                                                                                    
+EMP_DEPT                                                                                            
+VIEW                                                                                                
+                                                                                                    
+PROGRAMVALUES                                                                                       
+TABLE                                                                                               
+                                                                                                    
+VALUESEQUENCE                                                                                       
+SEQUENCE                                                                                            
+                                                                                                    
+FUN                                                                                                 
+TABLE                                                                                               
+                                                                                                    
+NEW                                                                                                 
+TABLE                                                                                               
+                                                                                                    
+STUDENT_MARKS                                                                                       
+TABLE                                                                                               
+                                                                                                    
+EMPLOYEE1                                                                                           
+SYNONYM                                                                                             
+                                                                                                    
+BOOK_TRANSACTIONS                                                                                   
+TABLE                                                                                               
+                                                                                                    
+DESIGNATION_MASTERS                                                                                 
+TABLE                                                                                               
+                                                                                                    
+EMPVIEW                                                                                             
+VIEW                                                                                                
+                                                                                                    
+VWEMPDEPT                                                                                           
+VIEW                                                                                                
+                                                                                                    
+S3                                                                                                  
+SEQUENCE                                                                                            
+                                                                                                    
+VWED                                                                                                
+VIEW                                                                                                
+                                                                                                    
+VWCHK                                                                                               
+VIEW                                                                                                
+                                                                                                    
+EVIEW                                                                                               
+VIEW                                                                                                
+                                                                                                    
+SYS_C0010269                                                                                        
+INDEX                                                                                               
+                                                                                                    
+SYS_C0010270                                                                                        
+INDEX                                                                                               
+
+OBJECT_NAME                                                                                         
+----------------------------------------------------------------------------------------------------
+OBJECT_TYPE                                                                                         
+-----------------------                                                                             
+                                                                                                    
+TEMP_EMP                                                                                            
+TABLE                                                                                               
+                                                                                                    
+NEW_EMP                                                                                             
+TABLE                                                                                               
+                                                                                                    
+DEPARTMENT_MASTERS                                                                                  
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010271                                                                                        
+INDEX                                                                                               
+                                                                                                    
+SYS_C0010272                                                                                        
+INDEX                                                                                               
+                                                                                                    
+STUDENT_MASTERS                                                                                     
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010274                                                                                        
+INDEX                                                                                               
+                                                                                                    
+STAFF_MASTERS                                                                                       
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010279                                                                                        
+INDEX                                                                                               
+                                                                                                    
+BOOK_MASTERS                                                                                        
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010284                                                                                        
+INDEX                                                                                               
+                                                                                                    
+EMPLOYEE                                                                                            
+TABLE                                                                                               
+                                                                                                    
+PK_EMPID                                                                                            
+INDEX                                                                                               
+                                                                                                    
+UN_PHONE                                                                                            
+INDEX                                                                                               
+                                                                                                    
+JOB_DETAILS                                                                                         
+PROCEDURE                                                                                           
+                                                                                                    
+REGIONS                                                                                             
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010136                                                                                        
+INDEX                                                                                               
+                                                                                                    
+COUNTRIES                                                                                           
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010137                                                                                        
+INDEX                                                                                               
+                                                                                                    
+LOCATIONS                                                                                           
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010139                                                                                        
+INDEX                                                                                               
+                                                                                                    
+LOCATIONS_SEQ                                                                                       
+SEQUENCE                                                                                            
+                                                                                                    
+DEPARTMENTS                                                                                         
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010141                                                                                        
+INDEX                                                                                               
+                                                                                                    
+DEPARTMENTS_SEQ                                                                                     
+SEQUENCE                                                                                            
+                                                                                                    
+JOBS                                                                                                
+TABLE                                                                                               
+                                                                                                    
+SYS_C0010143                                                                                        
+INDEX                                                                                               
+                                                                                                    
+EMPLOYEES_SEQ                                                                                       
+SEQUENCE                                                                                            
+                                                                                                    
+JOB_HISTORY                                                                                         
+TABLE                                                                                               
+                                                                                                    
+JHIST_EMP_ID_ST_DATE_PK                                                                             
+INDEX                                                                                               
+                                                                                                    
+SAL_EMP                                                                                             
+FUNCTION                                                                                            
+                                                                                                    
+JOB_HISTORY1                                                                                        
+
+OBJECT_NAME                                                                                         
+----------------------------------------------------------------------------------------------------
+OBJECT_TYPE                                                                                         
+-----------------------                                                                             
+PROCEDURE                                                                                           
+                                                                                                    
+TOTAL_SALARY                                                                                        
+FUNCTION                                                                                            
+                                                                                                    
+P_EMP                                                                                               
+PROCEDURE                                                                                           
+                                                                                                    
+F_SAL                                                                                               
+FUNCTION                                                                                            
+                                                                                                    
+EMPLOYEE_DATA                                                                                       
+PROCEDURE                                                                                           
+                                                                                                    
+EMPLOYEE_JOB_DETAILS                                                                                
+PROCEDURE                                                                                           
+                                                                                                    
+EMP_JOB_DETAILS                                                                                     
+PROCEDURE                                                                                           
+                                                                                                    
+DISPLAY_JOB_HIST                                                                                    
+PROCEDURE                                                                                           
+                                                                                                    
+SUM_OF_SALARY                                                                                       
+FUNCTION                                                                                            
+                                                                                                    
+SAL                                                                                                 
+FUNCTION                                                                                            
+                                                                                                    
+EMPLOYEE_INFO                                                                                       
+PROCEDURE                                                                                           
+                                                                                                    
+JOB_HIST                                                                                            
+PROCEDURE                                                                                           
+                                                                                                    
+TOTAL_SAL                                                                                           
+FUNCTION                                                                                            
+                                                                                                    
+JOB_HISTORY_EMPLOYEE                                                                                
+PROCEDURE                                                                                           
+                                                                                                    
+EMPS_JOB_DETAILS                                                                                    
+PROCEDURE                                                                                           
+                                                                                                    
+HISTEMP2                                                                                            
+PROCEDURE                                                                                           
+                                                                                                    
+CALC6                                                                                               
+FUNCTION                                                                                            
+                                                                                                    
+MAXDEPT8                                                                                            
+TABLE                                                                                               
+                                                                                                    
+A98                                                                                                 
+FUNCTION                                                                                            
+                                                                                                    
+EMP_DETAILS                                                                                         
+PROCEDURE                                                                                           
+                                                                                                    
+JOB                                                                                                 
+PROCEDURE                                                                                           
+                                                                                                    
+EMPLOYEE_DETAILS                                                                                    
+PROCEDURE                                                                                           
+                                                                                                    
+STUDENT_MASTER                                                                                      
+TABLE                                                                                               
+                                                                                                    
+LEARN_DEFAULT                                                                                       
+TABLE                                                                                               
+                                                                                                    
+UN                                                                                                  
+INDEX                                                                                               
+                                                                                                    
+PK_SR_NO                                                                                            
+INDEX                                                                                               
+                                                                                                    
+LEARN_FOREIGN_KEY                                                                                   
+TABLE                                                                                               
+                                                                                                    
+E                                                                                                   
+SYNONYM                                                                                             
+                                                                                                    
+EMP1_VW                                                                                             
+VIEW                                                                                                
+                                                                                                    
+DEPARTMENT_MASTER                                                                                   
+TABLE                                                                                               
+                                                                                                    
+ADDSUM                                                                                              
+PROCEDURE                                                                                           
+                                                                                                    
+CRT_DEPT                                                                                            
+FUNCTION                                                                                            
+                                                                                                    
+
+OBJECT_NAME                                                                                         
+----------------------------------------------------------------------------------------------------
+OBJECT_TYPE                                                                                         
+-----------------------                                                                             
+P1                                                                                                  
+PROCEDURE                                                                                           
+                                                                                                    
+ADD1                                                                                                
+FUNCTION                                                                                            
+                                                                                                    
+TAX_AMT                                                                                             
+PROCEDURE                                                                                           
+                                                                                                    
+TAX_AMT1                                                                                            
+FUNCTION                                                                                            
+                                                                                                    
+TAX_AMT2                                                                                            
+FUNCTION                                                                                            
+                                                                                                    
+ORDER_SEQ                                                                                           
+SEQUENCE                                                                                            
+                                                                                                    
+PROC_PHONE                                                                                          
+PROCEDURE                                                                                           
+                                                                                                    
+DEPT11                                                                                              
+TABLE                                                                                               
+                                                                                                    
+DEPT                                                                                                
+TABLE                                                                                               
+                                                                                                    
+PK_DEPT                                                                                             
+INDEX                                                                                               
+                                                                                                    
+EMP                                                                                                 
+TABLE                                                                                               
+                                                                                                    
+PK_EMP                                                                                              
+INDEX                                                                                               
+                                                                                                    
+JOIN1                                                                                               
+TABLE                                                                                               
+                                                                                                    
+JOIN2                                                                                               
+TABLE                                                                                               
+                                                                                                    
+EMP1                                                                                                
+TABLE                                                                                               
+                                                                                                    
+EMP_VIEW                                                                                            
+VIEW                                                                                                
+                                                                                                    
+EMPNO_PK                                                                                            
+INDEX                                                                                               
+                                                                                                    
+SYS_C0010345                                                                                        
+INDEX                                                                                               
+                                                                                                    
+ADDRESS_UN                                                                                          
+INDEX                                                                                               
+                                                                                                    
+EMP11                                                                                               
+TABLE                                                                                               
+                                                                                                    
+E1                                                                                                  
+TABLE                                                                                               
+                                                                                                    
+EMPDELETE                                                                                           
+TABLE                                                                                               
+                                                                                                    
+
+212 rows selected.
+
+SQL> SPOOL OFF;

@@ -1,0 +1,1641 @@
+SQL> ED
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_master VALUES ( 50, 'Production');
+  5      END IF;
+  6* END; 
+SQL> /
+END; 
+    *
+ERROR at line 6:
+ORA-06550: line 6, column 5: 
+PLS-00103: Encountered the symbol " " The symbol " " was ignored. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_master VALUES ( 50, 'Production');
+  5      END IF;
+  6* END;
+SQL> /
+      INSERT into department_master VALUES ( 50, 'Production');
+                  *
+ERROR at line 4:
+ORA-06550: line 4, column 19: 
+PL/SQL: ORA-00913: too many values 
+ORA-06550: line 4, column 7: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> DESC DEPARTMENT_MASTER;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ DEPTNO                                                         NUMBER(5)
+
+SQL> ALTER TABLE DEPARTMENT_MASTER
+  2  ADD COLUMN DNAME VARCHAR2(15);
+ADD COLUMN DNAME VARCHAR2(15)
+    *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE DEPARTMENT_MASTER
+  2* ADD DNAME VARCHAR2(15)
+SQL> /
+
+Table altered.
+
+SQL>  BEGIN
+  2       UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  3       IF SQL%NOTFOUND THEN
+  4         INSERT into department_master VALUES ( 50, 'Production');
+  5       END IF;
+  6   END;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM DEPARTMENT_MASTER;
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        50 Production                                                                               
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+         1                                                                                          
+         2                                                                                          
+         3                                                                                          
+         4                                                                                          
+         5                                                                                          
+         6                                                                                          
+         7                                                                                          
+         8                                                                                          
+         9                                                                                          
+        10                                                                                          
+        11                                                                                          
+        12                                                                                          
+        13                                                                                          
+        14                                                                                          
+        15                                                                                          
+        16                                                                                          
+        17                                                                                          
+        18                                                                                          
+        19                                                                                          
+        20                                                                                          
+        21                                                                                          
+        22                                                                                          
+        23                                                                                          
+        24                                                                                          
+        25                                                                                          
+        26                                                                                          
+        27                                                                                          
+        28                                                                                          
+        29                                                                                          
+        30                                                                                          
+        31                                                                                          
+        32                                                                                          
+        33                                                                                          
+        34                                                                                          
+        35                                                                                          
+        36                                                                                          
+        37                                                                                          
+        38                                                                                          
+        39                                                                                          
+        40                                                                                          
+        41                                                                                          
+        42                                                                                          
+        43                                                                                          
+        44                                                                                          
+        45                                                                                          
+        46                                                                                          
+        47                                                                                          
+        48                                                                                          
+        49                                                                                          
+        50                                                                                          
+        51                                                                                          
+        52                                                                                          
+        53                                                                                          
+        54                                                                                          
+        55                                                                                          
+        56                                                                                          
+        57                                                                                          
+        58                                                                                          
+        59                                                                                          
+        60                                                                                          
+        61                                                                                          
+        62                                                                                          
+        63                                                                                          
+        64                                                                                          
+        65                                                                                          
+        66                                                                                          
+        67                                                                                          
+        68                                                                                          
+        69                                                                                          
+        70                                                                                          
+        71                                                                                          
+        72                                                                                          
+        73                                                                                          
+        74                                                                                          
+        75                                                                                          
+        76                                                                                          
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        77                                                                                          
+        78                                                                                          
+        79                                                                                          
+        80                                                                                          
+        81                                                                                          
+        82                                                                                          
+        83                                                                                          
+        84                                                                                          
+        85                                                                                          
+        86                                                                                          
+        87                                                                                          
+        88                                                                                          
+        89                                                                                          
+        90                                                                                          
+        91                                                                                          
+        92                                                                                          
+        93                                                                                          
+        94                                                                                          
+        95                                                                                          
+        96                                                                                          
+        97                                                                                          
+        98                                                                                          
+        99                                                                                          
+       100                                                                                          
+         1                                                                                          
+         2                                                                                          
+         3                                                                                          
+         4                                                                                          
+         5                                                                                          
+         6                                                                                          
+         7                                                                                          
+         8                                                                                          
+         9                                                                                          
+        10                                                                                          
+        11                                                                                          
+        12                                                                                          
+        13                                                                                          
+        14                                                                                          
+        15                                                                                          
+        16                                                                                          
+        17                                                                                          
+        18                                                                                          
+        19                                                                                          
+        20                                                                                          
+        21                                                                                          
+        22                                                                                          
+        23                                                                                          
+        24                                                                                          
+        25                                                                                          
+        26                                                                                          
+        27                                                                                          
+        28                                                                                          
+        29                                                                                          
+        30                                                                                          
+        31                                                                                          
+        32                                                                                          
+        33                                                                                          
+        34                                                                                          
+        35                                                                                          
+        36                                                                                          
+        37                                                                                          
+        38                                                                                          
+        39                                                                                          
+        40                                                                                          
+        41                                                                                          
+        42                                                                                          
+        43                                                                                          
+        44                                                                                          
+        45                                                                                          
+        46                                                                                          
+        47                                                                                          
+        48                                                                                          
+        49                                                                                          
+        50                                                                                          
+        51                                                                                          
+        52                                                                                          
+        53                                                                                          
+        54                                                                                          
+        55                                                                                          
+        56                                                                                          
+        57                                                                                          
+        58                                                                                          
+        59                                                                                          
+        60                                                                                          
+        61                                                                                          
+        62                                                                                          
+        63                                                                                          
+        64                                                                                          
+        65                                                                                          
+        66                                                                                          
+        67                                                                                          
+        68                                                                                          
+        69                                                                                          
+        70                                                                                          
+        71                                                                                          
+        72                                                                                          
+        73                                                                                          
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        74                                                                                          
+        75                                                                                          
+        76                                                                                          
+        77                                                                                          
+        78                                                                                          
+        79                                                                                          
+        80                                                                                          
+        81                                                                                          
+        82                                                                                          
+        83                                                                                          
+        84                                                                                          
+        85                                                                                          
+        86                                                                                          
+        87                                                                                          
+        88                                                                                          
+        89                                                                                          
+        90                                                                                          
+        91                                                                                          
+        92                                                                                          
+        93                                                                                          
+        94                                                                                          
+        95                                                                                          
+        96                                                                                          
+        97                                                                                          
+        98                                                                                          
+        99                                                                                          
+       100                                                                                          
+
+221 rows selected.
+
+SQL>  BEGIN
+  2       UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  3       IF SQL%NOTFOUND THEN
+  4         INSERT into department_master VALUES ( 50, 'Production');
+  5       END IF;
+  6   END;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM DEPARTMENT_MASTER;
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        50 Production                                                                               
+        50 Production                                                                               
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+         1                                                                                          
+         2                                                                                          
+         3                                                                                          
+         4                                                                                          
+         5                                                                                          
+         6                                                                                          
+         7                                                                                          
+         8                                                                                          
+         9                                                                                          
+        10                                                                                          
+        11                                                                                          
+        12                                                                                          
+        13                                                                                          
+        14                                                                                          
+        15                                                                                          
+        16                                                                                          
+        17                                                                                          
+        18                                                                                          
+        19                                                                                          
+        20                                                                                          
+        21                                                                                          
+        22                                                                                          
+        23                                                                                          
+        24                                                                                          
+        25                                                                                          
+        26                                                                                          
+        27                                                                                          
+        28                                                                                          
+        29                                                                                          
+        30                                                                                          
+        31                                                                                          
+        32                                                                                          
+        33                                                                                          
+        34                                                                                          
+        35                                                                                          
+        36                                                                                          
+        37                                                                                          
+        38                                                                                          
+        39                                                                                          
+        40                                                                                          
+        41                                                                                          
+        42                                                                                          
+        43                                                                                          
+        44                                                                                          
+        45                                                                                          
+        46                                                                                          
+        47                                                                                          
+        48                                                                                          
+        49                                                                                          
+        50                                                                                          
+        51                                                                                          
+        52                                                                                          
+        53                                                                                          
+        54                                                                                          
+        55                                                                                          
+        56                                                                                          
+        57                                                                                          
+        58                                                                                          
+        59                                                                                          
+        60                                                                                          
+        61                                                                                          
+        62                                                                                          
+        63                                                                                          
+        64                                                                                          
+        65                                                                                          
+        66                                                                                          
+        67                                                                                          
+        68                                                                                          
+        69                                                                                          
+        70                                                                                          
+        71                                                                                          
+        72                                                                                          
+        73                                                                                          
+        74                                                                                          
+        75                                                                                          
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        76                                                                                          
+        77                                                                                          
+        78                                                                                          
+        79                                                                                          
+        80                                                                                          
+        81                                                                                          
+        82                                                                                          
+        83                                                                                          
+        84                                                                                          
+        85                                                                                          
+        86                                                                                          
+        87                                                                                          
+        88                                                                                          
+        89                                                                                          
+        90                                                                                          
+        91                                                                                          
+        92                                                                                          
+        93                                                                                          
+        94                                                                                          
+        95                                                                                          
+        96                                                                                          
+        97                                                                                          
+        98                                                                                          
+        99                                                                                          
+       100                                                                                          
+         1                                                                                          
+         2                                                                                          
+         3                                                                                          
+         4                                                                                          
+         5                                                                                          
+         6                                                                                          
+         7                                                                                          
+         8                                                                                          
+         9                                                                                          
+        10                                                                                          
+        11                                                                                          
+        12                                                                                          
+        13                                                                                          
+        14                                                                                          
+        15                                                                                          
+        16                                                                                          
+        17                                                                                          
+        18                                                                                          
+        19                                                                                          
+        20                                                                                          
+        21                                                                                          
+        22                                                                                          
+        23                                                                                          
+        24                                                                                          
+        25                                                                                          
+        26                                                                                          
+        27                                                                                          
+        28                                                                                          
+        29                                                                                          
+        30                                                                                          
+        31                                                                                          
+        32                                                                                          
+        33                                                                                          
+        34                                                                                          
+        35                                                                                          
+        36                                                                                          
+        37                                                                                          
+        38                                                                                          
+        39                                                                                          
+        40                                                                                          
+        41                                                                                          
+        42                                                                                          
+        43                                                                                          
+        44                                                                                          
+        45                                                                                          
+        46                                                                                          
+        47                                                                                          
+        48                                                                                          
+        49                                                                                          
+        50                                                                                          
+        51                                                                                          
+        52                                                                                          
+        53                                                                                          
+        54                                                                                          
+        55                                                                                          
+        56                                                                                          
+        57                                                                                          
+        58                                                                                          
+        59                                                                                          
+        60                                                                                          
+        61                                                                                          
+        62                                                                                          
+        63                                                                                          
+        64                                                                                          
+        65                                                                                          
+        66                                                                                          
+        67                                                                                          
+        68                                                                                          
+        69                                                                                          
+        70                                                                                          
+        71                                                                                          
+        72                                                                                          
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        73                                                                                          
+        74                                                                                          
+        75                                                                                          
+        76                                                                                          
+        77                                                                                          
+        78                                                                                          
+        79                                                                                          
+        80                                                                                          
+        81                                                                                          
+        82                                                                                          
+        83                                                                                          
+        84                                                                                          
+        85                                                                                          
+        86                                                                                          
+        87                                                                                          
+        88                                                                                          
+        89                                                                                          
+        90                                                                                          
+        91                                                                                          
+        92                                                                                          
+        93                                                                                          
+        94                                                                                          
+        95                                                                                          
+        96                                                                                          
+        97                                                                                          
+        98                                                                                          
+        99                                                                                          
+       100                                                                                          
+
+222 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM DEPARTMENT_MASTER
+SQL>  BEGIN
+  2       UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  3       IF SQL%NOTFOUND THEN
+  4         INSERT into department_master VALUES ( 50, 'Production');
+  5       END IF;
+  6   END;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1   BEGIN
+  2       	IF SQL%FOUND THEN
+  3  	UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  4       	ELSE
+  5         INSERT into department_master VALUES ( 50, 'Production');
+  6       END IF;
+  7*  END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM DEPARTMENT_MASTER;
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        50 Production                                                                               
+        50 Production                                                                               
+        50 Production                                                                               
+        50 Production                                                                               
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+        50                                                                                          
+        60                                                                                          
+        70                                                                                          
+        80                                                                                          
+        90                                                                                          
+         1                                                                                          
+         2                                                                                          
+         3                                                                                          
+         4                                                                                          
+         5                                                                                          
+         6                                                                                          
+         7                                                                                          
+         8                                                                                          
+         9                                                                                          
+        10                                                                                          
+        11                                                                                          
+        12                                                                                          
+        13                                                                                          
+        14                                                                                          
+        15                                                                                          
+        16                                                                                          
+        17                                                                                          
+        18                                                                                          
+        19                                                                                          
+        20                                                                                          
+        21                                                                                          
+        22                                                                                          
+        23                                                                                          
+        24                                                                                          
+        25                                                                                          
+        26                                                                                          
+        27                                                                                          
+        28                                                                                          
+        29                                                                                          
+        30                                                                                          
+        31                                                                                          
+        32                                                                                          
+        33                                                                                          
+        34                                                                                          
+        35                                                                                          
+        36                                                                                          
+        37                                                                                          
+        38                                                                                          
+        39                                                                                          
+        40                                                                                          
+        41                                                                                          
+        42                                                                                          
+        43                                                                                          
+        44                                                                                          
+        45                                                                                          
+        46                                                                                          
+        47                                                                                          
+        48                                                                                          
+        49                                                                                          
+        50                                                                                          
+        51                                                                                          
+        52                                                                                          
+        53                                                                                          
+        54                                                                                          
+        55                                                                                          
+        56                                                                                          
+        57                                                                                          
+        58                                                                                          
+        59                                                                                          
+        60                                                                                          
+        61                                                                                          
+        62                                                                                          
+        63                                                                                          
+        64                                                                                          
+        65                                                                                          
+        66                                                                                          
+        67                                                                                          
+        68                                                                                          
+        69                                                                                          
+        70                                                                                          
+        71                                                                                          
+        72                                                                                          
+        73                                                                                          
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        74                                                                                          
+        75                                                                                          
+        76                                                                                          
+        77                                                                                          
+        78                                                                                          
+        79                                                                                          
+        80                                                                                          
+        81                                                                                          
+        82                                                                                          
+        83                                                                                          
+        84                                                                                          
+        85                                                                                          
+        86                                                                                          
+        87                                                                                          
+        88                                                                                          
+        89                                                                                          
+        90                                                                                          
+        91                                                                                          
+        92                                                                                          
+        93                                                                                          
+        94                                                                                          
+        95                                                                                          
+        96                                                                                          
+        97                                                                                          
+        98                                                                                          
+        99                                                                                          
+       100                                                                                          
+         1                                                                                          
+         2                                                                                          
+         3                                                                                          
+         4                                                                                          
+         5                                                                                          
+         6                                                                                          
+         7                                                                                          
+         8                                                                                          
+         9                                                                                          
+        10                                                                                          
+        11                                                                                          
+        12                                                                                          
+        13                                                                                          
+        14                                                                                          
+        15                                                                                          
+        16                                                                                          
+        17                                                                                          
+        18                                                                                          
+        19                                                                                          
+        20                                                                                          
+        21                                                                                          
+        22                                                                                          
+        23                                                                                          
+        24                                                                                          
+        25                                                                                          
+        26                                                                                          
+        27                                                                                          
+        28                                                                                          
+        29                                                                                          
+        30                                                                                          
+        31                                                                                          
+        32                                                                                          
+        33                                                                                          
+        34                                                                                          
+        35                                                                                          
+        36                                                                                          
+        37                                                                                          
+        38                                                                                          
+        39                                                                                          
+        40                                                                                          
+        41                                                                                          
+        42                                                                                          
+        43                                                                                          
+        44                                                                                          
+        45                                                                                          
+        46                                                                                          
+        47                                                                                          
+        48                                                                                          
+        49                                                                                          
+        50                                                                                          
+        51                                                                                          
+        52                                                                                          
+        53                                                                                          
+        54                                                                                          
+        55                                                                                          
+        56                                                                                          
+        57                                                                                          
+        58                                                                                          
+        59                                                                                          
+        60                                                                                          
+        61                                                                                          
+        62                                                                                          
+        63                                                                                          
+        64                                                                                          
+        65                                                                                          
+        66                                                                                          
+        67                                                                                          
+        68                                                                                          
+        69                                                                                          
+        70                                                                                          
+
+    DEPTNO DNAME                                                                                    
+---------- ---------------                                                                          
+        71                                                                                          
+        72                                                                                          
+        73                                                                                          
+        74                                                                                          
+        75                                                                                          
+        76                                                                                          
+        77                                                                                          
+        78                                                                                          
+        79                                                                                          
+        80                                                                                          
+        81                                                                                          
+        82                                                                                          
+        83                                                                                          
+        84                                                                                          
+        85                                                                                          
+        86                                                                                          
+        87                                                                                          
+        88                                                                                          
+        89                                                                                          
+        90                                                                                          
+        91                                                                                          
+        92                                                                                          
+        93                                                                                          
+        94                                                                                          
+        95                                                                                          
+        96                                                                                          
+        97                                                                                          
+        98                                                                                          
+        99                                                                                          
+       100                                                                                          
+
+224 rows selected.
+
+SQL>  BEGIN
+  2             IF SQL%FOUND THEN
+  3     UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  4             ELSE
+  5         INSERT into department_master VALUES ( 50, 'Production');
+  6       END IF;
+  7   END;
+  8  /
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1*    UPDATE dept SET dname ='Production' WHERE deptno= 50
+  2  /
+
+0 rows updated.
+
+SQL> CREATE TABLE DEPT1 AS SELECT * FROM DEPT;
+
+Table created.
+
+SQL> SELECT * FROM DEPT1;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno = 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_master VALUES ( 50, 'Production');
+  5      END IF;
+  6* END; 
+SQL> /
+END; 
+    *
+ERROR at line 6:
+ORA-06550: line 6, column 5: 
+PLS-00103: Encountered the symbol " " The symbol " " was ignored. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept1 SET dname ='Production' WHERE deptno = 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into depT1 VALUES ( 50, 'Production');
+  5      END IF;
+  6* END; 
+SQL> /
+END; 
+    *
+ERROR at line 6:
+ORA-06550: line 6, column 5: 
+PLS-00103: Encountered the symbol " " The symbol " " was ignored. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept1 SET dname ='Production' WHERE deptno = 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into depT1 VALUES ( 50, 'Production');
+  5      END IF;
+  6* END;
+SQL> /
+      INSERT into depT1 VALUES ( 50, 'Production');
+                  *
+ERROR at line 4:
+ORA-06550: line 4, column 19: 
+PL/SQL: ORA-00947: not enough values 
+ORA-06550: line 4, column 7: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept1 SET dname ='Production' WHERE deptno = 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into depT1(DEPTNO,DNAME) VALUES (50, 'Production');
+  5      END IF;
+  6* END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM DEPT1;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+        50 Production                                                                               
+
+SQL>  BEGIN
+  2       UPDATE dept1 SET dname ='Production' WHERE deptno = 50;
+  3       IF SQL%NOTFOUND THEN
+  4         INSERT into depT1(DEPTNO,DNAME) VALUES (50, 'Production');
+  5       END IF;
+  6   END;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1   BEGIN
+  2       UPDATE dept1 SET dname ='Prod' WHERE deptno = 50;
+  3       IF SQL%NOTFOUND THEN
+  4         INSERT into depT1(DEPTNO,DNAME) VALUES (50, 'Production');
+  5       END IF;
+  6*  END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM DEPT1;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+        50 Prod                                                                                     
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM DEPT1
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  BEGIN
+  4  	SELECT EMPNO INTO V_EMPNO
+  5  	FROM EMP;
+  6  	DBMS_OUTPUT.PUT_LINE(V_EMPNO);
+  7* END;
+  8  /
+DECLARE
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows 
+ORA-06512: at line 4 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  	CURSOR C1 IS SELECT EMPNO FROM EMP;
+  4  BEGIN
+  5  	OPEN C1;
+  6  	LOOP
+  7  	FETCH C1 INTO V_EMPNO;
+  8  	DBMS_OUTPUT.PUT_LINE(V_EMPNO);
+  9  	EXIT WHEN C1%NOTFOUND;
+ 10  	END LOOP;
+ 11* END;
+ 12  /
+7369                                                                                                
+7499                                                                                                
+7521                                                                                                
+7566                                                                                                
+7654                                                                                                
+7698                                                                                                
+7782                                                                                                
+7788                                                                                                
+7839                                                                                                
+7844                                                                                                
+7876                                                                                                
+7900                                                                                                
+7902                                                                                                
+7934                                                                                                
+7934                                                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  	CURSOR C1 IS SELECT EMPNO FROM EMP;
+  4  BEGIN
+  5  	OPEN C1;
+  6  	LOOP
+  7  	FETCH C1 INTO V_EMPNO;
+  8  	DBMS_OUTPUT.PUT_LINE(V_EMPNO);
+  9  	EXIT WHEN C1%NOTFOUND;
+ 10  	END LOOP;
+ 11  	CLOSE C1;
+ 12* END;
+SQL> 
+SQL> /
+7369                                                                                                
+7499                                                                                                
+7521                                                                                                
+7566                                                                                                
+7654                                                                                                
+7698                                                                                                
+7782                                                                                                
+7788                                                                                                
+7839                                                                                                
+7844                                                                                                
+7876                                                                                                
+7900                                                                                                
+7902                                                                                                
+7934                                                                                                
+7934                                                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  	CURSOR C1 IS SELECT EMPNO FROM EMP;
+  4  BEGIN
+  5  	OPEN C1;
+  6  	LOOP
+  7  	FETCH C1 INTO V_EMPNO;
+  8  	DBMS_OUTPUT.PUT_LINE(V_EMPNO);
+  9  	EXIT WHEN C1%NOTFOUND;
+ 10  	END LOOP;
+ 11  	CLOSE C1;
+ 12* END;
+SQL> 
+SQL> /
+7369                                                                                                
+7499                                                                                                
+7521                                                                                                
+7566                                                                                                
+7654                                                                                                
+7698                                                                                                
+7782                                                                                                
+7788                                                                                                
+7839                                                                                                
+7844                                                                                                
+7876                                                                                                
+7900                                                                                                
+7902                                                                                                
+7934                                                                                                
+7934                                                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM CUSTOMERS;
+
+        ID NAME                        AGE ADDRESS                       SALARY                     
+---------- -------------------- ---------- ------------------------- ----------                     
+         1 Ramesh                       32 Ahmedabad                       4000                     
+         2 Khilan                       25 Delhi                           4000                     
+         3 kaushik                      23 Kota                            4000                     
+         4 Chaitali                     25 Mumbai                          8500                     
+         5 Hardik                       27 Bhopal                         10500                     
+         6 Komal                        22 MP                              6500                     
+         9 SACHIN                       22 PUNE                            2000                     
+        10 SACHIN                       22 PUNE                            2000                     
+         7 Rajnish                      25 Chennai                         4500                     
+         8 Kriti                        22 HP                              8500                     
+
+10 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE  
+  2     total_rows number(2); 
+  3  BEGIN 
+  4     UPDATE customers 
+  5     SET salary = salary + 500; 
+  6     IF sql%notfound THEN 
+  7        dbms_output.put_line('no customers selected'); 
+  8     ELSIF sql%found THEN 
+  9        total_rows := sql%rowcount;
+ 10        dbms_output.put_line( total_rows || ' customers selected '); 
+ 11     END IF;  
+ 12* END; 
+SQL> /
+Old salary: 4000                                                                                    
+New salary: 4500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 4000                                                                                    
+New salary: 4500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 4000                                                                                    
+New salary: 4500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 8500                                                                                    
+New salary: 9000                                                                                    
+Salary difference: 500                                                                              
+Old salary: 10500                                                                                   
+New salary: 11000                                                                                   
+Salary difference: 500                                                                              
+Old salary: 6500                                                                                    
+New salary: 7000                                                                                    
+Salary difference: 500                                                                              
+Old salary: 2000                                                                                    
+New salary: 2500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 2000                                                                                    
+New salary: 2500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 4500                                                                                    
+New salary: 5000                                                                                    
+Salary difference: 500                                                                              
+Old salary: 8500                                                                                    
+New salary: 9000                                                                                    
+Salary difference: 500                                                                              
+10 customers selected                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE 
+  2     c_id customers.id%type; 
+  3     c_name customerS.Name%type; 
+  4     c_addr customers.address%type; 
+  5     CURSOR c_customers is 
+  6        SELECT id, name, address FROM customers; 
+  7  BEGIN 
+  8     OPEN c_customers; 
+  9     LOOP 
+ 10     FETCH c_customers into c_id, c_name, c_addr; 
+ 11        EXIT WHEN c_customers%notfound; 
+ 12        dbms_output.put_line(c_id || ' ' || c_name || ' ' || c_addr); 
+ 13     END LOOP; 
+ 14     CLOSE c_customers; 
+ 15* END; 
+SQL> /
+1 Ramesh Ahmedabad                                                                                  
+2 Khilan Delhi                                                                                      
+3 kaushik Kota                                                                                      
+4 Chaitali Mumbai                                                                                   
+5 Hardik Bhopal                                                                                     
+6 Komal MP                                                                                          
+9 SACHIN PUNE                                                                                       
+10 SACHIN PUNE                                                                                      
+7 Rajnish Chennai                                                                                   
+8 Kriti HP                                                                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM STUDENT_MARKS;
+
+STUDENT_CODE STUDENT_YEAR   SUBJECT1   SUBJECT2   SUBJECT3                                          
+------------ ------------ ---------- ---------- ----------                                          
+        1001         2010         55         45         78                                          
+        1002         2010         66         74         88                                          
+        1003         2010         87         54         65                                          
+        1004         2010         65         64         90                                          
+        1005         2010         78         88         65                                          
+        1006         2010         65         86         54                                          
+        1007         2010         67         79         49                                          
+        1008         2010         72         55         55                                          
+        1009         2010         71         59         58                                          
+        1010         2010         68         44         92                                          
+        1011         2010         89         96         78                                          
+        1012         2010         78         56         55                                          
+        1013         2010         75         58         65                                          
+        1014         2010         73         74         65                                          
+        1015         2010         66         45         74                                          
+        1016         2010         68         78         74                                          
+        1017         2010         69         44         52                                          
+        1018         2010         65         78         56                                          
+        1019         2010         78         58         74                                          
+        1020         2010         45         55         65                                          
+        1021         2010         78         79         78                                          
+        1001         2011         68         44         92                                          
+        1002         2011         89         96         78                                          
+        1003         2011         78         56         55                                          
+        1004         2011         75         58         65                                          
+        1005         2011         73         74         65                                          
+        1006         2011         66         45         74                                          
+        1007         2011         68         78         74                                          
+        1008         2011         69         44         52                                          
+        1009         2011         65         78         56                                          
+        1010         2011         78         58         74                                          
+        1011         2011         45         55         65                                          
+        1012         2011         78         79         78                                          
+        1013         2011         66         74         88                                          
+        1014         2011         65         64         90                                          
+        1015         2011         78         88         65                                          
+        1016         2011         65         86         54                                          
+        1017         2011         67         79         49                                          
+        1018         2011         72         55         55                                          
+        1019         2011         71         59         58                                          
+        1020         2011         55         45         78                                          
+        1021         2011         87         54         65                                          
+
+42 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      v_sno   student_marks.student_code%type;
+  3      cursor c_stud_marks is
+  4      select student_code from student_marks;
+  5   BEGIN
+  6      OPEN c_stud_marks;
+  7      FETCH c_stud_marks into v_sno;
+  8      WHILE c_stud_marks%found
+  9      LOOP
+ 10            UPDATE student_marks SET subject3 =subject3 + 10  WHERE               student_code = v_sno ; 
+ 11            FETCH c_stud_marks into v_sno;
+ 12      END LOOP ;
+ 13      CLOSE c_stud_marks;
+ 14*  END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM STUDENT_MARKS;
+
+STUDENT_CODE STUDENT_YEAR   SUBJECT1   SUBJECT2   SUBJECT3                                          
+------------ ------------ ---------- ---------- ----------                                          
+        1001         2010         55         45         98                                          
+        1002         2010         66         74        108                                          
+        1003         2010         87         54         85                                          
+        1004         2010         65         64        110                                          
+        1005         2010         78         88         85                                          
+        1006         2010         65         86         74                                          
+        1007         2010         67         79         69                                          
+        1008         2010         72         55         75                                          
+        1009         2010         71         59         78                                          
+        1010         2010         68         44        112                                          
+        1011         2010         89         96         98                                          
+        1012         2010         78         56         75                                          
+        1013         2010         75         58         85                                          
+        1014         2010         73         74         85                                          
+        1015         2010         66         45         94                                          
+        1016         2010         68         78         94                                          
+        1017         2010         69         44         72                                          
+        1018         2010         65         78         76                                          
+        1019         2010         78         58         94                                          
+        1020         2010         45         55         85                                          
+        1021         2010         78         79         98                                          
+        1001         2011         68         44        112                                          
+        1002         2011         89         96         98                                          
+        1003         2011         78         56         75                                          
+        1004         2011         75         58         85                                          
+        1005         2011         73         74         85                                          
+        1006         2011         66         45         94                                          
+        1007         2011         68         78         94                                          
+        1008         2011         69         44         72                                          
+        1009         2011         65         78         76                                          
+        1010         2011         78         58         94                                          
+        1011         2011         45         55         85                                          
+        1012         2011         78         79         98                                          
+        1013         2011         66         74        108                                          
+        1014         2011         65         64        110                                          
+        1015         2011         78         88         85                                          
+        1016         2011         65         86         74                                          
+        1017         2011         67         79         69                                          
+        1018         2011         72         55         75                                          
+        1019         2011         71         59         78                                          
+        1020         2011         55         45         98                                          
+        1021         2011         87         54         85                                          
+
+42 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM STUDENT_MARKS
+SQL> 
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      v_sno   student_marks.student_code%type;
+  3      cursor c_stud_marks is
+  4      select student_code from student_marks;
+  5   BEGIN
+  6      OPEN c_stud_marks;
+  7      FETCH c_stud_marks into v_sno;
+  8      WHILE c_stud_marks%found
+  9      LOOP
+ 10            UPDATE student_marks SET subject3 =subject3 + 10  WHERE               student_code = v_sno ; 
+ 11            --FETCH c_stud_marks into v_sno;
+ 12      END LOOP ;
+ 13      CLOSE c_stud_marks;
+ 14*  END;
+SQL> /
+DECLARE
+*
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column 
+ORA-06512: at line 10 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      v_sno   student_marks.student_code%type;
+  3      cursor c_stud_marks is
+  4      select student_code from student_marks;
+  5   BEGIN
+  6      OPEN c_stud_marks;
+  7      FETCH c_stud_marks into v_sno;
+  8      WHILE c_stud_marks%found
+  9      LOOP
+ 10            UPDATE student_marks SET subject3 =subject3 + 10  WHERE               student_code = v_sno ; 
+ 11            --FETCH c_stud_marks into v_sno;
+ 12      END LOOP ;
+ 13      CLOSE c_stud_marks;
+ 14*  END;
+SQL> ALTER TABLE STUDENT_MARKS
+  2  SET SUBJECT 3 = 50;
+SET SUBJECT 3 = 50
+    *
+ERROR at line 2:
+ORA-02000: missing UNUSED keyword 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE STUDENT_MARKS
+  2* SET SUBJECT3 = 50
+SQL> /
+SET SUBJECT3 = 50
+    *
+ERROR at line 2:
+ORA-02000: missing UNUSED keyword 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  UPDATE TABLE STUDENT_MARKS
+  2* SET SUBJECT3 = 50
+SQL> /
+UPDATE TABLE STUDENT_MARKS
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  UPDATE STUDENT_MARKS
+  2* SET SUBJECT3 = 50
+SQL> /
+
+42 rows updated.
+
+SQL> SELECT * FROM STUDENT_MARKSK
+  2  ;
+SELECT * FROM STUDENT_MARKSK
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM STUDENT_MARKS
+  2  /
+
+STUDENT_CODE STUDENT_YEAR   SUBJECT1   SUBJECT2   SUBJECT3                                          
+------------ ------------ ---------- ---------- ----------                                          
+        1001         2010         55         45         50                                          
+        1002         2010         66         74         50                                          
+        1003         2010         87         54         50                                          
+        1004         2010         65         64         50                                          
+        1005         2010         78         88         50                                          
+        1006         2010         65         86         50                                          
+        1007         2010         67         79         50                                          
+        1008         2010         72         55         50                                          
+        1009         2010         71         59         50                                          
+        1010         2010         68         44         50                                          
+        1011         2010         89         96         50                                          
+        1012         2010         78         56         50                                          
+        1013         2010         75         58         50                                          
+        1014         2010         73         74         50                                          
+        1015         2010         66         45         50                                          
+        1016         2010         68         78         50                                          
+        1017         2010         69         44         50                                          
+        1018         2010         65         78         50                                          
+        1019         2010         78         58         50                                          
+        1020         2010         45         55         50                                          
+        1021         2010         78         79         50                                          
+        1001         2011         68         44         50                                          
+        1002         2011         89         96         50                                          
+        1003         2011         78         56         50                                          
+        1004         2011         75         58         50                                          
+        1005         2011         73         74         50                                          
+        1006         2011         66         45         50                                          
+        1007         2011         68         78         50                                          
+        1008         2011         69         44         50                                          
+        1009         2011         65         78         50                                          
+        1010         2011         78         58         50                                          
+        1011         2011         45         55         50                                          
+        1012         2011         78         79         50                                          
+        1013         2011         66         74         50                                          
+        1014         2011         65         64         50                                          
+        1015         2011         78         88         50                                          
+        1016         2011         65         86         50                                          
+        1017         2011         67         79         50                                          
+        1018         2011         72         55         50                                          
+        1019         2011         71         59         50                                          
+        1020         2011         55         45         50                                          
+        1021         2011         87         54         50                                          
+
+42 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      v_sno   student_marks.student_code%type;
+  3      cursor c_stud_marks is
+  4      select student_code from student_marks;
+  5   BEGIN
+  6      OPEN c_stud_marks;
+  7      FETCH c_stud_marks into v_sno;
+  8      WHILE c_stud_marks%found
+  9      LOOP
+ 10            UPDATE student_marks SET subject3 =subject3 + 10  WHERE               student_code = v_sno ; 
+ 11            --FETCH c_stud_marks into v_sno;
+ 12      END LOOP ;
+ 13      CLOSE c_stud_marks;
+ 14*  END;
+SQL> /
+DECLARE
+*
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column 
+ORA-06512: at line 10 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      v_sno   student_marks.student_code%type;
+  3      cursor c_stud_marks is
+  4      select student_code from student_marks;
+  5   BEGIN
+  6      OPEN c_stud_marks;
+  7      FETCH c_stud_marks into v_sno;
+  8      WHILE c_stud_marks%found
+  9      LOOP
+ 10            UPDATE student_marks SET subject3 =subject3 + 10  WHERE               student_code = v_sno ; 
+ 11            FETCH c_stud_marks into v_sno;
+ 12      END LOOP ;
+ 13      CLOSE c_stud_marks;
+ 14*  END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM STUDENT_MARKS;
+
+STUDENT_CODE STUDENT_YEAR   SUBJECT1   SUBJECT2   SUBJECT3                                          
+------------ ------------ ---------- ---------- ----------                                          
+        1001         2010         55         45         70                                          
+        1002         2010         66         74         70                                          
+        1003         2010         87         54         70                                          
+        1004         2010         65         64         70                                          
+        1005         2010         78         88         70                                          
+        1006         2010         65         86         70                                          
+        1007         2010         67         79         70                                          
+        1008         2010         72         55         70                                          
+        1009         2010         71         59         70                                          
+        1010         2010         68         44         70                                          
+        1011         2010         89         96         70                                          
+        1012         2010         78         56         70                                          
+        1013         2010         75         58         70                                          
+        1014         2010         73         74         70                                          
+        1015         2010         66         45         70                                          
+        1016         2010         68         78         70                                          
+        1017         2010         69         44         70                                          
+        1018         2010         65         78         70                                          
+        1019         2010         78         58         70                                          
+        1020         2010         45         55         70                                          
+        1021         2010         78         79         70                                          
+        1001         2011         68         44         70                                          
+        1002         2011         89         96         70                                          
+        1003         2011         78         56         70                                          
+        1004         2011         75         58         70                                          
+        1005         2011         73         74         70                                          
+        1006         2011         66         45         70                                          
+        1007         2011         68         78         70                                          
+        1008         2011         69         44         70                                          
+        1009         2011         65         78         70                                          
+        1010         2011         78         58         70                                          
+        1011         2011         45         55         70                                          
+        1012         2011         78         79         70                                          
+        1013         2011         66         74         70                                          
+        1014         2011         65         64         70                                          
+        1015         2011         78         88         70                                          
+        1016         2011         65         86         70                                          
+        1017         2011         67         79         70                                          
+        1018         2011         72         55         70                                          
+        1019         2011         71         59         70                                          
+        1020         2011         55         45         70                                          
+        1021         2011         87         54         70                                          
+
+42 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM STUDENT_MARKS
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2      v_sno   student_marks.student_code%type;
+  3      cursor c_stud_marks is
+  4      select student_code from student_marks;
+  5   BEGIN
+  6      OPEN c_stud_marks;
+  7     -- FETCH c_stud_marks into v_sno;
+  8      --WHILE c_stud_marks%found
+  9      LOOP
+ 10  FETCH c_stud_marks into v_sno;	
+ 11  UPDATE student_marks SET subject3 =subject3 + 10  WHERE               student_code = v_sno ; 
+ 12  	  EXIT WHEN c_stud_marks%notfound;	
+ 13      END LOOP ;
+ 14      CLOSE c_stud_marks;
+ 15*  END;
+ 16  /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM STUDENT_MARKS;
+
+STUDENT_CODE STUDENT_YEAR   SUBJECT1   SUBJECT2   SUBJECT3                                          
+------------ ------------ ---------- ---------- ----------                                          
+        1001         2010         55         45         90                                          
+        1002         2010         66         74         90                                          
+        1003         2010         87         54         90                                          
+        1004         2010         65         64         90                                          
+        1005         2010         78         88         90                                          
+        1006         2010         65         86         90                                          
+        1007         2010         67         79         90                                          
+        1008         2010         72         55         90                                          
+        1009         2010         71         59         90                                          
+        1010         2010         68         44         90                                          
+        1011         2010         89         96         90                                          
+        1012         2010         78         56         90                                          
+        1013         2010         75         58         90                                          
+        1014         2010         73         74         90                                          
+        1015         2010         66         45         90                                          
+        1016         2010         68         78         90                                          
+        1017         2010         69         44         90                                          
+        1018         2010         65         78         90                                          
+        1019         2010         78         58         90                                          
+        1020         2010         45         55         90                                          
+        1021         2010         78         79        100                                          
+        1001         2011         68         44         90                                          
+        1002         2011         89         96         90                                          
+        1003         2011         78         56         90                                          
+        1004         2011         75         58         90                                          
+        1005         2011         73         74         90                                          
+        1006         2011         66         45         90                                          
+        1007         2011         68         78         90                                          
+        1008         2011         69         44         90                                          
+        1009         2011         65         78         90                                          
+        1010         2011         78         58         90                                          
+        1011         2011         45         55         90                                          
+        1012         2011         78         79         90                                          
+        1013         2011         66         74         90                                          
+        1014         2011         65         64         90                                          
+        1015         2011         78         88         90                                          
+        1016         2011         65         86         90                                          
+        1017         2011         67         79         90                                          
+        1018         2011         72         55         90                                          
+        1019         2011         71         59         90                                          
+        1020         2011         55         45         90                                          
+        1021         2011         87         54        100                                          
+
+42 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  	DECLARE
+  2      v_sno   student_marks.student_code%type;
+  3      cursor c_stud_marks is
+  4      select student_code from student_marks;
+  5   BEGIN
+  6      OPEN c_stud_marks;
+  7      --FETCH c_stud_marks into v_sno;
+  8      WHILE c_stud_marks%found
+  9      LOOP
+ 10            UPDATE student_marks SET subject3 =subject3 + 10  WHERE               student_code = v_sno ; 
+ 11            FETCH c_stud_marks into v_sno;
+ 12      END LOOP ;
+ 13      CLOSE c_stud_marks;
+ 14*  END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM STUDENT_MARKS;
+
+STUDENT_CODE STUDENT_YEAR   SUBJECT1   SUBJECT2   SUBJECT3                                          
+------------ ------------ ---------- ---------- ----------                                          
+        1001         2010         55         45         90                                          

@@ -1,0 +1,1993 @@
+SQL> SET SERVEROUTPUT ON;
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	v_hiredate	DATE;		
+  3  	v_deptno	NUMBER(2) NOT NULL := 10;
+  4  	v_location	VARCHAR2(13) := 'Atlanta';
+  5  	c_comm	CONSTANT NUMBER := 1400; 
+  6  BEGIN
+  7  DBMS_OUTPUT.PUT_LINE(V_DEPTNO);
+  8  DBMS_OUTPUT.PUT_LINE(V_LOCATION);
+  9  DBMS_OUTPUT.PUT_LINE(C_COMM);
+ 10* END;
+ 11  /
+10                                                                                                  
+Atlanta                                                                                             
+1400                                                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  	V_ENAME EMP.ENAME%TYPE;
+  4  BEGIN
+  5  	SELECT EMPNO,ENAME
+  6          INTO V_EMPNO,V_ENAME
+  7          FROM EMP
+  8  	WHERE EMPNO = 7902;
+  9  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NUMBER IS :' || V_EMPNO);
+ 10* 	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NAME IS :' || V_ENAME);
+ 11  /
+	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NAME IS :' || V_ENAME);
+	                                                     *
+ERROR at line 10:
+ORA-06550: line 10, column 55: 
+PLS-00103: Encountered the symbol "end-of-file" when expecting one of the following: 
+( begin case declare end exception exit for goto if loop mod 
+null pragma raise return select update while with 
+<an identifier> <a double-quoted delimited-identifier> 
+<a bind variable> << continue close current delete fetch lock 
+insert open rollback savepoint set sql execute commit forall 
+merge pipe purge 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  	V_ENAME EMP.ENAME%TYPE;
+  4  BEGIN
+  5  	SELECT EMPNO,ENAME
+  6          INTO V_EMPNO,V_ENAME
+  7          FROM EMP
+  8  	WHERE EMPNO = 7902;
+  9  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NUMBER IS :' || V_EMPNO);
+ 10  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NAME IS :' || V_ENAME);
+ 11* END;
+SQL> /
+EMPLOYEE NUMBER IS :7902                                                                            
+EMPLOYEE NAME IS :FORD                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  	V_ENAME EMP.ENAME%TYPE;
+  4  BEGIN
+  5  	SELECT EMPNO,ENAME
+  6          INTO V_EMPNO,V_ENAME
+  7          FROM EMP
+  8  	--WHERE EMPNO = 7902;
+  9  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NUMBER IS :' || V_EMPNO);
+ 10  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NAME IS :' || V_ENAME);
+ 11* END;
+SQL> /
+	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NUMBER IS :' || V_EMPNO);
+	           *
+ERROR at line 9:
+ORA-06550: line 9, column 13: 
+PL/SQL: ORA-00933: SQL command not properly ended 
+ORA-06550: line 5, column 2: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  	V_ENAME EMP.ENAME%TYPE;
+  4  BEGIN
+  5  	SELECT EMPNO,ENAME
+  6          INTO V_EMPNO,V_ENAME
+  7          FROM EMP;
+  8  	--WHERE EMPNO = 7902;
+  9  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NUMBER IS :' || V_EMPNO);
+ 10  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NAME IS :' || V_ENAME);
+ 11* END;
+SQL> /
+DECLARE
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows 
+ORA-06512: at line 5 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_EMPNO EMP.EMPNO%TYPE;
+  3  	V_ENAME EMP.ENAME%TYPE;
+  4  BEGIN
+  5  	SELECT EMPNO,ENAME
+  6          INTO V_EMPNO,V_ENAME
+  7          FROM EMP
+  8  	WHERE EMPNO = &EMPNO;
+  9  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NUMBER IS :' || V_EMPNO);
+ 10  	DBMS_OUTPUT.PUT_LINE('EMPLOYEE NAME IS :' || V_ENAME);
+ 11* END;
+SQL> /
+Enter value for empno: 7900
+old   8: 	WHERE EMPNO = &EMPNO;
+new   8: 	WHERE EMPNO = 7900;
+EMPLOYEE NUMBER IS :7900                                                                            
+EMPLOYEE NAME IS :JAMES                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for empno: 7934
+old   8: 	WHERE EMPNO = &EMPNO;
+new   8: 	WHERE EMPNO = 7934;
+EMPLOYEE NUMBER IS :7934                                                                            
+EMPLOYEE NAME IS :MILLER                                                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for empno: 7698
+old   8: 	WHERE EMPNO = &EMPNO;
+new   8: 	WHERE EMPNO = 7698;
+EMPLOYEE NUMBER IS :7698                                                                            
+EMPLOYEE NAME IS :BLAKE                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	TYPE recname is RECORD
+  3  	(customer_id number,
+  4  	 customer_name varchar2(20));
+  5  	var_rec    recname;
+  6  BEGIN
+  7  	var_rec.customer_id:=20;
+  8  	var_rec.customer_name:=‘Smith';
+  9  	dbms_output.put_line(var_rec.customer_id||'  '||var_rec.customer_name);
+ 10* END;
+SQL> /
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	TYPE recname is RECORD
+  3  	(customer_id number,
+  4  	 customer_name varchar2(20));
+  5  	var_rec    recname;
+  6  BEGIN
+  7  	var_rec.customer_id:=20;
+  8  	var_rec.customer_name:='Smith';
+  9  	dbms_output.put_line(var_rec.customer_id||'  '||var_rec.customer_name);
+ 10* END;
+SQL> /
+20  Smith                                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	TYPE recname is RECORD
+  3  	(customer_id number,
+  4  	 customer_name varchar2(20));
+  5  	var_rec    recname;
+  6  BEGIN
+  7  	var_rec.customer_id:=20;
+  8  	var_rec.customer_name:='Smith';
+  9  	dbms_output.put_line(var_rec.customer_id||'  '||var_rec.customer_name);
+ 10* END;
+SQL> ed
+Wrote file afiedt.buf
+
+  1  <<outer>>
+  2  DECLARE
+  3  V_OUTER VARCHAR2(5) := 'OUT';
+  4  BEGIN
+  5  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' ||V_OUTER);
+  6  	<<INNER>>
+  7  	DECLARE
+  8  	V_INNER VARCHAR2(5) := 'IN';
+  9  	BEGIN
+ 10  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK' ||        V_INNER);
+ 11  	END;
+ 12  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' ||V_OUTER);
+ 13* END;
+ 14  /
+OUTER BLOCKOUT                                                                                      
+INNER BLOCKIN                                                                                       
+OUTER BLOCKOUT                                                                                      
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<outer>>
+  2  DECLARE
+  3  V_OUTER VARCHAR2(5) := 'OUT';
+  4  BEGIN
+  5  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' ||V_OUTER);
+  6  	<<INNER>>
+  7  	DECLARE
+  8  	V_INNER VARCHAR2(5) := 'IN';
+  9  	BEGIN
+ 10  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK' ||           V_INNER);
+ 11  	END;
+ 12  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' ||V_OUTER);
+ 13  DBMS_OUTPUT.PUT_LINE('INNER BLOCK' ||           V_INNER);
+ 14* END;
+SQL> /
+DBMS_OUTPUT.PUT_LINE('INNER BLOCK' ||           V_INNER);
+                                                *
+ERROR at line 13:
+ORA-06550: line 13, column 49: 
+PLS-00201: identifier 'V_INNER' must be declared 
+ORA-06550: line 13, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<outer>>
+  2  DECLARE
+  3  V_SCOPE VARCHAR2(5) := 'OUT';
+  4  BEGIN
+  5  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' ||V_SCOPE);
+  6  	<<INNER>>
+  7  	DECLARE
+  8  	V_SCOPE VARCHAR2(5) := 'IN';
+  9  	BEGIN
+ 10  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK' ||           V_SCOPE);
+ 11  	END;
+ 12  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' ||V_SCOPE);
+ 13  DBMS_OUTPUT.PUT_LINE('INNER BLOCK' ||           V_SCOPE);
+ 14* END;
+SQL> /
+OUTER BLOCKOUT                                                                                      
+INNER BLOCKIN                                                                                       
+OUTER BLOCKOUT                                                                                      
+INNER BLOCKOUT                                                                                      
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  <<outer>>
+  2  DECLARE
+  3  V_SCOPE VARCHAR2(5) := 'OUT';
+  4  BEGIN
+  5  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' ||V_SCOPE);
+  6  	<<INNER>>
+  7  	DECLARE
+  8  	V_SCOPE VARCHAR2(5) := 'IN';
+  9  	BEGIN
+ 10  	DBMS_OUTPUT.PUT_LINE('INNER BLOCK' ||           V_SCOPE);
+ 11  	END;
+ 12  DBMS_OUTPUT.PUT_LINE('OUTER BLOCK' ||V_SCOPE);
+ 13  DBMS_OUTPUT.PUT_LINE('INNER BLOCK' ||           V_SCOPE);
+ 14* END;
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_MARKS NUMBER(5);
+  3  BEGIN
+  4  	IF V_MARKS >= 75 THEN
+  5  	DBMS_OUTPUT.PUT_LINE ('DISTINCTION');
+  6  	ELSIF V_MARKS >=60 AND V_MARKS < 75 THEN
+  7  	DBMS_OUTPUT.PUT_LINE ('FIRST CLASS');
+  8  	ELSIF V_MARKS >=50 AND V_MARKS < 60 THEN
+  9  	DBMS_OUTPUT.PUT_LINE ('SECOND CLASS');
+ 10  	ELSE
+ 11  	DBMS_OUTPUT.PUT_LINE ('FAIL');
+ 12  END IF;
+ 13* END;
+ 14  /
+FAIL                                                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_MARKS NUMBER(5):=&M1;
+  3  BEGIN
+  4  	IF V_MARKS >= 75 THEN
+  5  	DBMS_OUTPUT.PUT_LINE ('DISTINCTION');
+  6  	ELSIF V_MARKS >=60 AND V_MARKS < 75 THEN
+  7  	DBMS_OUTPUT.PUT_LINE ('FIRST CLASS');
+  8  	ELSIF V_MARKS >=50 AND V_MARKS < 60 THEN
+  9  	DBMS_OUTPUT.PUT_LINE ('SECOND CLASS');
+ 10  	ELSE
+ 11  	DBMS_OUTPUT.PUT_LINE ('FAIL');
+ 12  END IF;
+ 13* END;
+SQL> /
+Enter value for m1: 80
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=80;
+DISTINCTION                                                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for m1: 65
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=65;
+FIRST CLASS                                                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for m1: 55
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=55;
+SECOND CLASS                                                                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for m1: 43
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=43;
+FAIL                                                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_MARKS NUMBER(5):=&M1;
+  3  BEGIN
+  4  	LOOP
+  5  	DBMS_OUTPUT.PUT_LINE(V_MARKS);
+  6          V_MARKS = V_MARKS - 1;
+  7  	EXIT WHEN V_MARKS <1;
+  8   	END LOOP;
+  9* END;
+ 10  /
+Enter value for m1: 10
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=10;
+        V_MARKS = V_MARKS - 1;
+                *
+ERROR at line 6:
+ORA-06550: line 6, column 17: 
+PLS-00103: Encountered the symbol "=" when expecting one of the following: 
+:= . ( @ % ; 
+The symbol ":= was inserted before "=" to continue. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_MARKS NUMBER(5):=&M1;
+  3  BEGIN
+  4  	LOOP
+  5  	DBMS_OUTPUT.PUT_LINE(V_MARKS);
+  6          V_MARKS := V_MARKS - 1;
+  7  	EXIT WHEN V_MARKS <1;
+  8   	END LOOP;
+  9* END;
+SQL> /
+Enter value for m1: 10
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=10;
+10                                                                                                  
+9                                                                                                   
+8                                                                                                   
+7                                                                                                   
+6                                                                                                   
+5                                                                                                   
+4                                                                                                   
+3                                                                                                   
+2                                                                                                   
+1                                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_MARKS NUMBER(5):=&M1;
+  3  BEGIN
+  4  	LOOP
+  5  	DBMS_OUTPUT.PUT_LINE(V_MARKS);
+  6          V_MARKS := V_MARKS - 1;
+  7  	EXIT WHEN V_MARKS <1;
+  8   	END LOOP;
+  9* END;
+SQL> 
+SQL> /
+Enter value for m1: 20
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=20;
+20                                                                                                  
+19                                                                                                  
+18                                                                                                  
+17                                                                                                  
+16                                                                                                  
+15                                                                                                  
+14                                                                                                  
+13                                                                                                  
+12                                                                                                  
+11                                                                                                  
+10                                                                                                  
+9                                                                                                   
+8                                                                                                   
+7                                                                                                   
+6                                                                                                   
+5                                                                                                   
+4                                                                                                   
+3                                                                                                   
+2                                                                                                   
+1                                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_MARKS NUMBER(5):=&M1;
+  3  BEGIN
+  4  	LOOP
+  5  	DBMS_OUTPUT.PUT_LINE(V_MARKS);
+  6          V_MARKS := V_MARKS - 1;
+  7  	EXIT WHEN V_MARKS <0;
+  8   	END LOOP;
+  9* END;
+SQL> /
+Enter value for m1: 5
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=5;
+5                                                                                                   
+4                                                                                                   
+3                                                                                                   
+2                                                                                                   
+1                                                                                                   
+0                                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	V_MARKS NUMBER(5):=&M1;
+  3  BEGIN
+  4  	FOR I IN 1 .. 10
+  5  	LOOP
+  6  	DBMS_OUTPUT.PUT_LINE('*');
+  7  	END;
+  8* END;
+  9  /
+Enter value for m1: 5
+old   2: 	V_MARKS NUMBER(5):=&M1;
+new   2: 	V_MARKS NUMBER(5):=5;
+	END;
+	   *
+ERROR at line 7:
+ORA-06550: line 7, column 5: 
+PLS-00103: Encountered the symbol ";" when expecting one of the following: 
+loop 
+The symbol "loop" was substituted for ";" to continue. 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	--V_MARKS NUMBER(5):=&M1;
+  3  BEGIN
+  4  	FOR I IN 1 .. 10
+  5  	LOOP
+  6  	DBMS_OUTPUT.PUT_LINE('*');	
+  7  	END LOOPL
+  8* END;
+  9  /
+Enter value for m1: ED
+old   2: 	--V_MARKS NUMBER(5):=&M1;
+new   2: 	--V_MARKS NUMBER(5):=ED;
+	END LOOPL
+	    *
+ERROR at line 7:
+ORA-06550: line 7, column 6: 
+PLS-00103: Encountered the symbol "LOOPL" when expecting one of the following: 
+loop 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  BEGIN
+  3  	FOR I IN 1 .. 10
+  4  	LOOP
+  5  	DBMS_OUTPUT.PUT_LINE('*');	
+  6  	END LOOP
+  7* END
+  8  /
+END
+*
+ERROR at line 7:
+ORA-06550: line 7, column 1: 
+PLS-00103: Encountered the symbol "END" when expecting one of the following: 
+; <an identifier> <a double-quoted delimited-identifier> 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  BEGIN
+  3  	FOR I IN 1 .. 10
+  4  	LOOP
+  5  	DBMS_OUTPUT.PUT_LINE('*');	
+  6  	END LOOP;
+  7* END;
+SQL> /
+*                                                                                                   
+*                                                                                                   
+*                                                                                                   
+*                                                                                                   
+*                                                                                                   
+*                                                                                                   
+*                                                                                                   
+*                                                                                                   
+*                                                                                                   
+*                                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  BEGIN
+  3  	FOR I IN 1 .. 10
+  4  	LOOP
+  5  	DBMS_OUTPUT.PUT_LINE('*');	
+  6  	END LOOP;
+  7* END;
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  BEGIN
+  3  	FOR I IN 1 .. 10
+  4  	LOOP
+  5  	DBMS_OUTPUT.PUT_LINE('*');	
+  6  	END LOOP;
+  7* END;
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	v_staffno   staff_masters.staff_code%type;
+  3  	v_name     staff_masters.staff_name%type;
+  4        BEGIN
+  5  	SELECT staff_name into v_name FROM staff_masters
+  6  	WHERE staff_code=&v_staffno;
+  7  	dbms_output.put_line(v_name);
+  8        EXCEPTION 
+  9  	WHEN  NO_DATA_FOUND THEN
+ 10  	dbms_output.put_line('Not Found');
+ 11*        END;
+SQL> /
+Enter value for v_staffno: 100
+old   6: 	WHERE staff_code=&v_staffno;
+new   6: 	WHERE staff_code=100;
+Not Found                                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	v_staffno   staff_masters.staff_code%type;
+  3  	v_name     staff_masters.staff_name%type;
+  4        BEGIN
+  5  	SELECT staff_name into v_name FROM staff_masters
+  6  	WHERE staff_code=&v_staffno;
+  7  	dbms_output.put_line(v_name);
+  8        EXCEPTION 
+  9  	WHEN  NO_DATA_FOUND THEN
+ 10  	dbms_output.put_line('Not Found');
+ 11*        END;
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE 
+  2     c_id customers.id%type := 8; 
+  3     c_name  customerS.No.ame%type; 
+  4     c_addr customers.address%type; 
+  5  BEGIN 
+  6     SELECT  name, address INTO  c_name, c_addr 
+  7     FROM customers 
+  8     WHERE id = c_id;  
+  9     DBMS_OUTPUT.PUT_LINE ('Name: '||  c_name); 
+ 10     DBMS_OUTPUT.PUT_LINE ('Address: ' || c_addr); 
+ 11  EXCEPTION 
+ 12     WHEN no_data_found THEN 
+ 13        dbms_output.put_line('No such customer!'); 
+ 14     WHEN others THEN 
+ 15        dbms_output.put_line('Error!'); 
+ 16* END; 
+ 17  /
+   c_name  customerS.No.ame%type; 
+                     *
+ERROR at line 3:
+ORA-06550: line 3, column 22: 
+PLS-00302: component 'NO' must be declared 
+ORA-06550: line 3, column 12: 
+PL/SQL: Item ignored 
+ORA-06550: line 6, column 32: 
+PLS-00320: the declaration of the type of this expression is incomplete or malformed 
+ORA-06550: line 7, column 4: 
+PL/SQL: ORA-00904: : invalid identifier 
+ORA-06550: line 6, column 4: 
+PL/SQL: SQL Statement ignored 
+ORA-06550: line 9, column 38: 
+PLS-00320: the declaration of the type of this expression is incomplete or malformed 
+ORA-06550: line 9, column 4: 
+PL/SQL: Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE 
+  2     c_id customers.id%type := 8; 
+  3     c_name  customers.Name%type; 
+  4     c_addr customers.address%type; 
+  5  BEGIN 
+  6     SELECT  name, address INTO  c_name, c_addr 
+  7     FROM customers 
+  8     WHERE id = c_id;  
+  9     DBMS_OUTPUT.PUT_LINE ('Name: '||  c_name); 
+ 10     DBMS_OUTPUT.PUT_LINE ('Address: ' || c_addr); 
+ 11  EXCEPTION 
+ 12     WHEN no_data_found THEN 
+ 13        dbms_output.put_line('No such customer!'); 
+ 14     WHEN others THEN 
+ 15        dbms_output.put_line('Error!'); 
+ 16* END; 
+SQL> /
+Name: Kriti                                                                                         
+Address: HP                                                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE 
+  2     --c_id customers.id%type := 8; 
+  3     c_name  customers.Name%type; 
+  4     c_addr customers.address%type; 
+  5  BEGIN 
+  6     SELECT  name, address INTO  c_name, c_addr 
+  7     FROM customers 
+  8     WHERE id = &c_id;  
+  9     DBMS_OUTPUT.PUT_LINE ('Name: '||  c_name); 
+ 10     DBMS_OUTPUT.PUT_LINE ('Address: ' || c_addr); 
+ 11  EXCEPTION 
+ 12     WHEN no_data_found THEN 
+ 13        dbms_output.put_line('No such customer!'); 
+ 14     WHEN others THEN 
+ 15        dbms_output.put_line('Error!'); 
+ 16* END; 
+SQL> /
+Enter value for c_id: 100
+old   8:    WHERE id = &c_id;  
+new   8:    WHERE id = 100;  
+No such customer!                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for c_id: a
+old   8:    WHERE id = &c_id;  
+new   8:    WHERE id = a;  
+   WHERE id = a;  
+              *
+ERROR at line 8:
+ORA-06550: line 8, column 15: 
+PL/SQL: ORA-00904: "A": invalid identifier 
+ORA-06550: line 6, column 4: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> /
+Enter value for c_id: -8
+old   8:    WHERE id = &c_id;  
+new   8:    WHERE id = -8;  
+No such customer!                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2         v_dummy varchar2(1);
+  3         v_designation number(3) := 109;
+  4       BEGIN
+  5             SELECT 'x' into v_dummy FROM designation_master 
+  6             WHERE design_code= v_designation;
+  7              INSERT into error_log 
+  8             VALUES (‘Designation: ' || v_designation || 'already exists');
+  9     EXCEPTION
+ 10           WHEN no_data_found THEN
+ 11                 insert into designation_master  values (v_designation,’newdesig’);
+ 12            WHEN OTHERS THEN
+ 13                  Err_Num := SQLCODE;
+ 14                  Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 15                   INSERT into errors  VALUES( err_num, err_msg );
+ 16* END ;
+SQL> /
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2         v_dummy varchar2(1);
+  3         v_designation number(3) := 109;
+  4       BEGIN
+  5             SELECT 'x' into v_dummy FROM designation_master 
+  6             WHERE design_code= v_designation;
+  7              INSERT into error_log 
+  8             VALUES ('Designation: ' || v_designation || 'already exists');
+  9     EXCEPTION
+ 10           WHEN no_data_found THEN
+ 11                 insert into designation_master  values (v_designation,'newdesig');
+ 12            WHEN OTHERS THEN
+ 13                  Err_Num := SQLCODE;
+ 14                  Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 15                   INSERT into errors  VALUES( err_num, err_msg );
+ 16* END ;
+SQL> /
+           SELECT 'x' into v_dummy FROM designation_master 
+                                        *
+ERROR at line 5:
+ORA-06550: line 5, column 41: 
+PL/SQL: ORA-00942: table or view does not exist 
+ORA-06550: line 5, column 12: 
+PL/SQL: SQL Statement ignored 
+ORA-06550: line 11, column 28: 
+PL/SQL: ORA-00942: table or view does not exist 
+ORA-06550: line 11, column 16: 
+PL/SQL: SQL Statement ignored 
+ORA-06550: line 13, column 17: 
+PLS-00201: identifier 'ERR_NUM' must be declared 
+ORA-06550: line 13, column 17: 
+PL/SQL: Statement ignored 
+ORA-06550: line 14, column 17: 
+PLS-00201: identifier 'ERR_MSG' must be declared 
+ORA-06550: line 14, column 17: 
+PL/SQL: Statement ignored 
+ORA-06550: line 15, column 55: 
+PL/SQL: ORA-00984: column not allowed here 
+ORA-06550: line 15, column 18: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2         v_dummy varchar2(1);
+  3         v_designation number(3) := 109;
+  4       BEGIN
+  5             SELECT 'x' into v_dummy FROM designation_masters 
+  6             WHERE design_code= v_designation;
+  7              INSERT into error_log 
+  8             VALUES ('Designation: ' || v_designation || 'already exists');
+  9     EXCEPTION
+ 10           WHEN no_data_found THEN
+ 11                 insert into designation_masters  values (v_designation,'newdesig');
+ 12            WHEN OTHERS THEN
+ 13                  Err_Num := SQLCODE;
+ 14                  Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 15                   INSERT into errors  VALUES( err_num, err_msg );
+ 16* END ;
+SQL> /
+                Err_Num := SQLCODE;
+                *
+ERROR at line 13:
+ORA-06550: line 13, column 17: 
+PLS-00201: identifier 'ERR_NUM' must be declared 
+ORA-06550: line 13, column 17: 
+PL/SQL: Statement ignored 
+ORA-06550: line 14, column 17: 
+PLS-00201: identifier 'ERR_MSG' must be declared 
+ORA-06550: line 14, column 17: 
+PL/SQL: Statement ignored 
+ORA-06550: line 15, column 55: 
+PL/SQL: ORA-00984: column not allowed here 
+ORA-06550: line 15, column 18: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2         v_dummy varchar2(1);
+  3         v_designation number(3) := 109;E
+  4  	Err_Num varchar2(10);
+  5  	Err_Msg varchar2(100);	
+  6       BEGIN
+  7             SELECT 'x' into v_dummy FROM designation_masters 
+  8             WHERE design_code= v_designation;
+  9              INSERT into error_log 
+ 10             VALUES ('Designation: ' || v_designation || 'already exists');
+ 11     EXCEPTION
+ 12           WHEN no_data_found THEN
+ 13                 insert into designation_masters  values (v_designation,'newdesig');
+ 14            WHEN OTHERS THEN
+ 15                  Err_Num := SQLCODE;
+ 16                  Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 17                   INSERT into errors  VALUES( err_num, err_msg );
+ 18* END ;
+SQL> /
+	Err_Num varchar2(10);
+	        *
+ERROR at line 4:
+ORA-06550: line 4, column 10: 
+PLS-00103: Encountered the symbol "VARCHAR2" when expecting one of the following: 
+:= . ( @ % ; not null range default character 
+The symbol ":=" was substituted for "VARCHAR2" to continue. 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2         v_dummy varchar2(1);
+  3         v_designation number(3) := 109;
+  4  	Err_Num varchar2(10);
+  5  	Err_Msg varchar2(100);	
+  6       BEGIN
+  7             SELECT 'x' into v_dummy FROM designation_masters 
+  8             WHERE design_code= v_designation;
+  9              INSERT into error_log 
+ 10             VALUES ('Designation: ' || v_designation || 'already exists');
+ 11     EXCEPTION
+ 12           WHEN no_data_found THEN
+ 13                 insert into designation_masters  values (v_designation,'newdesig');
+ 14            WHEN OTHERS THEN
+ 15                  Err_Num := SQLCODE;
+ 16                  Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 17                   INSERT into errors  VALUES( err_num, err_msg );
+ 18* END ;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM ERRORS;
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM ERRORS
+SQL> DECLARE
+  2         v_dummy varchar2(1);
+  3         v_designation number(3) := 109;
+  4     Err_Num varchar2(10);
+  5     Err_Msg varchar2(100);
+  6       BEGIN
+  7             SELECT 'x' into v_dummy FROM designation_masters
+  8             WHERE design_code= v_designation;
+  9              INSERT into error_log
+ 10             VALUES ('Designation: ' || v_designation || 'already exists');
+ 11     EXCEPTION
+ 12           WHEN no_data_found THEN
+ 13                 insert into designation_masters  values (v_designation,'newdesig');
+ 14            WHEN OTHERS THEN
+ 15                  Err_Num := SQLCODE;
+ 16                  Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 17                   INSERT into errors  VALUES( err_num, err_msg );
+ 18  END ;
+ 19  /
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2         v_dummy varchar2(1);
+  3         v_designation number(3) := 109;
+  4     Err_Num varchar2(10);
+  5     Err_Msg varchar2(100);
+  6       BEGIN
+  7             SELECT 'x' into v_dummy FROM designation_masters
+  8             WHERE design_code= v_designation;
+  9              INSERT into error_log
+ 10             VALUES ('Designation: ' || v_designation || 'already exists');
+ 11     EXCEPTION
+ 12           WHEN no_data_found THEN
+ 13                 insert into designation_masters  values (v_designation,'newdesig');
+ 14            WHEN OTHERS THEN
+ 15                  Err_Num := SQLCODE;
+ 16                  Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 17                   INSERT into errors  VALUES( Err_Num, Err_Msg );
+ 18  dbms_output.put_line(Err_Num || Err_Msg);
+ 19* END ;
+ 20  /
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM ERROR_LOG;
+
+ERROR_MSG                                                                                           
+----------------------------------------------------------------------------------------------------
+Designation: 109already exists                                                                      
+Designation: 109already exists                                                                      
+Designation: 109already exists                                                                      
+Designation: 109already exists                                                                      
+Dept: 50 already exists                                                                             
+Designation: 109already exists                                                                      
+Designation: 109already exists                                                                      
+Dept: 50 already exists                                                                             
+Designation: 109already exists                                                                      
+
+9 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM ERROR_LOG
+SQL>  DECLARE
+  2          v_dummy varchar2(1);
+  3          v_designation number(3) := 109;
+  4      Err_Num varchar2(10);
+  5      Err_Msg varchar2(100);
+  6        BEGIN
+  7              SELECT 'x' into v_dummy FROM designation_masters
+  8              WHERE design_code= v_designation;
+  9               INSERT into error_log
+ 10              VALUES ('Designation: ' || v_designation || 'already exists');
+ 11      EXCEPTION
+ 12            WHEN no_data_found THEN
+ 13                  insert into designation_masters  values (v_designation,'newdesig');
+ 14             WHEN OTHERS THEN
+ 15                   Err_Num := SQLCODE;
+ 16                   Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 17                    INSERT into errors  VALUES( Err_Num, Err_Msg );
+ 18   dbms_output.put_line(Err_Num || Err_Msg);
+ 19   END ;
+ 20  /
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1   DECLARE
+  2          v_dummy varchar2(1);
+  3          v_designation number(3) := 109;
+  4      Err_Num varchar2(10);
+  5      Err_Msg varchar2(100);
+  6        BEGIN
+  7              SELECT 'x' into v_dummy FROM designation_masters
+  8              WHERE design_code= v_designation;
+  9               INSERT into error_log
+ 10              VALUES ('Designation: ' || v_designation || 'already exists');
+ 11      EXCEPTION
+ 12            WHEN no_data_found THEN
+ 13                  insert into designation_masters  values (v_designation,'newdesig');
+ 14             WHEN OTHERS THEN
+ 15                   Err_Num := SQLCODE;
+ 16                   Err_Msg :=SUBSTR( SQLERRM, 1, 100);
+ 17                    INSERT into errors  VALUES( Err_Num, Err_Msg );
+ 18   dbms_output.put_line(Err_Num || Err_Msg);
+ 19*  END ;
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+         4 TRAINING                                                                                 
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+         5 SACHIN                                                                                   
+      1000            TRAINER                                                      10               
+      5000                                                                                          
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+17 rows selected.
+
+SQL> SELECT E.ENAME
+  2  D.DNAME
+  3  FROM EMP E
+  4  ,DEPT D
+  5  WHERE COUNT(EMPNO) = SELECT MAX(COUNT) FROM EMP
+  6                       GROUP BY DEPTNO;
+D.DNAME
+ *
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT COUNT(EMPNO) FROM EMP
+  2                       GROUP BY DEPTNO
+  3* 		ORDER BY COUNT(EMPNO)	
+SQL> /
+
+COUNT(EMPNO)                                                                                        
+------------                                                                                        
+           2                                                                                        
+           4                                                                                        
+           5                                                                                        
+           6                                                                                        
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT COUNT(EMPNO) FROM EMP
+  2                       GROUP BY DEPTNO
+  3* 		ORDER BY COUNT(EMPNO) DESC	
+SQL> /
+
+COUNT(EMPNO)                                                                                        
+------------                                                                                        
+           6                                                                                        
+           5                                                                                        
+           4                                                                                        
+           2                                                                                        
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT MAX(COUNT(EMPNO)) FROM EMP
+  2*                      GROUP BY DEPTNO
+  3  ED
+  4  ;
+ED
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT COUNT(EMPNO) FROM EMP
+  2                       GROUP BY DEPTNO
+  3* 		ORDER BY COUNT(EMPNO)	
+SQL> /
+
+COUNT(EMPNO)                                                                                        
+------------                                                                                        
+           2                                                                                        
+           4                                                                                        
+           5                                                                                        
+           6                                                                                        
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT MAX(COUNT(EMPNO)) FROM EMP
+  2*                      GROUP BY DEPTNO
+  3  /
+
+MAX(COUNT(EMPNO))                                                                                   
+-----------------                                                                                   
+                6                                                                                   
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME
+  2  ,D.DNAME
+  3  ,MAX(COUNT(EMPNO)) 
+  4  FROM EMP E
+  5  ,DEPT D
+  6  GROUP BY D.DEPTNO
+  7  ,E.ENAME
+  8* ,D.DNAME
+  9  /
+SELECT E.ENAME
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT 
+  2  ,D.DNAME
+  3  ,MAX(COUNT(EMPNO)) 
+  4  FROM EMP E
+  5  ,DEPT D
+  6  GROUP BY D.DEPTNO
+  7  ,E.ENAME
+  8* ,D.DNAME
+SQL> /
+,D.DNAME
+*
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT 
+  2  D.DNAME
+  3  ,MAX(COUNT(EMPNO)) 
+  4  FROM EMP E
+  5  ,DEPT D
+  6  GROUP BY D.DEPTNO
+  7  ,E.ENAME
+  8* ,D.DNAME
+SQL> /
+D.DNAME
+*
+ERROR at line 2:
+ORA-00937: not a single-group group function 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT 
+  2  MAX(COUNT(EMPNO)) 
+  3  FROM EMP E
+  4  ,DEPT D
+  5* GROUP BY D.DEPTNO
+  6  /
+
+MAX(COUNT(EMPNO))                                                                                   
+-----------------                                                                                   
+               17                                                                                   
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT 
+  2  MAX(COUNT(EMPNO)) 
+  3  FROM EMP E
+  4  ,DEPT D
+  5* GROUP BY E.DEPTNO
+SQL> /
+
+MAX(COUNT(EMPNO))                                                                                   
+-----------------                                                                                   
+               30                                                                                   
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT 
+  2  MAX(COUNT(EMPNO)) 
+  3  FROM EMP E
+  4  ,DEPT D
+  5  WHERE E.DEPTNO = D.DEPTNO
+  6* GROUP BY E.DEPTNO
+SQL> /
+
+MAX(COUNT(EMPNO))                                                                                   
+-----------------                                                                                   
+                6                                                                                   
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.ENAME
+  2  ,D.DNAME
+  3  ,MAX(COUNT(EMPNO)) 
+  4  FROM EMP E
+  5  ,DEPT D
+  6  WHERE E.DEPTNO = D.DEPTNO
+  7* GROUP BY E.DEPTNO
+SQL> /
+SELECT E.ENAME
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT 
+  2  D.DNAME
+  3  ,MAX(COUNT(EMPNO)) 
+  4  FROM EMP E
+  5  ,DEPT D
+  6  WHERE E.DEPTNO = D.DEPTNO
+  7* GROUP BY E.DEPTNO
+SQL> /
+D.DNAME
+*
+ERROR at line 2:
+ORA-00937: not a single-group group function 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.NAME
+  2  ,D.DNAME
+  3  FROM EMP E
+  4  ,DEPT D
+  5  WHERE E.DEPTNO = SELECT DEPTNO
+  6   		 FROM EMP
+  7* 		 WHERE MAX(COUNT(EMPNO))
+  8  /
+WHERE E.DEPTNO = SELECT DEPTNO
+                 *
+ERROR at line 5:
+ORA-00936: missing expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.NAME
+  2  ,D.DNAME
+  3  FROM EMP E
+  4  ,DEPT D
+  5  WHERE E.DEPTNO = (SELECT DEPTNO
+  6   		 FROM EMP
+  7* 		 WHERE MAX(COUNT(EMPNO)))
+SQL> /
+		 WHERE MAX(COUNT(EMPNO)))
+		       *
+ERROR at line 7:
+ORA-00934: group function is not allowed here 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT E.NAME
+  2  ,D.DNAME
+  3  FROM EMP E
+  4  ,DEPT D
+  5  WHERE E.DEPTNO = (SELECT DEPTNO
+  6   		 FROM EMP
+  7* 		 WHERE COUNT(EMPNO) = SELECT MAX(COUNT(EMPNO))FROM EMP)
+SQL> /
+		 WHERE COUNT(EMPNO) = SELECT MAX(COUNT(EMPNO))FROM EMP)
+		       *
+ERROR at line 7:
+ORA-00934: group function is not allowed here 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DEPTNO
+  2  ,MAX(COUNT(EMPNO))
+  3  FROM EMP
+  4* GROUP BY DEPTNO
+SQL> /
+SELECT DEPTNO
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT 
+  2  ,MAX(COUNT(EMPNO))
+  3  FROM EMP
+  4* GROUP BY DEPTNO
+SQL> /
+,MAX(COUNT(EMPNO))
+*
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT 
+  2  MAX(COUNT(EMPNO))
+  3  FROM EMP
+  4* GROUP BY DEPTNO
+SQL> /
+
+MAX(COUNT(EMPNO))                                                                                   
+-----------------                                                                                   
+                6                                                                                   
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  SELECT DEPTNO,
+  2  MAX(COUNT(EMPNO))
+  3  FROM EMP
+  4* GROUP BY DEPTNO
+SQL> /
+SELECT DEPTNO,
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1   CREATE OR REPLACE PROCEDURE Raise_Salary 
+  2      ( s_no IN number, raise_sal IN number) IS
+  3      v_cur_salary   number ;
+  4       missing_salary exception;
+  5  BEGIN
+  6         SELECT staff_sal INTO v_cur_salary FROM staff_masters 
+  7         WHERE staff_code=s_no;
+  8      IF  v_cur_salary IS NULL THEN
+  9         RAISE  missing_salary;
+ 10      END IF ;
+ 11      UPDATE staff_masters SET staff_sal = v_cur_salary + raise_sal
+ 12      WHERE staff_code =  s_no ;
+ 13  EXCEPTION
+ 14         WHEN  missing_salary THEN
+ 15         INSERT into emp_audit VALUES( sno, 'salary is missing');
+ 16*   END raise_salary; 
+SQL> /
+
+Warning: Procedure created with compilation errors.
+
+SQL> SHOW ERRORS
+Errors for PROCEDURE RAISE_SALARY:
+
+LINE/COL ERROR                                                                                      
+-------- -----------------------------------------------------------------                          
+15/8     PL/SQL: SQL Statement ignored                                                              
+15/38    PL/SQL: ORA-00984: column not allowed here                                                 
+SQL> ;
+  1   CREATE OR REPLACE PROCEDURE Raise_Salary 
+  2      ( s_no IN number, raise_sal IN number) IS
+  3      v_cur_salary   number ;
+  4       missing_salary exception;
+  5  BEGIN
+  6         SELECT staff_sal INTO v_cur_salary FROM staff_masters 
+  7         WHERE staff_code=s_no;
+  8      IF  v_cur_salary IS NULL THEN
+  9         RAISE  missing_salary;
+ 10      END IF ;
+ 11      UPDATE staff_masters SET staff_sal = v_cur_salary + raise_sal
+ 12      WHERE staff_code =  s_no ;
+ 13  EXCEPTION
+ 14         WHEN  missing_salary THEN
+ 15         INSERT into emp_audit VALUES( sno, 'salary is missing');
+ 16*   END raise_salary; 
+SQL> SELECT * FROM EMP_AUDIT;
+
+no rows selected
+
+SQL> DESC EMP_AUDIT;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ SNO                                                            NUMBER
+ MSG                                                            VARCHAR2(100)
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM EMP_AUDIT
+SQL> ed
+Wrote file afiedt.buf
+
+  1    CREATE OR REPLACE PROCEDURE Raise_Salary
+  2       ( s_no IN number, raise_sal IN number) IS
+  3       v_cur_salary   number ;
+  4        missing_salary exception;
+  5   BEGIN
+  6          SELECT staff_sal INTO v_cur_salary FROM staff_masters
+  7          WHERE staff_code=s_no;
+  8       IF  v_cur_salary IS NULL THEN
+  9          RAISE  missing_salary;
+ 10       END IF ;
+ 11       UPDATE staff_masters SET staff_sal = v_cur_salary + raise_sal
+ 12       WHERE staff_code =  s_no ;
+ 13   EXCEPTION
+ 14          WHEN  missing_salary THEN
+ 15          INSERT into emp_audit VALUES( s_no, 'salary is missing');
+ 16*    END raise_salary;
+SQL> /
+
+Procedure created.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1    CREATE OR REPLACE PROCEDURE Raise_Salary
+  2       ( s_no IN number, raise_sal IN number) IS
+  3       v_cur_salary   number ;
+  4        missing_salary exception;
+  5   BEGIN
+  6          SELECT staff_sal INTO v_cur_salary FROM staff_masters
+  7          WHERE staff_code=s_no;
+  8       IF  v_cur_salary IS NULL THEN
+  9          RAISE  missing_salary;
+ 10       END IF ;
+ 11       UPDATE staff_masters SET staff_sal = v_cur_salary + raise_sal
+ 12       WHERE staff_code =  s_no ;
+ 13   EXCEPTION
+ 14          WHEN  missing_salary THEN
+ 15          INSERT into emp_audit VALUES( s_no, 'salary is missing');
+ 16*    END raise_salary;
+SQL> ed
+Wrote file afiedt.buf
+
+  1    CREATE OR REPLACE PROCEDURE Raise_Salary
+  2       ( s_no IN number, raise_sal IN number) IS
+  3       v_cur_salary   number ;
+  4        missing_salary exception;
+  5   BEGIN
+  6          SELECT staff_sal INTO v_cur_salary FROM staff_masters
+  7          WHERE staff_code=s_no;
+  8       IF  v_cur_salary IS NULL THEN
+  9          RAISE  missing_salary;
+ 10       END IF ;
+ 11       UPDATE staff_masters SET staff_sal = v_cur_salary + raise_sal
+ 12       WHERE staff_code =  s_no ;
+ 13   EXCEPTION
+ 14          WHEN  missing_salary THEN
+ 15          INSERT into emp_audit VALUES( s_no, 'salary is missing');
+ 16*    END raise_salary;
+SQL> EXEC Raise_Salary(100001,5000);
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM STAFF_MASTERS;
+
+STAFF_CODE STAFF_NAME                                         DESIGN_CODE  DEPT_CODE STAFF_DOB      
+---------- -------------------------------------------------- ----------- ---------- ---------      
+HIREDATE    MGR_CODE  STAFF_SAL                                                                     
+--------- ---------- ----------                                                                     
+STAFF_ADDRESS                                                                                       
+----------------------------------------------------------------------------------------------------
+    100001 Arvind                                                     102         30 15-JAN-80      
+15-JAN-03     100006      22000                                                                     
+Bangalore                                                                                           
+                                                                                                    
+    100002 Shyam                                                      102         20 18-FEB-80      
+17-FEB-02     100007      20000                                                                     
+Chennai                                                                                             
+                                                                                                    
+    100003 Mohan                                                      102         10 23-MAR-80      
+19-JAN-02     100006      24250                                                                     
+Mumbai                                                                                              
+                                                                                                    
+    100004 Anil                                                       102         20 22-APR-77      
+11-MAR-01     100006      20000                                                                     
+Hyderabad                                                                                           
+                                                                                                    
+    100005 John                                                       106         10 22-MAY-76      
+21-JAN-01     100007      32500                                                                     
+Bangalore                                                                                           
+                                                                                                    
+    100006 Allen                                                      103         30 22-JAN-80      
+23-APR-01     100005      42000                                                                     
+Chennai                                                                                             
+                                                                                                    
+    100007 Smith                                                      103         20 19-JUL-73      
+12-MAR-02     100005      62000                                                                     
+Mumbai                                                                                              
+                                                                                                    
+    100008 Raviraj                                                    102         40 17-JUN-80      
+11-JAN-03     100006      18000                                                                     
+Bangalore                                                                                           
+                                                                                                    
+    100009 Rahul                                                      102         20 16-JAN-78      
+11-DEC-03     100006      22000                                                                     
+Hyderabad                                                                                           
+                                                                                                    
+    100010 Ram                                                        103         30 17-JAN-79      
+17-JAN-02     100007      32000                                                                     
+Bangalore                                                                                           
+                                                                                                    
+
+10 rows selected.
+
+SQL> DESC STAFF_MASTERS;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ STAFF_CODE                                            NOT NULL NUMBER(8)
+ STAFF_NAME                                            NOT NULL VARCHAR2(50)
+ DESIGN_CODE                                                    NUMBER(3)
+ DEPT_CODE                                                      NUMBER(2)
+ STAFF_DOB                                                      DATE
+ HIREDATE                                                       DATE
+ MGR_CODE                                                       NUMBER(8)
+ STAFF_SAL                                                      NUMBER(12,2)
+ STAFF_ADDRESS                                                  VARCHAR2(240)
+
+SQL> INSERT INTO STAFF_MASTERS
+  2  (STAFF_CODE,STAFF_NAME,STAFF_SAL)
+  3  VALUES(1001,'SACHIN',NULL);
+
+1 row created.
+
+SQL> EXEC Raise_Salary(1001,5000);
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM EMP_AUDIT;
+
+       SNO                                                                                          
+----------                                                                                          
+MSG                                                                                                 
+----------------------------------------------------------------------------------------------------
+      1001                                                                                          
+salary is missing                                                                                   
+                                                                                                    
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  CREATE OR REPLACE PROCEDURE
+  2          Get_Details(s_code IN number,
+  3          s_name OUT varchar2,s_sal OUT number ) IS
+  4     BEGIN
+  5        SELECT staff_name, staff_sal INTO s_name, s_sal 
+  6        FROM staff_masters WHERE staff_code=s_code;
+  7     EXCEPTION
+  8           WHEN no_data_found  THEN
+  9           INSERT into auditstaff
+ 10           VALUES( 'No employee with id ' || s_code);
+ 11           s_name := null;
+ 12           s_sal := null;
+ 13* END get_details ;
+SQL> /
+
+Procedure created.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  CREATE OR REPLACE PROCEDURE
+  2          Get_Details(s_code IN number,
+  3          s_name OUT varchar2,s_sal OUT number ) IS
+  4     BEGIN
+  5        SELECT staff_name, staff_sal INTO s_name, s_sal 
+  6        FROM staff_masters WHERE staff_code=s_code;
+  7     EXCEPTION
+  8           WHEN no_data_found  THEN
+  9           INSERT into auditstaff
+ 10           VALUES( 'No employee with id ' || s_code);
+ 11           s_name := null;
+ 12           s_sal := null;
+ 13* END get_details ;
+SQL> /
+
+Procedure created.
+
+SQL> VARIABLE SALARY NUMBER;
+SQL> VARIABLE NAME VARCHAR2(20);
+SQL> EXECUTE Get_Details(100003,:NAME, :SALARY);
+
+PL/SQL procedure successfully completed.
+
+SQL> PRINT SALARY;
+
+    SALARY                                                                                          
+----------                                                                                          
+     24250                                                                                          
+
+SQL> PRINT NAME;
+
+NAME                                                                                                
+--------------------------------                                                                    
+Mohan                                                                                               
+
+SQL> EXECUTE Get_Details(100005,s_sal => :SALARY, s_name => :NAME);
+
+PL/SQL procedure successfully completed.
+
+SQL> PRINT NAME;
+
+NAME                                                                                                
+--------------------------------                                                                    
+John                                                                                                
+
+SQL> PRINT SALARY;
+
+    SALARY                                                                                          
+----------                                                                                          
+     32500                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE FUNCTION Crt_Dept(dno number, 
+  2     dname varchar2)  RETURN number AS	
+  3         BEGIN			
+  4  	INSERT into department_masters
+  5  	VALUES (dno,dname) ; 	
+  6  	return 1 ;			
+  7          EXCEPTION				
+  8  WHEN others THEN				
+  9  	return 0 ;				
+ 10*         END crt_dept ;
+SQL> /
+CREATE FUNCTION Crt_Dept(dno number, 
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  CREATE OR REPLACE FUNCTION Crt_Dept(dno number, 
+  2     dname varchar2)  RETURN number AS	
+  3         BEGIN			
+  4  	INSERT into department_masters
+  5  	VALUES (dno,dname) ; 	
+  6  	return 1 ;			
+  7          EXCEPTION				
+  8  WHEN others THEN				
+  9  	return 0 ;				
+ 10*         END crt_dept ;
+SQL> /
+
+Function created.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE OR REPLACE FUNCTION Crt_Dept(dno number, 
+  2     dname varchar2)  RETURN number AS	
+  3         BEGIN			
+  4  	INSERT into department_masters
+  5  	VALUES (dno,dname) ; 	
+  6  	return 1 ;			
+  7          EXCEPTION				
+  8  WHEN others THEN				
+  9  	return 0 ;				
+ 10*         END crt_dept ;
+SQL> /
+
+Function created.
+
+SQL> PRINT FLAG;
+SP2-0552: Bind variable "FLAG" not declared.
+SQL> VARIABLE FLAG;
+SP2-0552: Bind variable "flag" not declared.
+SQL> EXECUTE :FLAG := Crt_Dept(60,'PRODUCTION');
+SP2-0552: Bind variable "FLAG" not declared.
+SQL> VARIABLE FLAG
+SP2-0552: Bind variable "flag" not declared.
+SQL> VARIABLE FLAG1
+SP2-0552: Bind variable "flag1" not declared.
+SQL> VARIABLE FLAG NUMBER
+SQL> EXECUTE :FLAG := Crt_Dept(60,'PRODUCTION');
+
+PL/SQL procedure successfully completed.
+
+SQL> PRINT FLAG;
+
+      FLAG                                                                                          
+----------                                                                                          
+         0                                                                                          
+
+SQL> EXECUTE :FLAG := Crt_Dept(99,'PRODUCTION');
+
+PL/SQL procedure successfully completed.
+
+SQL> PRINT FLAG;
+
+      FLAG                                                                                          
+----------                                                                                          
+         1                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_masters VALUES ( 50, 'Production');
+  5      END IF;
+  6* END; 
+SQL> /
+END; 
+    *
+ERROR at line 6:
+ORA-06550: line 6, column 5: 
+PLS-00103: Encountered the symbol " " The symbol " " was ignored. 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_masters VALUES ( 50, 'Production');
+  5      END IF;
+  6* END;
+SQL> /
+BEGIN
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C0010271) violated 
+ORA-06512: at line 4 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno= 50;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_masters VALUES ( 50, 'Production');
+  5      END IF;
+  6* END;
+SQL> ed
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno= 52;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_masters VALUES ( 50, 'Production');
+  5      END IF;
+  6* END;
+SQL> /
+BEGIN
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C0010271) violated 
+ORA-06512: at line 4 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno= 52;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_masters VALUES ( 52, 'Production');
+  5      END IF;
+  6* END;
+SQL> /
+BEGIN
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C0010272) violated 
+ORA-06512: at line 4 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  BEGIN
+  2      UPDATE dept SET dname ='Production' WHERE deptno= 53;
+  3      IF SQL%NOTFOUND THEN
+  4        INSERT into department_masters VALUES ( 53, 'Product');
+  5      END IF;
+  6* END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+         4 TRAINING                                                                                 
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> SELECT * FROM DEPARTMENT_MASTERS;
+
+ DEPT_CODE DEPT_NAME                                                                                
+---------- --------------------------------------------------                                       
+        99 PRODUCTION                                                                               
+        53 Product                                                                                  
+        10 Computer Science                                                                         
+        20 Electricals                                                                              
+        30 Electronics                                                                              
+        40 Mechanics                                                                                
+        50 Robotics                                                                                 
+        90 HR                                                                                       
+        60 Production                                                                               
+
+9 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE  
+  2     total_rows number(2); 
+  3  BEGIN 
+  4     UPDATE customers 
+  5     SET salary = salary + 500; 
+  6     IF sql%notfound THEN 
+  7        dbms_output.put_line('no customers selected'); 
+  8     ELSIF sql%found THEN 
+  9        total_rows := sql%rowcount;
+ 10        dbms_output.put_line( total_rows || ' customers selected '); 
+ 11     END IF;  
+ 12* END; 
+SQL> /
+Old salary: 4000                                                                                    
+New salary: 4500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 4000                                                                                    
+New salary: 4500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 4000                                                                                    
+New salary: 4500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 8500                                                                                    
+New salary: 9000                                                                                    
+Salary difference: 500                                                                              
+Old salary: 10500                                                                                   
+New salary: 11000                                                                                   
+Salary difference: 500                                                                              
+Old salary: 6500                                                                                    
+New salary: 7000                                                                                    
+Salary difference: 500                                                                              
+Old salary: 2000                                                                                    
+New salary: 2500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 2000                                                                                    
+New salary: 2500                                                                                    
+Salary difference: 500                                                                              
+Old salary: 4500                                                                                    
+New salary: 5000                                                                                    
+Salary difference: 500                                                                              
+Old salary: 8500                                                                                    
+New salary: 9000                                                                                    
+Salary difference: 500                                                                              
+10 customers selected                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE 
+  2     c_id customers.id%type; 
+  3     c_name customers.Name%type; 
+  4     c_addr customers.address%type; 
+  5     CURSOR c_customers is 
+  6        SELECT id, name, address FROM customers; 
+  7  BEGIN 
+  8     OPEN c_customers; 
+  9     LOOP 
+ 10     FETCH c_customers into c_id, c_name, c_addr; 
+ 11        EXIT WHEN c_customers%notfound; 
+ 12        dbms_output.put_line(c_id || ' ' || c_name || ' ' || c_addr); 
+ 13     END LOOP; 
+ 14     CLOSE c_customers; 
+ 15* END; 
+SQL> /
+1 Ramesh Ahmedabad                                                                                  
+2 Khilan Delhi                                                                                      
+3 kaushik Kota                                                                                      
+4 Chaitali Mumbai                                                                                   
+5 Hardik Bhopal                                                                                     
+6 Komal MP                                                                                          
+9 SACHIN PUNE                                                                                       
+10 SACHIN PUNE                                                                                      
+7 Rajnish Chennai                                                                                   
+8 Kriti HP                                                                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2              cursor c_stud_marks is select * from student_marks;
+  3              total_marks number(4);
+  4         BEGIN
+  5             FOR mks in c_stud_marks
+  6         LOOP
+  7             total_marks:=mks.subject1+mks.subject2+mks.subject3;
+  8         IF (total_marks >220) THEN
+  9             INSERT into performance 
+ 10               VALUES (mks.student_code,total_marks);
+ 11         END IF;
+ 12         END LOOP;
+ 13*        END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM PERFORMANCE;
+
+STUDENT_CODE TOTAL_MARKS                                                                            
+------------ -----------                                                                            
+        1002         228                                                                            
+        1005         231                                                                            
+        1011         263                                                                            
+        1021         235                                                                            
+        1002         263                                                                            
+        1012         235                                                                            
+        1013         228                                                                            
+        1015         231                                                                            
+
+8 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM PERFORMANCE
+SQL> SPOOL OFF;
