@@ -1,0 +1,42 @@
+/*****************************************************
+	*file        		: exercise2.1.3txt
+	*author Name 		: saranya
+	*Description 		: program to print tagcolour
+	*version     		: 1.0
+	*Lastmodified date	: 23/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+	
+BEGIN
+	DECLARE exp AS REAL
+	DECLARE tagcolour AS STRING
+	colour(exp)
+	PROMPT "enter exp" AND STORE IN exp
+	PRINT "taagcolour",tagcolour
+END
+/*********************************************************************
+* Module Name         : colour
+* Input Parameters    : exp
+* Return Type         : string
+* Author              : saranya
+* Creation Date       : 23-May-2017
+* Description         : displaying tagcolour 
+ *********************************************************************/
+
+SUB colour(exp)
+	DECLARE exp AS REAL
+	DECLARE tagcolour AS STRING
+   
+	IF exp < 3 THEN
+		tagcolour=blue
+	ELSEIF
+		exp <5 THEN
+		tagcolour = grey
+	ELSEIF
+		exp <10 THEN
+		tagcolour =yellow
+	ELSE 
+		tagcolour = red
+	ENDIF
+	RETURN(tagcolour)
+END SUB

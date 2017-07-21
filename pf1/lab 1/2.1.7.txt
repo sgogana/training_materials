@@ -1,0 +1,35 @@
+/*****************************************************
+	*file        		: exercise2.1.7 txt
+	*author Name 		: saranya
+	*Description 		: program for binary to decimal
+	*version     		: 1.0
+	*Lastmodified date	: 25/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+BEGIN
+	DECLARE num AS INTEGER
+	decimal(num)
+	PRINT dnum
+END
+/*********************************************************************
+* Module Name         : series
+* Input Parameters    : n,nt
+* Return Type         : integer
+* Author              : saranya
+* Creation Date       : 17-May-2017
+* Description         : displaying tagcolour 
+ *********************************************************************/
+SUB decimal(num)
+	DECLARE i,bnum,dnum,base,rem AS INTEGER	
+	PROMPT "enter num" AND STORE IN num
+	INITIALIZE base TO 1,
+	INITIALIZE dnum TO 0
+	num=bnum
+	WHILE(num>0)
+		rem=num%10
+		dnum=dnum+rem*base
+		num=num/10
+		base=base*2
+	END WHILE			
+	RETURN dnum
+END SUB

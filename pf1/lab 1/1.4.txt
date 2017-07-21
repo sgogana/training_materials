@@ -1,0 +1,22 @@
+BEGIN
+	DECLARE num,onum,rem,res,x AS INTEGER
+	PROMPT "enter number" AND STORE IN num
+	INITIALIZE res TO 0
+	INITIALIZE x TO 0
+	onum=num
+	WHILE(onum != 0)
+		onum=onum/10
+		++n
+	END WHILE
+	onum=num
+	WHILE(onum!=0)
+		rem=onum%10
+		res=res+power(rem,n)
+		onum=onum/10
+	END WHILE
+	IF(res==num) THEN
+		PRINT"num is an amstrong",num
+	ELSE
+		PRINT"num is  not an amstrong",num
+	END IF
+END

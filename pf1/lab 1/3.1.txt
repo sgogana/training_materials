@@ -1,0 +1,21 @@
+/*****************************************************
+	*file        		: exercise3.1 txt
+	*author Name 		: saranya
+	*Description 		: algorithm for difference of two numbers
+	*version     		: 1.0
+	*Lastmodified date	: 25/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+ALGORITHM Check(A[0..n-1])
+//Input: An array A[0..n-1] of n real numbers
+x<- A[0]; y<-A[0]
+for i<-1 to n-1 do
+if A[i]<x
+x<- A[i]
+if A[i]>y
+y<- A[i]
+return y-x
+
+the basic operation is difference between two num
+the loop  depends on the size of the array 
+the efficiency is best classs

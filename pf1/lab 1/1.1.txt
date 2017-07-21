@@ -1,0 +1,21 @@
+BEGIN
+	DECLARE CONSTANT fixedcharge =100
+	DECLARE userid,username AS STRING
+	DECLARE lastmr,currentmr,unitsconsumed ,netamount  AS REAL     
+	PROMPT "enter user id" AND STORE IN user id
+	PROMPT "entyer username "AND STORE IN username
+	PROMPT "lastmonthmeterreading" AND STORE IN lastmonthmeterreading
+	PROMPT "currentmonthmeterreading" AND STORE IN currentmonthmeterreading  
+	CALCULATE unitconsumed =lastmonthmeterreading - currentmonthmeterreading
+	IF unitsconsumed <=100 THEN
+		CALCULATE netamount=3.50*unitsconsumed + 100
+	ELSEIF unitsconsumed <=200 THEN
+		CALCULATE netamount=3.50*100+4.48*(unitsconsumed-100)+100
+	ELSE
+		CALCULATE netamount=3.50*100+4.48*100+(unitsconsumed-200)*5.95+100
+	ENDIF
+	print"userid ",userid
+	print "username",username
+	print"unitsconsumed",unitsconsumed
+	print"netamount",netamount
+END

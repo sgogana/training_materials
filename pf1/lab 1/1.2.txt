@@ -1,0 +1,18 @@
+BEGIN
+	DECLARE exp AS FLOAT   
+	PROMPT "enter exp" AND STORE IN exp   
+	IF exp < 3 THEN
+		PRINT "tagcolour = blue" 
+	ELSEIF
+		exp >3 AND exp <5 THEN
+		PRINT " tagcolour = grey"
+	ELSEIF
+		exp >5 AND exp <10 THEN
+		PRINT "tagcolour =yellow"
+	ELSE exp >10 THEN
+		PRINT "tagcolour = red"
+	ENDIF
+END
+
+
+

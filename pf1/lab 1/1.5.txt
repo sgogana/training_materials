@@ -1,0 +1,14 @@
+BEGIN
+	DECLARE num,i,bnum,dnum,base,rem AS INTEGER
+	PROMPT "enter num" AND STORE IN num
+	INITIALIZE base TO 1,
+	INITIALIZE dnum TO 0
+	num=bnum
+	WHILE(num>0)
+		rem=num%10
+		dnum=dnum+rem*base
+		num=num/10
+		base=base*2
+	END WHILE			
+	PRINT dnum
+END

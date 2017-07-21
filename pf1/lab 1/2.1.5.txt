@@ -1,0 +1,44 @@
+/*****************************************************
+	*file        		: exercise2.1.5txt
+	*author Name 		: saranya
+	*Description 		: program to check amstrong
+	*version     		: 1.0
+	*Lastmodified date	: 24/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+BEGIN
+	DECLARE num AS INTEGER
+	amstrong(num)
+	PRINT res
+END
+/*********************************************************************
+	* Module Name         : amstrong
+	* Input Parameters    : num
+	* Return Type         : integer
+	* Author              : saranya
+	* Creation Date       : 25-May-2017
+	* Description         : to print amstrong number
+ *********************************************************************/
+SUB amstrong(num)
+	DECLARE num,onum,rem,res,x AS INTEGER
+	IF(res==num) THEN
+		PRINT"num is an amstrong",num
+	ELSE
+		PRINT"num is  not an amstrong",num
+	END IF
+	PROMPT "enter number" AND STORE IN num
+	INITIALIZE res TO 0
+	INITIALIZE x TO 0
+	onum=num
+	WHILE(onum != 0)
+		onum=onum/10
+		++n
+	END WHILE
+	onum=num
+	WHILE(onum!=0)
+		rem=onum%10
+		res=res+power(rem,n)
+		onum=onum/10
+	END WHILE
+	RETURN res
+END SUB

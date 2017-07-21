@@ -1,0 +1,151 @@
+2:1 Executing basic commands:
+1.To display the current working directory, the command is: 
+Sol:pwd
+       The output is as follows.
+       [user34@NDAUnix saranya_67]$ 
+
+2.Display the path to and name of your HOME directory.
+Sol:cd
+	The output is as follows.
+	/home/user34
+        
+3.Display the login name using which you have logged into the system
+Sol:whoami
+	The output is as follows.
+	user34
+
+4.Display the hidden files of your current directory.
+sol:ls -a
+	The output is as follows.
+         .  ..  d1  d4  error.txt  file1  file2  file3  .file3  lsoutput  nrefile  output
+
+5.List the names of all the files in your home directory.
+sol:ls 
+	The output is as follows.
+	[user34@NDAUnix home]$ cd
+        [user34@NDAUnix ~]$ ls
+        ;  1   12  15  18  20  23  26  29  4  7  a       add.c     casuclaeclear  dir2      fun_mon.sh  linux       Novell   saranya_67   shell.sh  tem
+        :  10  13  16  19  21  24  27  3   5  8  aa.c    ashil     chap1          first.sh  home        newfriends  report   second.unix  system    temp
+        0  11  14  17  2   22  25  28  30  6  9  abc.sh  casee.sh  Copy_text      friends   iff.sh      novel       sandeep  sensitive    tar       Text
+        [user34@NDAUnix ~]$ pwd
+        /home/user34
+
+
+6.Using the long listing format to display the files in your directory.
+sol:ls -l
+	The output is as follows.
+	[user34@NDAUnix saranya_67]$ ls -l
+	total 36
+	drwxrwxr-x 4 user34 user34 4096 Jun  8 14:19 d1
+	drwxrwxr-x 3 user34 user34 4096 Jun  8 14:21 d4
+	-rw-rw-r-- 1 user34 user34   36 Jun  8 14:51 error.txt
+	-rwxrwxrwx 1 user34 user34   28 Jun  8 12:10 file1
+	-rw-rw-r-- 1 user34 user34   28 Jun  8 12:34 file2
+	-rw-rw-r-- 1 user34 user34   17 Jun  8 15:09 file3
+	-rw-rw-r-- 1 user34 user34   42 Jun  8 14:49 lsoutput
+	-rw-rw-r-- 1 user34 user34   28 Jun  8 14:48 nrefile
+	-rw-rw-r-- 1 user34 user34   33 Jun  8 14:49 output
+
+7.List the files beginning with chap followed by any number or any lower case alphabet.  (Example, it should display all files whose names are like chap1, chap2, chap3 ……., chapa,ahapb,chapc,……..)
+sol:ls chap*
+	The output is as follows.
+        [user34@NDAUnix ~]$ ls chap*
+        chap1  chap2
+
+8.Give appropriate command to create a directory called C_prog under your home directory. (Note: Check the directory using ls)
+sol:mkdir c_prog
+	The output is as follows.
+	[user34@NDAUnix ~]$ pwd
+	/home/user34
+	[user34@NDAUnix ~]$ mkdir c_prog
+	[user34@NDAUnix ~]$ cd c_prog
+	[user34@NDAUnix c_prog]$ pwd
+	/home/user34/c_prog
+	[user34@NDAUnix c_prog]$
+
+9.Create the following directories under your home directory. (Note: Check using ls)
+newdir
+newdirectory
+sol:mkdir newdir
+    mkdir newdirectory
+	The output is as follows.
+	[user34@NDAUnix saranya_67]$ ls
+        file1  file2  file3  lsoutput  newdir  newdirectory  nrefile  output
+
+
+10.List the names of all the files, including the contents of the sub directories under your home directory.
+sol:ls -r
+	The output is as follows.
+	[user34@NDAUnix saranya_67]$ ls -r
+        output  nrefile  newdirectory  newdir  lsoutput  file3  file2  file1  error.txt  d4  d1  cahp4
+
+11.Remove the directory called newdirectory from your working directory.
+sol:rmdir newdirectory
+	The output is as follows.
+	[user34@NDAUnix saranya_67]$ rmdir newdirectory
+	[user34@NDAUnix saranya_67]$ ls
+	cahp4  d1  d4  error.txt  file1  file2  file3  lsoutput  newdir  nrefile  output
+
+12.Create a directory called temp under your home directory.
+sol:mkdir temp
+	The output is as follows.
+	[user34@NDAUnix saranya_67]$ mkdir temp
+	[user34@NDAUnix saranya_67]$ ls
+	cahp4  d1  d4  error.txt  file1  file2  file3  lsoutput  newdir  nrefile  output  temp
+
+13.Remove the directory called newdir under your home directory and verify the above with the help of the directory listing command.
+sol:rmdir newdir
+    ls
+	The output is as follows.
+ 	[user34@NDAUnix saranya_67]$ rmdir newdir
+	[user34@NDAUnix saranya_67]$ ls
+	cahp4  d1  d4  error.txt  file1  file2  file3  lsoutput  nrefile  output  temp
+
+14.Create another directory directorynew under the temp directory.
+sol:cd temp
+    mkdir directorynew
+	The output is as follows.
+	[user34@NDAUnix saranya_67]$ cd temp
+	[user34@NDAUnix temp]$ mkdir directorynew
+	[user34@NDAUnix temp]$ ls
+	directorynew
+	
+15.	Change the directory to your home directory.
+sol:mv ./temp/directorynew/ ./
+	The output is as follows.
+	[user34@NDAUnix saranya_67]$ mv ./temp/directorynew/ ./
+	[user34@NDAUnix saranya_67]$ ls
+	cahp4  d1  d4  directorynew  error.txt  file1  file2  file3  lsoutput  nrefile  output  temp
+
+16.	From your home directory, change the directory to directorynew using relative and absolute path.
+sol:
+17.	Remove the directory called c_prog, which is in your home directory.
+sol:rmdir c_prog
+        The output is as follows.
+	[user34@NDAUnix ~]$ rmdir c_prog
+	
+18.	Change to the directory /etc and display the files present in it.
+sol:
+19.	List the names of all the files that begin with a dot in the /usr/bin directory.
+20.	Create a file first.unix with the following contents.
+Hi! Good Morning everybody.
+Welcome to the First exercise on UNIX.
+Hope you enjoy doing the assignments.
+21.	Copy the file first.unix in your home directory to first.unics.
+       (Note: checked using ls, first.unix file also should exist along with first.unics)
+22.	List the contents of first.unix and first.unics with a single command.
+23.	Create a new directory under the temp directory.
+24.	From your home directory, copy all the files to the directory created under the temp sub directory.
+25.	Move the file first.unix to the directory temp as second.unix 
+26.	Remove the file called first.unics from the home directory.
+27.	Change your directory to temp and issue the command rm *.  What do you observe?
+28.	Move all files whose names end with a, c and o to the HOME directory.
+29.	Copy all files that end with a ‘UNIX’ to the temp directory.
+30.	Issuing a single command, remove all the files from the directory temp and the directory itself.
+31.	Try commands cp and mv with invalid number of arguments and note the results.
+32.	Use the cat command to create a file friends, with the following data:
+Madhu  		6966456		09/07/68
+Jamil 	 	2345215		08/09/67
+Ajay	 	5546785		01/04/66
+Mano		7820022		09/07/68
+David	 	8281292		09/09/60

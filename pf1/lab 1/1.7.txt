@@ -1,0 +1,9 @@
+BEGIN
+  DECLARE price AS FLOAT
+  DECLARE tc AS FLOAT
+  DECLARE CONSTANT txrt = 0.56
+
+	PROMPT "price  " AND STORE IN price
+	CALCULATE tc=txrt
+	PRINT"the total price of the product is ",p
+END   

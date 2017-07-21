@@ -1,0 +1,75 @@
+/*********************************************************************
+* File : functionalityofATM.txt
+* Author Name : saranya
+* Desc : Program to perform functionality of ATM
+* Version : 1.0
+* Last Modified Date :13-june-2017
+* Change Description : Description about the changes implemented
+*********************************************************************/
+BEGIN
+	DECLARE accountnumber INTEGER
+	DECLARE customername  AS STRING
+	DECLARE currentbalance AS REAL
+	DECLARE withdrawlamount AS REAL
+	PROMPT "enter your name" AND STORED IN customername
+	PROMPT " enter your accountnumber" AND STORE IN accountnumber
+	IF(isValid(accountnumber)) THEN
+		PROMPT "Enter your currentbalance" AND STORE IN currentbalance
+		PROMPT "Enter your withdrawlamount" AND STORE IN withdrawlamount
+	IF(checkbalance()) THEN
+		withdraw(productId,discount);
+	ELSE
+		PRINT"Discount value should contain numbers"
+	END IF
+	ELSE
+		PRINT"Product Id should contain numbers"
+	END IF
+END
+/*********************************************************************
+* Module Name : applyDiscount()
+* Input Parameters : productId, discount
+* Return Type : INTEGER
+* Author : Capgemini
+* Creation Date : 8-May-2016
+* Description : Applying discount on the product price
+*********************************************************************/
+SUB applyDiscount(productId,discount)
+	DECLARE result AS INTEGER
+	result=getProductPrice(productId)*discount
+	PRINT "Product Price" + result;
+	EXCEPTION
+	WHEN NoSuchElement THEN
+	PRINT errormessage //Errormessage returned from exception
+END SUB
+/*********************************************************************
+* Module Name : getProductPrice()
+* Input Parameters : productId
+* Return Type : INTEGER
+* Author : Capgemini
+* Creation Date : 8-May-2016
+* Description : Based on productId, fetching product price if productId exists,
+else exception will be raised
+*********************************************************************/
+SUB getProductPrice(productId)
+	DECLARE errorcode AS INTEGER AND STORE 0
+	IF(elementfound(productId)) THEN
+	RETURN productPrice
+	ELSE
+		RAISE "Product doesn’t exist with this id"+ productId
+	END IF
+END SUB
+/*********************************************************************
+* Module Name : isValid()
+* Input Parameters : data
+* Return Type : BOOLEAN
+* Author : Capgemini
+* Creation Date : 8-May-2016
+* Description : To validate data for accepting only digits
+*********************************************************************/
+SUB isValid(data)
+IF(isDigits(data)) THEN
+RETURN true
+ELSE
+RETURN false
+END IF
+END SUB

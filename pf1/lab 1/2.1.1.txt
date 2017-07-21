@@ -1,0 +1,50 @@
+
+/*****************************************************
+	*file        		: exercise2.1.1txt
+	*author Name 		: saranya
+	*Description 		: program to find electricity bill
+	*version     		: 1.0
+	*Lastmodified date	: 23/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+	
+BEGIN
+	DECLARE CONSTANT fixedcharge = 100
+	DECLARE userid,username AS STRING
+	DECLARE lastmr,currentmr,unitsconsumed ,netamount  AS REAL 
+	
+	PROMPT "enter user id" AND STORE IN user id
+	PROMPT "enter username "AND STOREED IN username
+	elecbill(unitsconsumed,netamount)
+    
+	print"userid ",userid
+	print "username",username
+	print"unitsconsumed",unitsconsumed
+	print"netamount",netamount
+	
+END
+/*********************************************************************
+* Module Name         : elecbill
+* Input Parameters    : userid,username
+* Return Type         : integer
+* Author              : saranya
+* Creation Date       : 23-May-2017
+* Description         : calculating netamount 
+ *********************************************************************/
+
+SUB elecbill(userid,username)
+  
+	DECLARE lastmonthmeterreading as REAL 
+	DECLARTE currentmonthmeterreading AS REAL
+	DECLARE unitsconsumed  AS REAL
+	DECLARE netamount AS REAL
+	PROMPT "lastmonthmeterreading" AND STORED IN lastmonthmeterreading
+	PROMPT "currentmonthmeterreading" AND STORED IN currentmonthmeterreading	
+	CALCULATE unitconsumed =lastmonthmeterreading - current month meter reading
+	CALCULATE netamount=1.15*unitsconsumed + fixedcharge
+	RETURN unitsconsumed
+	RETURN netamount
+
+END SUB
+   
+    

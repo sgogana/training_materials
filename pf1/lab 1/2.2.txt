@@ -1,0 +1,41 @@
+/*****************************************************
+	*file        		: exercise2.2.txt
+	*author Name 		: saranya
+	*Description 		: program to find sum of digits of given number
+	*version     		: 1.0
+	*Lastmodified date	: 23/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+	
+BEGIN
+	DECLARE num,sum,num1,num2 AS INTEGER
+	PROMPT "Enter the num " AND STORE IN num
+	SUMOFDIGIT(sum)
+	PRINT"sum value",sum
+END
+/*********************************************************************
+* Module Name         : sumofdigits
+* Input Parameters    : num
+* Return Type         : integer
+* Author              : saranya
+* Creation Date       : 17-May-2017
+* Description         : Checking for sum 
+ *********************************************************************/
+
+SUB sumofdigit(sum)
+  
+   INITIALISE sum TO 0
+   WHILE num>0
+
+        num1=num%10
+	sum=sum+num1
+    
+   	num2=num/10
+	num=num2
+
+   END WHILE
+  RETURN sum
+
+END SUB
+   
+    

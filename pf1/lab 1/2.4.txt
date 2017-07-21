@@ -1,0 +1,47 @@
+/*****************************************************
+	*file        		: exercise2.4 txt
+	*author Name 		: saranya
+	*Description 		: program for employee
+	*version     		: 1.0
+	*Lastmodified date	: 25/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+RECORD Employee
+	DECLARE EmpId as INTEGER
+	DECLARE employmentType AS STRING
+END RECORD
+BEGIN
+	DECLARE emp AS Employee
+	//leaves variable is used to store number of leaves per month
+	DECLARE leaves, TotalLeaves AS INTEGER
+	FOR index= 1 to 5
+		PROMPT "Enter the EmployeeId" AND STORE IN
+		emp.EmpId
+		PROMPT "Enter the employmentType" AND STORE IN
+		emp.employmentType
+	END FOR
+	FOR index= 1 to 5
+		IF(employmentType=='PERMANENT') THEN
+			leaves=2;
+			TotalLeaves=leaves*12;
+		ELSE IF(employmentType=='CONTRACT') THEN
+			leaves=1;
+			TotalLeaves=leaves*12;
+		END IF
+		display(employee,totalleaves)
+	END FOR
+	Index2=5;
+END
+/*********************************************************************
+* Module Name         : dispaly(employee,totalleaves)
+* Input Parameters    : employee,totalleaves
+* Return Type         : integer
+* Author              : saranya
+* Creation Date       : 25-May-2017
+* Description         : to print employee,totalleaves 
+ *********************************************************************/
+SUB display(employee,totalleaves)
+	DECLARE emp AS Employee
+	PRINT "Employee Id :" , emp.EmpId
+	PRINT "Total Available Leaves are :", TotalLeaves
+END SUB

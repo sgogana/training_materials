@@ -1,0 +1,23 @@
+/*********************************************************************
+ * File                 : 3.5.txt
+ * Author Name          : saranya
+ * Desc                 : Program to check  charecters repeated in giving string
+ * Version              : 1.0
+ * Last Modified Date   : 26-May-2017
+ * Change Description   : no change
+ *********************************************************************/
+BEGIN
+	DECLARE arra[n] AS CHARACTER ARRAY
+	DECLARE ch AS character
+	DECLARE i,count AS INTEGER 
+	INITIALISE count to 0
+	PROMPT "enter the string" arra[n]
+	PROMPT "enter the charecter" ch
+	FOR i 0 TO n
+		IF arra[i]==ch THEN
+			count=count+1
+		END IF
+	END FOR
+	PRINT "count num" count
+END
+	 

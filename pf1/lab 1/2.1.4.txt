@@ -1,0 +1,34 @@
+/*****************************************************
+	*file        		: exercise2.1.4txt
+	*author Name 		: saranya
+	*Description 		: program to print given series
+	*version     		: 1.0
+	*Lastmodified date	: 24/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+BEGIN
+	DECLARE n,nt AS INTEGER
+	series(n)
+	print nt
+END
+/*********************************************************************
+* Module Name         : series
+* Input Parameters    : n,nt
+* Return Type         : integer
+* Author              : saranya
+* Creation Date       : 17-May-2017
+* Description         : displaying tagcolour 
+ *********************************************************************/
+SUB series(n)
+	DECLARE n,i,i1,i2,nt AS INTEGER
+	PROMPT "enter n" AND STORE IN n
+	INITIALIZE i1 TO 0
+	INITIALIZE i2 TO 1
+		FOR i 0 TO n
+			nt=i1+i2
+			i1=i2
+			i2=nt
+		ENDFOR
+	RETURN nt
+END SUB
+

@@ -1,0 +1,18 @@
+/*****************************************************
+	*file        		: exercise3.2 txt
+	*author Name 		: saranya
+	*Description 		: algorithm to find surprise
+	*version     		: 1.0
+	*Lastmodified date	: 25/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+ALGORITHM surprise(A[0..n-1])
+//Input: An array A[0..n-1] of real numbers
+If n=1
+return A[0]
+else
+t<-surprise(A[0..n-2])
+if t<=A[n-1]
+return t
+else
+return A[n-1]

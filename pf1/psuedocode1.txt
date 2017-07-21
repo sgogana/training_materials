@@ -1,0 +1,42 @@
+/*********************************************************************
+* File : functionalityofATM.txt
+* Author Name : saranya
+* Desc : Program to perform functionality of ATM
+* Version : 1.0
+* Last Modified Date :13-june-2017
+* Change Description : Description about the changes implemented
+*********************************************************************/
+BEGIN
+	DECLARE accountnumber INTEGER
+	DECLARE customername  AS STRING
+	DECLARE currentbalance AS REAL
+	DECLARE withdrawlamount AS REAL
+	PROMPT "enter your name" AND STORED IN customername
+	PROMPT " enter your accountnumber" AND STORE IN accountnumber
+	PROMPT "Enter your currentbalance" AND STORE IN currentbalance
+	PROMPT "Enter your withdrawlamount" AND STORE IN withdrawlamount
+	withdraw(currentbalance,withdrawamount);
+	currentbalance=availablebalance;
+EXCEPTION
+	WHEN nosufficientbal THEN
+	     PRINT errormessage//Errormessage returned from exception
+END
+/*********************************************************************
+* Module Name         : withdraw(currentbalance,withdrawamount)
+* Input Parameters    : currentbalance,withdrawamount
+* Return Type         : INTEGER
+* Author              : saranya
+* Creation Date       : 13-june-2017
+* Description         :functionality of withdraw of ATM
+ *********************************************************************/
+SUB withdraw(currentbalance,withdrawamount)
+	DECLARE availablebalance AS REAL
+	CALCULATE 
+		availablebalance=currentbalance-withdrawbalancce
+	IF(avaliablebalance>0) THEN	
+		PRINT "transaction is sucesssfull " +availablebalance;
+	ELSE
+		RAISE nosufficientbal("there is no sufficient balance"+currentbalance)
+	END IF
+	return(availablebalance);
+END SUB

@@ -1,0 +1,17 @@
+/*********************************************************************
+ * File                 : 4.3.txt
+ * Author Name          : saranya
+ * Desc                 : Program to apply discount on productprice
+ * Version              : 1.0
+ * Last Modified Date   : 26-MAY-2017
+ * Change Description   : NO changes implemented
+ *********************************************************************/
+BEGIN
+	DECLARE p,q,tc AS INTEGER
+	PROMPT "Enter price of your product"
+	ACCEPT p
+	PROMPT "Enter quantity of your product"
+	ACCEPT q
+	tc=p*q*.56
+	PRINT "Total price of product is": tc
+END

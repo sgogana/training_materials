@@ -1,0 +1,41 @@
+/*********************************************************************
+ * File                 : 3.7txt
+ * Author Name          : saranya
+ * Desc                 : Program to find substrings 
+ * Version              : 1.0
+ * Last Modified Date   : 26-May-2017
+ * Change Description   : NO changes implemented
+ *********************************************************************/
+BEGIN
+	DECLARE charstr[80],search[10] AS CHARECTER ARRAY
+	DECLARE i,j,count1,count2,flag AS INTEGER
+	INITIALISE count1 TO 0
+	INITIALISE count2 TO 0
+	PROMPT "enter the first strng" AND STORE IN charstr[]
+	PROMPT  "enter the second string " AND STORE IN charstr[]
+	WHILE (str[count1]!="  ")
+		count1++
+	WHILE(search[count2]!=" ")
+		count2++
+	FOR i TO count1-count2
+		FOR j 0 TO i+count2
+			flag=1
+			IF str[j]!=srerch[j-i] THEN
+				flag=0
+			END IF
+		IF flag=1 THEN
+		END IF
+	END FOR
+	IF flag==1 THEN
+		PRINT"search sucessfull"
+	ELSE
+		PRINT"search unsuccessfull"
+
+	END IF
+END
+		
+
+
+
+
+

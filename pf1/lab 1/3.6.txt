@@ -1,0 +1,78 @@
+/*********************************************************************
+ * File                 : 3.6.txt
+ * Author Name          : saranya
+ * Desc                 : Program to sort the element using Bubble sort algorithm 
+ * Version              : 1.0
+ * Last Modified Date   : 26-May-2017
+ * Change Description   : Description about the changes implemented
+ *********************************************************************/
+BEGIN
+	DECLARE arr[10] AS INETEGER ARRAY AND INITIALISE AS [66,46,20,89,44,22,11,33,45,22]
+	DECLARE index AS INETEGER INITIALIZE AS 0
+	DECLARE num,search AS INTEGER
+	arr[10]=bubbleSort(arr,10)
+	binarysearch(num)
+	PRINT"the element is" search
+
+END
+/*********************************************************************
+* Module Name         : bubbleSort()
+* Input Parameters    : array
+* Return Type         : integer
+* Author              : saranya
+* Creation Date       : 26-May-2017
+* Description         : sorting the array by bubble sort algorithm 
+ *********************************************************************/
+SUB bubbleSort(arr,n)
+	FOR index = 0 TO n-1
+		FOR index1 = 0 TO n-1-index
+			IF arr[index1] > arr[index1+1] THEN
+				//swap(arr[index1],arr[index1+1])
+				temp = arr[index1]
+				arr[index1]=arr[index1+1]
+				arr[index1+1] = temp
+			END IF
+	END FOR
+END SUB
+/*********************************************************************
+* Module Name         : binarysearch(num)
+* Input Parameters    : num
+* Return Type         : integer
+* Author              : saranya
+* Creation Date       : 26-May-2017
+* Description         : sorting the array by bubble sort algorithm 
+ *********************************************************************/
+SUB binarysearch(num)
+	DECLARE fnum,lnum,search,n,mnum AS INTEGER
+	DECLARE s AS INTEGER
+	PROMPT"the size of array is" AND STORE IN s
+	INITIALISE fnum TO 0
+	lnum=s-1
+	mnum=(fnum+lnum)/2
+	WHILE(fnum<=lnum)
+		IF(arr[mnum]<search)
+			fnum=lnum+1
+		ELSEIF(arr[mnum]==search)
+			return search
+		END IF
+		ELSE
+			lnum=mnum-1
+			mnum=(fnum+lnum)/2
+		END  WHILE
+	IF(fnum>lnum)
+		return search
+	END IF
+END SUB
+		
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,15 @@
+BEGIN
+	DECLARE CONSTANT fixedcharge = 100
+	DECLARE userid,username AS STRING
+	DECLARE lastmr,currentmr,unitsconsumed ,netamount  AS REAL 
+	PROMPT "enter user id" AND STORE IN user id
+	PROMPT "entyer username "AND STOREED IN username
+	PROMPT "lastmonthmeterreading" AND STORED IN lastmonthmeterreading
+	PROMPT "currentmonthmeterreading" AND STORED IN currentmonthmeterreading   
+	CALCULATE unitconsumed =lastmonthmeterreading - current month meter reading
+	CALCULATE netamount=1.15*unitsconsumed + fixedcharge  
+	print"userid ",userid
+	print "username",username
+	print"unitsconsumed",unitsconsumed
+	print"netamount",netamount
+END

@@ -1,0 +1,37 @@
+/*****************************************************
+	*file        		: exercise2.1.6.2txt
+	*author Name 		: saranya
+	*Description 		: program to even and odd
+	*version     		: 1.0
+	*Lastmodified date	: 25/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+BEGIN
+	DECLARE num[10] AS INTEGER ARRAY 
+	PROMPT "enter 10 num"
+	FOR INDEX 1 TO 10
+		ACCEPT NUM[10]
+	END FOR
+	evenodd(num,10)
+	PRINT num[INDEX]
+END
+/*********************************************************************
+	* Module Name         : evenodd
+	* Input Parameters    : num[10]
+	* Return Type         : integer
+	* Author              : saranya
+	* Creation Date       : 25-May-2017
+	* Description         : to print even and odd
+ *********************************************************************/
+SUB evenodd(num,10)
+	PRINT"even num are "
+	FOR INDEX 1 TO 10
+		IF NUM[INDEX]%2 = 0
+		PRINT num[INDEX]
+	ENDFOR
+	PRINT"odd num are "
+	FOR INDEX 1 TO 10
+		IF NUM[INDEX]%2 != 0
+		RETURN num[INDEX]
+	ENDFOR
+END SUB

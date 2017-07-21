@@ -1,0 +1,17 @@
+/*****************************************************
+	*file        		: exercise3.4txt
+	*author Name 		: saranya
+	*Description 		: algorithm to find sum of array elments
+	*version     		: 1.0
+	*Lastmodified date	: 25/05/2017
+	*change descrption 	: no change
+ *******************************************************/
+ALGORITHM Sum(n)
+//Input: A nonnegative integer n
+sum<-0
+for index<-1 to n do
+sum<-sum+i
+return sum
+
+the alogorithm is finding sum of the array elements but code was not proper
+the efficiency is worst
