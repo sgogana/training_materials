@@ -1,0 +1,1140 @@
+
+L1 Ora Apps Mock Test Set 1
+
+Section:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+Time Left : 81 : 10 List View 
+    Active     Attempted     Not Attempted
+Q1
+
+ 
+What is the Seeded executable name for creating Data Template? 
+
+Single Choice - Select one correct answer from the options list.
+XDODTEXE
+XDOTTEX
+XDOTTY
+XDODTDEXE
+
+Q2
+
+ 
+Which of the following statement(s) is/are TRUE? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+One can match a single invoice to multiple purchase order shipments
+One can not match a single invoice to multiple purchase order shipments
+One can match multiple invoices to a single purchase order shipment
+One can not match multiple invoices to a single purchase order shipment
+
+Q3
+
+ 
+In 2-Way matching invoice, which of the following condition is checked? 
+
+Single Choice - Select one correct answer from the options list.
+Invoice unit price vs. purchase order line unit price
+Quantity billed vs. quantity received
+Quantity billed vs. quantity accepted
+None of the Above
+
+Q4
+
+ 
+Which of the following are the types of Holds? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+System Hold
+Manual Hold
+WorkFlow Hold
+Sample Hold
+
+Q5
+
+ 
+The various types of manufacturing are: 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Discrete
+Repetitive
+Flow
+Project
+
+Q6
+
+ 
+During which phase, defects are injected? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Requirement Gathering
+Errors in previous phase output
+Testing
+Deployment
+
+Q7
+
+ 
+When is the application UI designed? 
+
+Single Choice - Select one correct answer from the options list.
+During high level design
+During architectural design
+During low level design
+Before design phase
+
+Q8
+
+ 
+Elicitation process is carried under which phase of SDLC model? 
+
+Single Choice - Select one correct answer from the options list.
+Feasibility
+Design
+Requirements
+Coding
+
+Q9
+
+ 
+Which of the given is an example of non configuration item? 
+
+Single Choice - Select one correct answer from the options list.
+Design document
+Project plan
+Weekly status Reports
+Test case
+
+Q10
+
+ 
+When are the activities like knowledge transfer, end user training, project signoff carried out? 
+
+Single Choice - Select one correct answer from the options list.
+After unit testing
+After acceptance testing
+After system testing
+Before system testing
+
+Q11
+
+ 
+An organization for which you track inventory transactions and balances, and/or an organization that 
+manufactures or distributes products, is called as __________. 
+
+Single Choice - Select one correct answer from the options list.
+Operating Unit
+Set of Books
+Business Group
+Inventory Organization
+
+Q12
+
+ 
+Without touching code of the form, how we can disable some buttons on it? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Using Form Personalization
+Using Custom.pll
+Using Menu
+Using Certain Background Setting
+
+Q13
+
+ 
+What is wrong in the loader code mentioned below? 
+
+OPTIONS (ERRORS=999999) 
+LOAD DATA 
+INFILE * 
+INTO TABLE MLR_EMP_MAPPINGS 
+APPEND 
+FIELDS TERMINATED BY '|' 
+TRAILING NULLCOLS 
+( 
+INTERNAL_REFERENCE "TRIM(:INTERNAL_REFERENCE)" 
+,EXTERNAL_REFERENCE "TRIM(:EXTERNAL_REFERENCE)" 
+,EXTERNAL_TYPE "TRIM(:EXTERNAL_TYPE)" 
+,ATTRIBUTE_CATEGORY "TRIM(:ATTRIBUTE_CATEGORY)" 
+,creation_date SYSDATE 
+,created_by "fnd_global.user_id" 
+,last_update_date SYSDATE 
+,last_updated_by "fnd_global.user_id" 
+,EXTERNAL_MAP_ID "external_mappings_seq.NEXTVAL" 
+) 
+
+Single Choice - Select one correct answer from the options list.
+One should not mention name of the table in SQL Loader script of Oracle Apps
+One should not mention INFILE * in SQL Loader script of Oracle Apps
+No errors present the script.
+One can not use SYSDATE in SQL Loader script
+Q14
+
+ 
+_________ represents the highest level in the organization structure, such as the consolidated enterprise, 
+a major division, or an operation company. 
+
+Single Choice - Select one correct answer from the options list.
+Operating Unit
+Inventory Organization
+Business Group
+Set of Books
+Q15
+
+ 
+A financial reporting entity that uses a particular chart of accounts, functional currency, and accounting calendar, 
+is called as ____________. 
+
+Single Choice - Select one correct answer from the options list.
+Set of Books
+Business Group
+Operating Unit
+Inventory Organization
+Q16
+
+ 
+What of the following is the type of user profile levels? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Site
+Application
+Location
+Country
+Q17
+
+ 
+Benefits of using the Forms listener servlet include: 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Ability to re-establish dropped network connections
+No firewall scanning is required
+Easier firewall/proxy server configuration
+More robust and secure deployment over the Internet
+Q18
+
+ 
+Which of the following are execution method in oracle application? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Guest
+PL/SQL stored procedure
+SQL*Plus
+Concurrent Program
+Q19
+
+ 
+Which of the following are phase of concurrent request lifecycle? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Pending
+Active
+Completed
+Suspended
+Q20
+
+ 
+The procedures used for the custom schema tables and custom schema table columns are: 
+
+Single Choice - Select one correct answer from the options list.
+AD_D.table_register and AD_D.column_register
+AD_D.register_table and AD_D.register_column
+AD_DD.register_table and AD_DD.register_column
+AD_DD.table_register and AD_DD.column_register
+Q21
+
+ 
+In Oracle Apps, ldt files are used for ___________ . 
+
+Single Choice - Select one correct answer from the options list.
+Data loader
+DataMerge import/export
+Executable forms
+PL/SQL shared library (reports)
+Q22
+
+ 
+What is Out-Bound Interface? 
+
+Single Choice - Select one correct answer from the options list.
+Program that transfer data from oracle apps to legacy System
+Program that transfer data from legacy system to oracle apps
+Program that transfer data from one module of oracle apps to another module of oracle apps.
+Program that extract tables and create data file
+Q23
+
+ 
+Which of the following statement is TRUE about the operating unit? 
+
+Single Choice - Select one correct answer from the options list.
+It Uses Oracle Cash Management, Order Management and Shipping Execution, Oracle Payables, 
+Oracle Purchasing, and Oracle Receivables 
+
+A financial reporting entity that uses a particular chart of accounts, functional currency, 
+and accounting calendar. 
+
+An organization for which you track inventory transactions and balances, and/or an organization 
+that manufactures or distributes products. 
+
+Represents the highest level in the organization structure, such as the consolidated enterprise, 
+a major division, or an operation company 
+
+Q24
+
+ 
+Fill in the Blanks: 
+
+int sum( ________ intArray) 
+{ 
+int result = 0; 
+for (int index : intArray) 
+result += index; 
+return result; 
+} 
+
+Single Choice - Select one correct answer from the options list.
+int[]
+int
+String
+String[]
+Q25
+
+ 
+What is the output of the following? 
+
+public class example { 
+public static void main(String[] args) { 
+// TODO Auto-generated method stub 
+Integer i = 42; 
+String s = (i<40)?"less than 40":(i>50)?"universe":"everything"; 
+System.out.println(s); 
+} 
+} 
+
+Single Choice - Select one correct answer from the options list.
+less than 40
+universe
+everything
+Compilation error
+Q26
+
+ 
+Given: 
+
+class Mixer { 
+Mixer() { } 
+Mixer(Mixer m) { m1 = m; } 
+Mixer m1; 
+public static void main(String[] args) { 
+Mixer m2 = new Mixer(); 
+Mixer m3 = new Mixer(m2); m3.go(); 
+Mixer m4 = m3.m1; m4.go(); 
+Mixer m5 = m2.m1; m5.go(); 
+} 
+void go() { System.out.print("hi "); } 
+} 
+
+What is the result? 
+
+Single Choice - Select one correct answer from the options list.
+hi hi
+hi hi hi
+Compilation fails
+hi hi, followed by an error
+Q27
+
+ 
+What is the content of XYZ variable after executing following UNIX command? 
+
+XYZ=`ls ${DATA_DIR}/${FILE_PREFIX}*.dat*|wc -l` 
+
+Single Choice - Select one correct answer from the options list.
+First name of the dat file in the directory
+All dat files in the particular directory
+Directory path along with the first dat file name
+Number of dat files
+Q28
+
+ 
+What is the effect of adding the following code in custom.pll? 
+
+begin 
+If(event_name='WHEN_NEW_FORM_INSTANCE') 
+then 
+If (form_name='APXVENDR') then 
+app_item_property2.set_property('vendor.name'.PROMPT_TEXT, 'supplier name'); 
+end if; 
+end if; 
+end if: 
+
+Single Choice - Select one correct answer from the options list.
+Change a Field prompt
+Hide a Field
+Change a button label
+Force a field to uppercase
+Q29
+
+ 
+Which mode applies when the seeded data replication program is executed within the context 
+of a particular operating unit (or ORG_ID)? 
+
+Single Choice - Select one correct answer from the options list.
+Single Organization
+Multiple Organization
+Both of the above
+None of the above
+Q30
+
+ 
+Any PL/SQL Stored Procedure that is going to be run under Oracle Applications must specify 
+the following parameter: 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+errbuf OUT VARCHAR2
+retcode OUT NUMBER
+errbuf IN VARCHAR2
+retcode IN NUMBER
+Q31
+
+ 
+CUSTOM contains 3 routines :
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+ZOOM_AVIALABLE
+ZOOM
+STYLE
+EVENT
+Q32
+
+ 
+Which statement is false? 
+
+Single Choice - Select one correct answer from the options list.
+$APPL_TOP is an environment variable.
+FND_TOP is the path to the Application Object Library directory.
+CUSTOM_TOP is the path to the Application Object Library directory.
+CUSTOM_TOP is the path to the Custom Object Library directory.
+Q33
+
+ 
+Which feacture of Oracle Apps R12 allows to access, process and report on data for an unlimited 
+number of operating units within a single applications responsibility? 
+
+Single Choice - Select one correct answer from the options list.
+SOB
+MOAC
+AIM
+Multi-Org
+Q34
+
+ 
+Select 3 C's of oracle apps (11i) from below: 
+
+Single Choice - Select one correct answer from the options list.
+a) Currency 
+b) Calendar 
+c) Chart of Accounts 
+
+a) Character 
+b) Calendar 
+c) Charted Accounts 
+
+a) Currency 
+b) Calendar 
+c) Charted Accounts 
+
+a) Currency 
+b) Character 
+c) Charted Accounts 
+
+Q35
+
+ 
+Which of the following is not routine in CUSTOM? 
+
+Single Choice - Select one correct answer from the options list.
+ZOOM_AVIALABLE
+ZOOM
+STYLE
+EVENT
+Q36
+
+ 
+Following query will fetch records only if: 
+
+SELECT * 
+FROM po_headers 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+There is a single operating unit present
+ORG_ID profile is set with a valid value
+You are executing it in oracle application
+You have system administrator right
+Q37
+
+ 
+What is event in workflow? 
+
+Single Choice - Select one correct answer from the options list.
+Event is a Process
+Event is a business activity
+Event is a WFLOAD
+Event is Lookup
+Q38
+
+ 
+In 11i we called it as Intercompany Accounts, where as in R12 it is __________. 
+
+Single Choice - Select one correct answer from the options list.
+Intercompany Balancing
+Intracompany Balancing
+Intracompany Accounts
+Accounts
+Q39
+
+ 
+Which is the best delimiter available to delimit the file? 
+
+Single Choice - Select one correct answer from the options list.
+comma
+space
+pipe
+dollar
+Q40
+
+ 
+Explain the relationship among database, tablespace and data file: 
+
+Single Choice - Select one correct answer from the options list.
+Each database consists of one or more data files created explicitly with or without tablespaces. 
+
+No relationship. 
+All are separate entities. 
+
+Each database is logically divided into one or more tablespaces and one or more data files are 
+explicitly created for each tablespace. 
+
+None of the above 
+
+Q41
+
+ 
+In Oracle Application MD.070 is used for ___________ . 
+
+Single Choice - Select one correct answer from the options list.
+Create Application Extensions Functional Design
+Design Database Extensions
+Create Application Extensions Technical Design
+Review Functional and Technical Designs
+Q42
+
+ 
+Which of the following statement is correct for SQL Loader? 
+
+Single Choice - Select one correct answer from the options list.
+OPTIONS (ERRORS=999999) 
+LOAD DATA 
+INFILE * 
+INTO TABLE XXPATNI_TEMP_TBL 
+FIELDS TERMINATED BY '|' 
+TRAILING NULLCOLS 
+( 
+DATA1 "TRIM(:DATA1)" 
+,DATA2 "TRIM(:DATA2)" 
+) 
+
+OPTIONS (ERRORS=999999) 
+LOAD DATA 
+INTO TABLE XXPATNI_TEMP_TBL 
+APPEND 
+FIELDS TERMINATED BY '|' 
+TRAILING NULLCOLS 
+( 
+DATA1 "TRIM(:DATA1)" 
+,DATA2 "TRIM(:DATA2)" 
+) 
+
+OPTIONS (ERRORS=999999) 
+LOAD DATA 
+INFILE * 
+INTO TABLE XXPATNI_TEMP_TBL 
+APPEND 
+FIELDS TERMINATED BY '|' 
+TRAILING NULLCOLS 
+( 
+DATA1 "TRIM(:DATA1)" 
+,DATA2 "TRIM(:DATA2)" 
+) 
+
+OPTIONS (ERRORS=999999) 
+LOAD DATA 
+INTO TABLE XXPATNI_TEMP_TBL 
+APPEND 
+FIELDS SEPERATED BY '|' 
+TRAILING NULLCOLS 
+( 
+DATA1 "TRIM(:DATA1)" 
+,DATA2 "TRIM(:DATA2)" 
+) 
+
+Q43
+
+ 
+Which of the following are execution methods in Oracle Applications? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+SQL*Plus
+SQL*Loader
+Host
+Oracle Reports
+Q44
+
+ 
+Which of the following event is not passed to the CUSTOM  library ?
+Single Choice - Select one correct answer from the options list.
+WHEN_NEW_FORM_INSTANCE
+WHEN_NEW_LINE_INSTANCE
+WHEN_NEW_RECORD_INSTANCE
+WHEN_NEW_ITEM_INSTANCE
+Q45
+
+ 
+What Happens When You Modify a Relation? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Changing the Master Deletes property from the default of Non-Isolated to Cascading replaces 
+the On-Check-Delete-Master trigger with the Pre-Delete trigger. 
+
+Changing the Master Deletes property from the default of Isolated to Cascading replaces 
+the On-Check-Delete-Master trigger with the Pre-Delete trigger. 
+
+Changing the Master Deletes property from the default of Isolated to Non-Isolated replaces 
+the On-Check-Delete-Master trigger with the Pre-Delete trigger. 
+
+Changing the Master Deletes property from the default of Non-Isolated to Isolated results in 
+the removal of the On-Check-Delete-Master trigger. 
+
+Q46
+
+ 
+How to edit SQL Query Statement in Report Builder? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+In the Data Model editor, select Data Wizard from the toolbar. Use the Data Wizard to make changes to the query. 
+
+To edit the query statement, open the property palette, choose the SQL Builder, and click the left button. 
+The SQL Query Statement dialog box appears. 
+
+To edit the query statement, open the property palette, choose the SQL Query Statement property, 
+and click the left button. The SQL Query Statement dialog box appears. 
+
+Open a text editor, such as Notepad. Invoke SQL*Plus. Enter, run, and test a query, then save. 
+In Oracle Reports, choose File->Edit->SQL Query. 
+
+Q47
+
+ 
+In Forms, which Trigger will be used to set the who columns? 
+
+Single Choice - Select one correct answer from the options list.
+WHEN-NEW-RECORD-INSTANCE and WHEN-VALIDATE-RECORD
+PRE-INSERT and PRE-UPDATE
+WHEN-NEW-BLOCK-INSTANCE and PRE-INSERT
+POST-VALIDATE and PRE-UPDATE
+Q48
+
+ 
+A block EMP is having empno field and 10 records. How will you set the 'Update Allowed' property 
+of 7th record of empno field to 'NO'. 
+
+Single Choice - Select one correct answer from the options list.
+SET_ITEM_INSTANCE_PROPERTY('emp.empno',update_allowed,property_false)
+SET_ITEM_PROPERTY('EMP.EMPNO',update_allowed,property_false)
+SET_ITEM_INSTANCE_PROPERTY('EMP.EMPNO',current_record,update_allowed,property_false)
+SET_ITEM_PROPERTY('EMP.EMPNO',current_record,update_allowed,property_false)
+Q49
+
+ 
+In Forms, a property which determines how deletion of a record in master block affects records 
+in child block is ________. 
+
+Single Choice - Select one correct answer from the options list.
+Delete Masterless Operations
+Detail Block Behaviour
+Delete Record Behaviour
+Prevent Masterless Operations
+Q50
+
+ 
+Valid PL/SQL library file formats are as given here: 
+
+Single Choice - Select one correct answer from the options list.
+.PLL
+.PLD
+.PLT
+All of these
+Q51
+
+ 
+To run a report created with Oracle Reports, you use the executable program called __________. 
+
+Single Choice - Select one correct answer from the options list.
+RWBLD60
+RWRUN60
+ifbld60
+RWBLDRUN60
+Q52
+
+ 
+A ______ is one that has a modified value although it is derived from the property class associated with the object. 
+
+Single Choice - Select one correct answer from the options list.
+inherited property
+smart class property
+variant property
+subclassing property
+Q53
+
+ 
+Please select two events which are frequently used to set window title? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+WHEN-NEW-FORM-INSTANCE
+WHEN-NEW-RECORD-INSTANCE
+PRE-FORM
+PRE-BLOCK
+Q54
+
+ 
+Which of the following trigger will get fired multiple times in a report? 
+
+Single Choice - Select one correct answer from the options list.
+before parameter form
+before report
+Between Page
+After Page
+Q55
+
+ 
+Break groups that you create in a hierarchical report display data in a default order. 
+_______ controls the break structure and the order in which to display the column's values. 
+
+Single Choice - Select one correct answer from the options list.
+Reversing the Break Order
+Break Order in Break Groups
+Break Order
+Break Order in Break Columns
+Q56
+
+ 
+What are the Various types of Anchors in Reports? 
+
+Single Choice - Select one correct answer from the options list.
+Implicit anchors
+Explicit anchors
+Implicit and Explicit anchors
+Standby Anchor
+
+Q57
+
+ 
+How can we call another form from current form? 
+
+Single Choice - Select one correct answer from the options list.
+CALL_FORM( FUNCTION_NAME => 'Enter Function_Name',SESSION_FLAG => 'Y',OPEN_FLAG => 'Y')
+OPEN_FORM( FUNCTION_NAME => 'Enter Function_Name',SESSION_FLAG => 'Y',OPEN_FLAG => 'Y')
+FND_FORM.EXECUTE( FUNCTION_NAME => 'Enter Function_Name',SESSION_FLAG => 'Y',OPEN_FLAG => 'Y')
+FND_FUNCTION.EXECUTE( FUNCTION_NAME => 'Enter Function_Name',SESSION_FLAG => 'Y',OPEN_FLAG => 'Y')
+
+Q58
+
+ 
+Here we have content canvas named canvas1. We have created stacked canvas named stacked1 on canvas1. 
+When we are trying create one more stacked canvas on stacked1, what will be the output? 
+
+Single Choice - Select one correct answer from the options list.
+We will get a form error while creating stacked1 canvas itself saying 'stacked and tab canvases 
+cannot be created with the content canvases 
+
+There is no form error wherein one more stack canvas will get created over stacked1 
+
+We will get an form error saying 'stacked and tab canvases must be created with the content canvases 
+
+None of these 
+
+Q59
+
+ 
+What are NOT the features of Format Trigger? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+It is a PL/SQL function executed before an object is formatted.
+A trigger which can be used to dynamically change the formatting attributes of the object.
+A trigger which can be used to dynamically to validate the parameters.
+A trigger which can be used in "Before Report" trigger only
+
+Q60
+
+ 
+Examine the structure of dept table:
+
+
+
+A developer had created department_master table with the similar structure of dept table using the below query:
+
+CREATE TABLE department_master AS SELECT * FROM dept WHERE 1=2;
+
+Identify the query to copy all records from dept table and insert the same into department_master table.
+ 
+Single Choice - Select one correct answer from the options list.
+INSERT INTO department_master SELECT * FROM dept;
+INSERT INTO department_master VALUES SELECT * FROM dept;
+INSERT INTO department_master VALUES AS SELECT * FROM dept;
+Copying of records from one table and inserting to another table is impossible.
+
+Q61
+
+ 
+Examine the content of EMPLOYEE table:
+
+
+
+Identify the query to display hiredate and number of employees joined on that date in a given department number.
+Also order the details based on hiredate.
+ 
+Single Choice - Select one correct answer from the options list.
+SELECT hiredate,COUNT(*) FROM employee GROUP BY hiredate ORDER BY 1
+SELECT hiredate,COUNT(*) FROM employee WHERE deptno=20 GROUP BY hiredate ORDER BY 1;
+SELECT hiredate,COUNT(*) FROM employee WHERE deptno=20 GROUP BY hiredate ORDER BY 0;
+SELECT hiredate,COUNT(*) FROM employee GROUP BY hiredate ORDER BY 1 WHERE deptno=20;
+
+Q62
+
+ 
+Examine the content of EMPLOYEE table:
+
+
+
+Identify the query to display list of employee details(ename, sal and job) who are earning salary higher than
+all the minimum salaries based on each job.
+ 
+Single Choice - Select one correct answer from the options list.
+SELECT ename,sal,job FROM employee WHERE sal>
+(SELECT min(sal) FROM employee GROUP BY job);
+ 
+SELECT ename,sal,job FROM employee WHERE sal>ANY
+(SELECT min(sal) FROM employee GROUP BY job);
+ 
+SELECT ename,sal,job FROM employee WHERE sal>ALL
+(SELECT min(sal) FROM employee);
+ 
+SELECT ename,sal,job FROM employee WHERE sal>ALL
+(SELECT min(sal) FROM employee GROUP BY job);
+ 
+Q63
+
+ 
+Which statement(s) is/are true about Procedures? 
+
+i. Parameter with IN mode is used to pass values to the procedure. 
+ii. Parameter with OUT mode is used to return values to the caller. 
+iii. Parameter with IN OUT mode is used to pass initial values to the procedure and return updated values to the caller. 
+iv. Formal parameter should be assigned a value, if parameter mode is IN OUT. 
+
+Single Choice - Select one correct answer from the options list.
+Statement i and ii are true
+Statement ii and iii are true
+Statement iii and iv are true
+All the statements are true
+Q64
+
+ 
+Janet has declared an exception named as "MyException" in declaration section of PLSQL block. 
+Which has to be used by him to associate an exception name with an Oracle error number? 
+
+Single Choice - Select one correct answer from the options list.
+PRAGMA EXCEPTION_INIT
+RAISE
+RAISE_APPLICATION_ERROR
+Exception can't be associated with an oracle error number
+
+Q65
+
+ 
+Which of the statements are true about Exception Handling in PLSQL block? 
+
+i. User defined exceptions in declaration section 
+ii. OTHERS exception handler is always the last handler in a block acts as the handler for all exceptions 
+iii. SQLCODE returns the current error code. And SQLERRM returns the current error message text. 
+SQLCODE returns the current error code. And SQLERRM returns the current error message text. 
+
+Single Choice - Select one correct answer from the options list.
+Statement i and ii are true
+Statement ii and iii are true
+Statement iii and i are true
+All the statements are true
+
+Q66
+
+ 
+Given here is a PL/SQL block: 
+
+1:DECLARE 
+2: vcName VARCHAR2(20) NOT NULL DEFAULT 'Example'; 
+3: nPF CONSTANT NUMBER:=20; 
+4:BEGIN 
+5: vcName:='sample'; 
+6: nPF:=25; 
+7: DBMS_OUTPUT.PUT_LINE(vcName||nPF); 
+8: END; 
+/ 
+
+The above code generates an error. Which of the following lines is responsible for the error? 
+
+Single Choice - Select one correct answer from the options list.
+Line 4
+Line 7
+Line 6
+Line 2
+
+Q67
+
+ 
+Analyze the below code and find out the type of cursor used in this code for processing result set data. 
+
+DECLARE 
+TYPE details IS REF CURSOR; 
+emp employee%ROWTYPE; 
+dept1 dept%ROWTYPE; 
+cname details; 
+BEGIN 
+OPEN cname FOR SELECT * FROM employee; 
+FETCH cname INTO emp; 
+LOOP 
+DBMS_OUTPUT.PUT_LINE(emp.ename); 
+EXIT WHEN cname%NOTFOUND; 
+FETCH cname INTO emp; 
+END LOOP; 
+CLOSE cname; 
+OPEN cname FOR SELECT * FROM dept; 
+FETCH cname INTO dept1; 
+LOOP 
+DBMS_OUTPUT.PUT_LINE(dept1.dname); 
+EXIT WHEN cname%NOTFOUND; 
+FETCH cname INTO dept1; 
+END LOOP; 
+CLOSE cname; 
+END; 
+/ 
+
+Single Choice - Select one correct answer from the options list.
+Implicit Cursor
+Parameterized Cursor
+Weak Type Cursor Variable
+Strong Type Cursor Variable
+
+Q68
+
+ 
+Examine the SQL statement that create PRODUCT table: 
+
+CREATE TABLE product(productid NUMBER(9) CONSTRAINT productid_PK PRIMARY KEY, pname VARCHAR2(20), mfgdate DATE); 
+
+For which columns would an index be automatically created when you execute the above SQL statement? 
+
+Single Choice - Select one correct answer from the options list.
+No indexes are created for this table
+An index is created for each column
+An index is created for the pname column.
+An index is created for the productid column
+
+Q69
+
+ 
+Analyze the given command and identify the true statement about this command: 
+
+chmod 666 results.txt 
+
+Single Choice - Select one correct answer from the options list.
+This command is used to assign read and write permission to all the users for results.txt file.
+This command is used to assign all the permission to all the users for results.txt file.
+This command is used to assign only read permission to all the users for results.txt file.
+This command is used to assign only write permission to all the users for results.txt file.
+Q70
+
+ 
+In UNIX, which command has to be used to get a brief description about a command including all its options 
+as well as some suitable examples? 
+
+Single Choice - Select one correct answer from the options list.
+help
+man
+describe
+desc
+Q71
+
+ 
+Which special parameters usage in Shell script will help to access described values? 
+
+1. _________ gives the number of arguments 
+2. _________ gives the PID of the current shell 
+3. _________ gives complete set of positional parameters 
+
+Single Choice - Select one correct answer from the options list.
+1. $$ 
+2. $# 
+3. $* 
+
+1. $# 
+2. $$ 
+3. $* 
+
+1. $# 
+2. $* 
+3. $$ 
+
+1. $* 
+2. $$ 
+3. $# 
+
+Q72
+
+ 
+Consider the below content exists in course.txt file in UNIX file system. 
+
+101 CJV 9 
+102 SPR 5 
+
+Identify the command to be used for substituting SPR as SPRING: 
+
+Single Choice - Select one correct answer from the options list.
+sed -f 's/SPR/Spring/' course.txt
+substitute 's/SPR/Spring/' course.txt
+sed 's/SPR/Spring/' course.txt
+Substitution is not possible to be done using UNIX Commands
+Q73
+
+ 
+Which of the following are correct guidelines for creating exception handlers? 
+
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+No need to analyze the consequences of failures but need to find out correct probability.
+No need to document the reason for the exception
+Catch the exception in the appropriate parent module
+Raise the exception whenever the condition arises in the sub module
+Q74
+
+ 
+Identify the pseudocode which exhibits robustness: 
+
+Single Choice - Select one correct answer from the options list.
+SUB shape(sides) 
+IF (sides >0 and sides <3) THEN 
+PRINT "No proper mathematical shape " 
+ELSE IF (sides > =3 and sides < 4) THEN 
+PRINT "It Can be a Triangle" 
+ELSE IF (sides >= 4 and sides<5) THEN 
+PRINT "It can be a Square" 
+ELSE 
+PRINT "It can be a Polygon" 
+END IF 
+END 
+
+SUB shape(sides) 
+IF(sides<=0) THEN 
+PRINT "No shape" 
+IF (sides >0 and sides <3) THEN 
+PRINT "No proper mathematical shape" 
+ELSE IF (sides > =3 and sides < 4) THEN 
+PRINT "It Can be a Triangle" 
+ELSE IF (sides >= 4 and sides<5) THEN 
+PRINT "It can be a Square" 
+END IF 
+END 
+
+SUB shape(sides) 
+IF(sides<=0) THEN 
+PRINT "No shape" 
+ELSE IF (sides >0 and sides <3) THEN 
+PRINT "No proper mathematical shape" 
+ELSE IF (sides > =3 and sides < 4) THEN 
+PRINT "It Can be a Triangle" 
+ELSE IF (sides >= 4 and sides<5) THEN 
+PRINT "It can be a Square" 
+ELSE IF 
+PRINT "It can be a Polygon" 
+END IF 
+END 
+
+SUB shape(sides) 
+IF(sides<=0) THEN 
+PRINT "No shape" 
+ELSE IF (sides >0 and sides <3) THEN 
+PRINT "No proper mathematical shape" 
+ELSE IF (sides > =3 and sides < 4) THEN 
+PRINT "It Can be a Triangle" 
+ELSE IF (sides >= 4 and sides<5) THEN 
+PRINT "It can be a Square" 
+ELSE IF (sides >= 5 and sides<6) THEN 
+PRINT "It can be a Pentagon" 
+ELSE 
+PRINT "It can be a Polygon" 
+END IF 
+END 
+
+Q75
+
+ 
+Walk through the following pseudocode and choose the appropriate description for the same: 
+
+BEGIN 
+DECLARE fnumbers AS FILE 
+DECLARE no AS INTEGER 
+DECLARE total AS INTEGER 
+
+IF(fileExists(fnumbers)) THEN 
+OPEN fnumbers 
+READ data from the file AND STORE IN no 
+WHILE (NOT EOF ) 
+total=total + no 
+READ data from the file AND STORE IN no 
+END Until 
+DISPLAY total 
+CLOSE file 
+END IF 
+END 
+
+Single Choice - Select one correct answer from the options list.
+This pseudocode will read all even numbers from a file, add all the numbers and display the total.
+This pseudocode will read all numbers from a file, add all the numbers and display the total.
+This pseudocode will read all odd numbers from a file, add all the numbers and display the total.
+'This pseudocode will read all numbers from a file except the first, add all the numbers and display the total.
+XML Publisher Basics
+1
+SCM and Financials
+234
+ERP Overview
+5
+Intro to SE
+678910
+Ora Apps Part I
+11121314151617181920212223
+Java
+242526
+Ora Apps Part II
+272829303132333435363738394041424344
+Oracle Forms and Reports
+454647484950515253545556575859
+Oracle Advanced
+606162636465666768
+Unix
+69707172
+PF with Pseudocode
+737475 75 out of 75  Submit Assessment 
